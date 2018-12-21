@@ -6,7 +6,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 library.add(faInstagram)
 
 const Social = () => {
-    return <FontAwesomeIcon icon={faInstagram} size="8x"/>
+    return (
+        <a href="https://www.instagram.com/iron_jimmy_sleeves">
+            <FontAwesomeIcon icon={faInstagram} size="3x"/>
+        </a>
+    )
 }
 
 Social.propTypes = {}

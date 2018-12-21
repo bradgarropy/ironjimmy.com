@@ -3,6 +3,8 @@ import Helmet from "react-helmet"
 import PropTypes from "prop-types"
 import favicon from "../../static/icons/iron-jimmy-icon.png"
 import "../scss/Layout.scss"
+import Header from "./Header"
+import Footer from "./Footer"
 
 const Layout = ({children}) => {
     return (
@@ -46,7 +48,11 @@ const Layout = ({children}) => {
                 <link rel="icon" type="image/png" href={favicon}/>
             </Helmet>
 
-            <div className="layout">{children}</div>
+            <div className="layout">
+                <Header/>
+                <main className="content">{children}</main>
+                <Footer/>
+            </div>
         </React.Fragment>
     )
 }

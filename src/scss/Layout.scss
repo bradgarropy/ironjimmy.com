@@ -4,10 +4,7 @@
 .layout {
     height: 100vh;
     display: grid;
-    grid-template-columns: auto auto;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+    grid-template-rows: auto 1fr auto;
     font-family: "Roboto", sans-serif;
 
     a:visited {
