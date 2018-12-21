@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import PropTypes from "prop-types"
-import favicon from "../../static/icons/gatsby-icon.png"
+import favicon from "../../static/icons/iron-jimmy-icon.png"
 import "../scss/Layout.scss"
 
 const Layout = ({children}) => {
@@ -12,7 +12,7 @@ const Layout = ({children}) => {
 
                 <title>Iron Jimmy</title>
 
-                <meta name="description" content="⚫ iron jimmy sleeves"/>
+                <meta name="description" content="⚫ Iron Jimmy Sleeves"/>
                 <meta name="keywords" content="gatsby, react, scss, eslint"/>
 
                 <meta name="twitter:card" content="summary_large_image"/>
@@ -21,7 +21,7 @@ const Layout = ({children}) => {
                 <meta name="twitter:title" content="Iron Jimmy"/>
                 <meta
                     name="twitter:description"
-                    content="⚫ iron jimmy sleeves"
+                    content="⚫ Iron Jimmy Sleeves"
                 />
                 <meta
                     name="twitter:image"
@@ -36,7 +36,7 @@ const Layout = ({children}) => {
                 <meta property="og:title" content="gatsby starter"/>
                 <meta
                     property="og:description"
-                    content="⚫ iron jimmy sleeves"
+                    content="⚫ Iron Jimmy Sleeves"
                 />
                 <meta
                     property="og:image"
