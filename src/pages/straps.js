@@ -9,21 +9,21 @@ const Straps = ({data}) => {
 
     return (
         <Layout>
-            {straps.map(strap => {
-                const id = strap.node.contentful_id
-                const image = strap.node.image.file.url
-                const {name, price} = strap.node
-                const description = strap.node.description.description
+            <div className="straps">
+                {straps.map(strap => {
+                    const id = strap.node.contentful_id
+                    const image = strap.node.image.file.url
+                    const {name, price} = strap.node
 
-                return (
-                    <div key={id} className="straps">
-                        <img src={image}/>
-                        <h2>{name}</h2>
-                        <p>{price}</p>
-                        <p>{description}</p>
-                    </div>
-                )
-            })}
+                    return (
+                        <div key={id}>
+                            <img src={image}/>
+                            <h2>{name}</h2>
+                            <p>{price}</p>
+                        </div>
+                    )
+                })}
+            </div>
         </Layout>
     )
 }
@@ -45,9 +45,6 @@ export const query = graphql`
                     }
                     name
                     price
-                    description {
-                        description
-                    }
                 }
             }
         }

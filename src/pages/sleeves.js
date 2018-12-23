@@ -9,21 +9,21 @@ const Sleeves = ({data}) => {
 
     return (
         <Layout>
-            {sleeves.map(sleeve => {
-                const id = sleeve.node.contentful_id
-                const image = sleeve.node.image.file.url
-                const {name, price} = sleeve.node
-                const description = sleeve.node.description.description
+            <div className="sleeves">
+                {sleeves.map(sleeve => {
+                    const id = sleeve.node.contentful_id
+                    const image = sleeve.node.image.file.url
+                    const {name, price} = sleeve.node
 
-                return (
-                    <div key={id} className="sleeves">
-                        <img src={image}/>
-                        <h2>{name}</h2>
-                        <p>{price}</p>
-                        <p>{description}</p>
-                    </div>
-                )
-            })}
+                    return (
+                        <div key={id}>
+                            <img src={image}/>
+                            <h2>{name}</h2>
+                            <p>{price}</p>
+                        </div>
+                    )
+                })}
+            </div>
         </Layout>
     )
 }
@@ -45,9 +45,6 @@ export const query = graphql`
                     }
                     name
                     price
-                    description {
-                        description
-                    }
                 }
             }
         }

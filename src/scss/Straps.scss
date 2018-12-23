@@ -1,5 +1,9 @@
 .straps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 5rem;
+
     img {
-        width: 500px;
+        width: 100%;
     }
 }
