@@ -19,7 +19,7 @@ const Sleeves = ({data}) => {
                         <div key={id}>
                             <img src={image}/>
                             <h2>{name}</h2>
-                            <p>{price}</p>
+                            <p>${price.toFixed(2)}</p>
                         </div>
                     )
                 })}
