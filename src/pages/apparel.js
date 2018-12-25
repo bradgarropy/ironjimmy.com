@@ -17,8 +17,14 @@ const Apparel = ({data}) => {
 
                     return (
                         <div key={id}>
-                            <img src={image}/>
-                            <h2>{name}</h2>
+                            <a href={`/apparel/${id}`}>
+                                <img src={image}/>
+                            </a>
+
+                            <h2>
+                                <a href={`/apparel/${id}`}>{name}</a>
+                            </h2>
+
                             <p>${price.toFixed(2)}</p>
                         </div>
                     )
