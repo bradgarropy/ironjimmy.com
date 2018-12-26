@@ -27,7 +27,7 @@ const Layout = ({children}) => {
                 />
                 <meta
                     name="twitter:image"
-                    content="/images/iron-jimmy-sleeves.png"
+                    content="/static/iron-jimmy-sleeves.png"
                 />
 
                 <meta
@@ -42,7 +42,7 @@ const Layout = ({children}) => {
                 />
                 <meta
                     property="og:image"
-                    content="/images/iron-jimmy-sleeves.png"
+                    content="/static/iron-jimmy-sleeves.png"
                 />
 
                 <link rel="icon" type="image/png" href={favicon}/>
