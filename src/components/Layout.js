@@ -1,10 +1,10 @@
 import React from "react"
 import Helmet from "react-helmet"
 import PropTypes from "prop-types"
-import favicon from "../../static/icons/iron-jimmy-icon.png"
-import "../scss/Layout.scss"
 import Header from "./Header"
 import Footer from "./Footer"
+import "../scss/Layout.scss"
+import logo from "../../static/icons/iron-jimmy-icon.png"
 
 const Layout = ({children}) => {
     return (
@@ -25,10 +25,7 @@ const Layout = ({children}) => {
                     name="twitter:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
-                <meta
-                    name="twitter:image"
-                    content="/static/iron-jimmy-sleeves.png"
-                />
+                <meta name="twitter:image" content={logo}/>
 
                 <meta
                     property="og:url"
@@ -40,12 +37,9 @@ const Layout = ({children}) => {
                     property="og:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
-                <meta
-                    property="og:image"
-                    content="/static/iron-jimmy-sleeves.png"
-                />
+                <meta property="og:image" content={logo}/>
 
-                <link rel="icon" type="image/png" href={favicon}/>
+                <link rel="icon" type="image/png" href={logo}/>
             </Helmet>
 
             <div className="layout">
