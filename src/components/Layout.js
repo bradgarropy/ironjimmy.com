@@ -27,7 +27,7 @@ const Layout = ({children}) => {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://res.cloudinary.com/bradgarropy/image/upload/q_auto,f_auto,ar_2:1,c_mpad,w_1800,b_white/gatsby-starter/gatsby-starter.png"
+                    content="/images/iron-jimmy-sleeves.png"
                 />
 
                 <meta
@@ -35,14 +35,14 @@ const Layout = ({children}) => {
                     content="https://iron-jimmy.netlify.com/"
                 />
                 <meta property="og:type" content="website"/>
-                <meta property="og:title" content="gatsby starter"/>
+                <meta property="og:title" content="Iron Jimmy"/>
                 <meta
                     property="og:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
                 <meta
                     property="og:image"
-                    content="https://res.cloudinary.com/bradgarropy/image/upload/q_auto,f_auto,ar_2:1,c_mpad,w_1800,b_white/gatsby-starter/gatsby-starter.png"
+                    content="/images/iron-jimmy-sleeves.png"
                 />
 
                 <link rel="icon" type="image/png" href={favicon}/>
