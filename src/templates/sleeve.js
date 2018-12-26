@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
+import "../scss/SleeveTemplate.scss"
 
 const SleeveTemplate = ({data}) => {
     const sleeve = data.contentfulSleeves
@@ -12,12 +13,14 @@ const SleeveTemplate = ({data}) => {
 
     return (
         <Layout>
-            <div>
+            <div className="sleeve-template">
                 <img src={image}/>
-                <h2>{name}</h2>
-                <p>${price.toFixed(2)}</p>
-                <p>{description}</p>
-                <button>Buy</button>
+                <div>
+                    <h2>{name}</h2>
+                    <p>${price.toFixed(2)}</p>
+                    <p>{description}</p>
+                    <button>Buy</button>
+                </div>
             </div>
         </Layout>
     )
