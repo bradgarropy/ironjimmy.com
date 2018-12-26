@@ -17,6 +17,7 @@ const ApparelTemplate = ({data}) => {
                 <h2>{name}</h2>
                 <p>${price.toFixed(2)}</p>
                 <p>{description}</p>
+                <button>Buy</button>
             </div>
         </Layout>
     )
