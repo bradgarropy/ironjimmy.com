@@ -5,13 +5,18 @@ import Layout from "../components/Layout"
 
 const SleeveTemplate = ({data}) => {
     const sleeve = data.contentfulSleeves
+
     const {name, price} = sleeve
+    const image = sleeve.image.file.url
+    const description = sleeve.description.description
 
     return (
         <Layout>
             <div>
+                <img src={image}/>
                 <h2>{name}</h2>
                 <p>${price.toFixed(2)}</p>
+                <p>{description}</p>
             </div>
         </Layout>
     )
@@ -26,7 +31,14 @@ export const query = graphql`
         contentfulSleeves(contentful_id: {eq: $id}) {
             name
             price
-            contentful_id
+            description {
+                description
+            }
+            image {
+                file {
+                    url
+                }
+            }
         }
     }
 `

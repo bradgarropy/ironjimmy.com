@@ -5,13 +5,18 @@ import Layout from "../components/Layout"
 
 const ApparelTemplate = ({data}) => {
     const apparel = data.contentfulApparel
+
     const {name, price} = apparel
+    const image = apparel.image.file.url
+    const description = apparel.description.description
 
     return (
         <Layout>
             <div>
+                <img src={image}/>
                 <h2>{name}</h2>
                 <p>${price.toFixed(2)}</p>
+                <p>{description}</p>
             </div>
         </Layout>
     )
@@ -26,7 +31,14 @@ export const query = graphql`
         contentfulApparel(contentful_id: {eq: $id}) {
             name
             price
-            contentful_id
+            description {
+                description
+            }
+            image {
+                file {
+                    url
+                }
+            }
         }
     }
 `
