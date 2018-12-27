@@ -7,6 +7,9 @@ import Icon from "../../static/icons/iron-jimmy-icon.png"
 import "../scss/Layout.scss"
 
 const Layout = ({children}) => {
+    const image =
+        "https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
+
     return (
         <React.Fragment>
             <Helmet>
@@ -25,10 +28,7 @@ const Layout = ({children}) => {
                     name="twitter:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
-                <meta
-                    name="twitter:image"
-                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
-                />
+                <meta name="twitter:image" content={image}/>
 
                 <meta
                     property="og:url"
@@ -40,10 +40,7 @@ const Layout = ({children}) => {
                     property="og:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
-                <meta
-                    property="og:image"
-                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
-                />
+                <meta property="og:image" content={image}/>
 
                 <link rel="icon" type="image/png" href={Icon}/>
             </Helmet>
