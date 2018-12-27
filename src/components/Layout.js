@@ -27,7 +27,7 @@ const Layout = ({children}) => {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=2468&h=1234&bg=rgb:ffffff"
+                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
                 />
 
                 <meta
@@ -42,7 +42,7 @@ const Layout = ({children}) => {
                 />
                 <meta
                     property="og:image"
-                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=2468&h=1234&bg=rgb:ffffff"
+                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
                 />
 
                 <link rel="icon" type="image/png" href={Icon}/>
