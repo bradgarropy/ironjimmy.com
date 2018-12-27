@@ -25,7 +25,10 @@ const Layout = ({children}) => {
                     name="twitter:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
-                <meta name="twitter:image" content={logo}/>
+                <meta
+                    name="twitter:image"
+                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png"
+                />
 
                 <meta
                     property="og:url"
@@ -37,7 +40,10 @@ const Layout = ({children}) => {
                     property="og:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
-                <meta property="og:image" content={logo}/>
+                <meta
+                    property="og:image"
+                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png"
+                />
 
                 <link rel="icon" type="image/png" href={logo}/>
             </Helmet>
