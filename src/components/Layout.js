@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 import Header from "./Header"
 import Footer from "./Footer"
 import Icon from "../../static/icons/iron-jimmy-icon.png"
-import Logo from "../../static/images/iron-jimmy-sleeves.png"
 import "../scss/Layout.scss"
 
 const Layout = ({children}) => {
@@ -28,8 +27,7 @@ const Layout = ({children}) => {
                 />
                 <meta
                     name="twitter:image"
-                    // content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png"
-                    content={Logo}
+                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=2468&h=1234&bg=rgb:ffffff"
                 />
 
                 <meta
@@ -42,7 +40,10 @@ const Layout = ({children}) => {
                     property="og:description"
                     content="⚫ Iron Jimmy Sleeves"
                 />
-                <meta property="og:image" content={Logo}/>
+                <meta
+                    property="og:image"
+                    content="https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=2468&h=1234&bg=rgb:ffffff"
+                />
 
                 <link rel="icon" type="image/png" href={Icon}/>
             </Helmet>
