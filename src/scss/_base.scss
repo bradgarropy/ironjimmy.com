@@ -1,0 +1,12 @@
+@import "colors";
+
+button {
+    color: $black;
+    padding: 1.5rem 6rem;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 3px;
+    background-color: $red;
+    cursor: pointer;
+}
