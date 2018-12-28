@@ -9,4 +9,9 @@ button {
     border-radius: 3px;
     background-color: $red;
     cursor: pointer;
+    transition: all 500ms;
+
+    &:hover {
+        background-color: $darkred;
+    }
 }
