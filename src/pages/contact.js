@@ -15,14 +15,20 @@ const Contact = ({data}) => {
                 <Markdown>{description}</Markdown>
 
                 <form className="contact-form">
-                    <label>Name</label>
-                    <input type="text"/>
+                    <div className="contact-form-field">
+                        <label>Name</label>
+                        <input type="text"/>
+                    </div>
 
-                    <label>Email</label>
-                    <input type="email"/>
+                    <div className="contact-form-field">
+                        <label>Email</label>
+                        <input type="email"/>
+                    </div>
 
-                    <label>Message</label>
-                    <textarea rows="5"/>
+                    <div className="contact-form-field">
+                        <label>Message</label>
+                        <textarea rows="5"/>
+                    </div>
 
                     <button>Submit</button>
                 </form>

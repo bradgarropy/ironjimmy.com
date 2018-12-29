@@ -15,3 +15,18 @@ button {
         background-color: $darkred;
     }
 }
+
+label {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+input,
+textarea {
+    border-radius: 3px;
+    border: none;
+    background: $grey;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+}
