@@ -11,7 +11,7 @@ const Layout = ({children}) => {
         "https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
 
     return (
-        <React.Fragment>
+        <>
             <Helmet>
                 <html lang="en"/>
 
@@ -47,10 +47,12 @@ const Layout = ({children}) => {
 
             <div className="layout">
                 <Header/>
-                <main className="content">{children}</main>
+                <main className="container">
+                    <div className="content">{children}</div>
+                </main>
                 <Footer/>
             </div>
-        </React.Fragment>
+        </>
     )
 }
 
