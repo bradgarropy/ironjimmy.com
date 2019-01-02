@@ -1,5 +1,5 @@
 const formatPrice = price => {
-    const formattedPrice = price.toFixed(2)
+    const formattedPrice = "$" + price.toFixed(2)
     return formattedPrice
 }
 

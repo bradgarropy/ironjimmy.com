@@ -18,7 +18,7 @@ const SleeveTemplate = ({data}) => {
                 <img src={image}/>
                 <div className="sleeve-template-info">
                     <h2>{name}</h2>
-                    <p>${formatPrice(price)}</p>
+                    <p>{formatPrice(price)}</p>
                     <p>{description}</p>
                     <button>Buy</button>
                 </div>

@@ -26,7 +26,7 @@ const Apparel = ({data}) => {
                                 <a href={`/apparel/${id}`}>{name}</a>
                             </h2>
 
-                            <p>${formatPrice(price)}</p>
+                            <p>{formatPrice(price)}</p>
                         </div>
                     )
                 })}

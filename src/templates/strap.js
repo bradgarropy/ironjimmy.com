@@ -18,7 +18,7 @@ const StrapTemplate = ({data}) => {
                 <img src={image}/>
                 <div className="strap-template-info">
                     <h2>{name}</h2>
-                    <p>${formatPrice(price)}</p>
+                    <p>{formatPrice(price)}</p>
                     <p>{description}</p>
                     <button>Buy</button>
                 </div>

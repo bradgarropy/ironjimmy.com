@@ -26,7 +26,7 @@ const Straps = ({data}) => {
                                 <a href={`/straps/${id}`}>{name}</a>
                             </h2>
 
-                            <p>${formatPrice(price)}</p>
+                            <p>{formatPrice(price)}</p>
                         </div>
                     )
                 })}
