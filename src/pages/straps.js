@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
+import formatPrice from "../utils/price"
 import "../scss/Straps.scss"
 
 const Straps = ({data}) => {
@@ -25,7 +26,7 @@ const Straps = ({data}) => {
                                 <a href={`/straps/${id}`}>{name}</a>
                             </h2>
 
-                            <p>${price.toFixed(2)}</p>
+                            <p>${formatPrice(price)}</p>
                         </div>
                     )
                 })}

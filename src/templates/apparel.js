@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
+import formatPrice from "../utils/price"
 import "../scss/ApparelTemplate.scss"
 
 const ApparelTemplate = ({data}) => {
@@ -17,7 +18,7 @@ const ApparelTemplate = ({data}) => {
                 <img src={image}/>
                 <div>
                     <h2>{name}</h2>
-                    <p>${price.toFixed(2)}</p>
+                    <p>${formatPrice(price)}</p>
                     <p>{description}</p>
                     <button>Buy</button>
                 </div>
