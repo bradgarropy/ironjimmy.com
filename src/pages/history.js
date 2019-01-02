@@ -5,13 +5,25 @@ import Markdown from "markdown-to-jsx"
 import Layout from "../components/Layout"
 
 const History = ({data}) => {
-    const history = data.allContentfulHistory.edges[0].node
-    const {description} = history.description
+    const history = data.allContentfulHistory.edges
 
     return (
         <Layout>
             <div className="history">
-                <Markdown>{description}</Markdown>
+                {history.map(section => {
+                    const id = section.node.contentful_id
+                    const image = section.node.image.file.url
+                    const {header} = section.node
+                    const description = section.node.description.description
+
+                    return (
+                        <div key={id}>
+                            <img src={image}/>
+                            <h2>{header}</h2>
+                            <Markdown>{description}</Markdown>
+                        </div>
+                    )
+                })}
             </div>
         </Layout>
     )
@@ -26,6 +38,13 @@ export const query = graphql`
         allContentfulHistory {
             edges {
                 node {
+                    contentful_id
+                    image {
+                        file {
+                            url
+                        }
+                    }
+                    header
                     description {
                         description
                     }
