@@ -16,7 +16,7 @@ const SleeveTemplate = ({data}) => {
         <Layout>
             <div className="sleeve-template">
                 <img src={image}/>
-                <div>
+                <div className="sleeve-template-info">
                     <h2>{name}</h2>
                     <p>${formatPrice(price)}</p>
                     <p>{description}</p>

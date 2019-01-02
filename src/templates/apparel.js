@@ -16,7 +16,7 @@ const ApparelTemplate = ({data}) => {
         <Layout>
             <div className="apparel-template">
                 <img src={image}/>
-                <div>
+                <div className="apparel-template-info">
                     <h2>{name}</h2>
                     <p>${formatPrice(price)}</p>
                     <p>{description}</p>

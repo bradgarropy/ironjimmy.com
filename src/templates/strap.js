@@ -16,7 +16,7 @@ const StrapTemplate = ({data}) => {
         <Layout>
             <div className="strap-template">
                 <img src={image}/>
-                <div>
+                <div className="strap-template-info">
                     <h2>{name}</h2>
                     <p>${formatPrice(price)}</p>
                     <p>{description}</p>
