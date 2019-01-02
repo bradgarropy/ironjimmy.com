@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Markdown from "markdown-to-jsx"
 import Layout from "../components/Layout"
+import "../scss/History.scss"
 
 const History = ({data}) => {
     const history = data.allContentfulHistory.edges
@@ -18,8 +19,12 @@ const History = ({data}) => {
 
                     return (
                         <div key={id}>
-                            <img src={image}/>
-                            <h2>{header}</h2>
+                            <h2
+                                className="history-section-header"
+                                style={{backgroundImage: `url(${image})`}}
+                            >
+                                {header}
+                            </h2>
                             <Markdown>{description}</Markdown>
                         </div>
                     )
