@@ -1,5 +1,17 @@
 @import "colors";
 
+a {
+    transition: all 300ms;
+}
+
+a:visited {
+    color: $black;
+}
+
+a:hover {
+    color: $red;
+}
+
 button {
     color: $black;
     padding: 1.5rem 6rem;
@@ -9,7 +21,7 @@ button {
     border-radius: 3px;
     background-color: $red;
     cursor: pointer;
-    transition: all 500ms;
+    transition: all 300ms;
 
     &:hover {
         background-color: $darkred;

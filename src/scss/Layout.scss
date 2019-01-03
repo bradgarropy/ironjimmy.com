@@ -7,14 +7,6 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     font-family: "Roboto", sans-serif;
-
-    a:visited {
-        color: $black;
-    }
-
-    a:hover {
-        color: $red;
-    }
 }
 
 .container {
