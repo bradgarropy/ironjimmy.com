@@ -27,7 +27,7 @@ const Contact = ({data}) => {
 
                     <div className="contact-form-field">
                         <label>Message</label>
-                        <textarea rows="5"/>
+                        <textarea rows="7"/>
                     </div>
 
                     <button>Submit</button>
