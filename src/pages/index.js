@@ -5,11 +5,13 @@ import Layout from "../components/Layout"
 
 const Index = ({data}) => {
     const home = data.allContentfulHome.edges[0].node
-    const image = home.image.file.url
+    const images = home.images.map(image => image.file.url)
 
     return (
         <Layout>
-            <img src={image}/>
+            {images.map((image, index) => (
+                <img key={index} src={image}/>
+            ))}
         </Layout>
     )
 }
@@ -23,7 +25,7 @@ export const query = graphql`
         allContentfulHome {
             edges {
                 node {
-                    image {
+                    images {
                         file {
                             url
                         }
