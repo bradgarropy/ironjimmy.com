@@ -6,5 +6,4 @@ const Logo = () => {
     return <img className="logo" src={IronJimmy} alt="Iron Jimmy Sleeves"/>
 }
 
-// export
 export default Logo

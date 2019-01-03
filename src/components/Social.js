@@ -10,7 +10,4 @@ const Social = () => {
     )
 }
 
-Social.propTypes = {}
-
-// export
 export default Social

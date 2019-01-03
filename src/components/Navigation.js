@@ -12,5 +12,4 @@ const Navigation = () => {
     )
 }
 
-// export
 export default Navigation

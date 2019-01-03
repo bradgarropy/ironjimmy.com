@@ -55,5 +55,4 @@ export const query = graphql`
     }
 `
 
-// export
 export default Contact
