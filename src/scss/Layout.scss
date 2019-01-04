@@ -3,17 +3,15 @@
 @import "base";
 
 .layout {
-    height: 100vh;
     display: grid;
+    justify-items: center;
+    min-height: 100vh;
+    align-items: start;
     grid-template-rows: auto 1fr auto;
     font-family: "Roboto", sans-serif;
 }
 
 .container {
     max-width: 1000px;
-    margin: 0 auto;
-}
-
-.content {
     margin: 3rem;
 }

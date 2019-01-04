@@ -10,7 +10,7 @@ const History = ({data}) => {
 
     return (
         <Layout>
-            <div className="history">
+            <div className="container history">
                 {history.map(section => {
                     const id = section.node.contentful_id
                     const image = section.node.image.file.url

@@ -47,9 +47,7 @@ const Layout = ({children}) => {
 
             <div className="layout">
                 <Header/>
-                <main className="container">
-                    <div className="content">{children}</div>
-                </main>
+                {children}
                 <Footer/>
             </div>
         </>

@@ -10,7 +10,7 @@ const Straps = ({data}) => {
 
     return (
         <Layout>
-            <div className="straps">
+            <div className="container straps">
                 {straps.map(strap => {
                     const id = strap.node.contentful_id
                     const image = strap.node.image.file.url

@@ -14,7 +14,7 @@ const SleeveTemplate = ({data}) => {
 
     return (
         <Layout>
-            <div className="sleeve-template">
+            <div className="container sleeve-template">
                 <img src={image}/>
                 <div className="sleeve-template-info">
                     <h2>{name}</h2>
@@ -47,6 +47,5 @@ export const query = graphql`
         }
     }
 `
-
 
 export default SleeveTemplate

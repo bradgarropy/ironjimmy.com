@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
+import Carousel from "../components/Carousel"
 
 const Index = ({data}) => {
     const home = data.allContentfulHome.edges[0].node
@@ -9,9 +10,7 @@ const Index = ({data}) => {
 
     return (
         <Layout>
-            {images.map((image, index) => (
-                <img key={index} src={image}/>
-            ))}
+            <Carousel images={images}/>
         </Layout>
     )
 }

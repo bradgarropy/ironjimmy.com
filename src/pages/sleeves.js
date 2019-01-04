@@ -10,7 +10,7 @@ const Sleeves = ({data}) => {
 
     return (
         <Layout>
-            <div className="sleeves">
+            <div className="container sleeves">
                 {sleeves.map(sleeve => {
                     const id = sleeve.node.contentful_id
                     const image = sleeve.node.image.file.url

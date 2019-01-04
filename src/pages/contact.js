@@ -11,7 +11,7 @@ const Contact = ({data}) => {
 
     return (
         <Layout>
-            <div className="contact">
+            <div className="container contact">
                 <Markdown>{description}</Markdown>
 
                 <form className="contact-form">

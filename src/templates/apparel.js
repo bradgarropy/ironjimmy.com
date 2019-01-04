@@ -14,7 +14,7 @@ const ApparelTemplate = ({data}) => {
 
     return (
         <Layout>
-            <div className="apparel-template">
+            <div className="container apparel-template">
                 <img src={image}/>
                 <div className="apparel-template-info">
                     <h2>{name}</h2>
@@ -47,6 +47,5 @@ export const query = graphql`
         }
     }
 `
-
 
 export default ApparelTemplate

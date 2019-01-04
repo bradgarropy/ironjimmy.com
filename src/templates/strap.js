@@ -14,7 +14,7 @@ const StrapTemplate = ({data}) => {
 
     return (
         <Layout>
-            <div className="strap-template">
+            <div className="container strap-template">
                 <img src={image}/>
                 <div className="strap-template-info">
                     <h2>{name}</h2>
@@ -47,6 +47,5 @@ export const query = graphql`
         }
     }
 `
-
 
 export default StrapTemplate

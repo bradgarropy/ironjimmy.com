@@ -10,7 +10,7 @@ const Apparel = ({data}) => {
 
     return (
         <Layout>
-            <div className="apparel">
+            <div className="container apparel">
                 {apparel.map(item => {
                     const id = item.node.contentful_id
                     const image = item.node.image.file.url
