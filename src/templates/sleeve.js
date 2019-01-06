@@ -8,7 +8,7 @@ import "../scss/SleeveTemplate.scss"
 const SleeveTemplate = ({data}) => {
     const sleeve = data.contentfulSleeves
 
-    const {name, price, colors} = sleeve
+    const {name, price} = sleeve
     const image = sleeve.image.file.url
     const description = sleeve.description.description
 
@@ -25,18 +25,6 @@ const SleeveTemplate = ({data}) => {
                     </div>
 
                     <div className="sleeve-template-form">
-                        <div className="sleeve-template-colors">
-                            {colors.map((color, index) => {
-                                const image = color.image.file.url
-
-                                return (
-                                    <div key={index}>
-                                        <img src={image}/>
-                                    </div>
-                                )
-                            })}
-                        </div>
-
                         <div className="sleeve-template-form-field">
                             <label>Weight</label>
                             <select>
@@ -80,7 +68,7 @@ export const query = graphql`
                     url
                 }
             }
-            colors {
+            color {
                 name
                 image {
                     file {
