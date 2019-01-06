@@ -13,25 +13,9 @@ exports.createPages = ({graphql, actions}) => {
                         }
                     }
                 }
-                allContentfulStraps {
-                    edges {
-                        node {
-                            contentful_id
-                        }
-                    }
-                }
-                allContentfulApparel {
-                    edges {
-                        node {
-                            contentful_id
-                        }
-                    }
-                }
             }
         `).then(result => {
             const sleeves = result.data.allContentfulSleeves.edges
-            const straps = result.data.allContentfulStraps.edges
-            const apparel = result.data.allContentfulApparel.edges
 
             sleeves.forEach(({node}) => {
                 const id = node.contentful_id
@@ -39,26 +23,6 @@ exports.createPages = ({graphql, actions}) => {
                 createPage({
                     path: `sleeves/${id}`,
                     component: path.resolve("./src/templates/sleeve.js"),
-                    context: {id},
-                })
-            })
-
-            straps.forEach(({node}) => {
-                const id = node.contentful_id
-
-                createPage({
-                    path: `straps/${id}`,
-                    component: path.resolve("./src/templates/strap.js"),
-                    context: {id},
-                })
-            })
-
-            apparel.forEach(({node}) => {
-                const id = node.contentful_id
-
-                createPage({
-                    path: `apparel/${id}`,
-                    component: path.resolve("./src/templates/apparel.js"),
                     context: {id},
                 })
             })
