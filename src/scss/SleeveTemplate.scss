@@ -14,6 +14,11 @@
     }
 }
 
+.sleeve-template-colors {
+    display: grid;
+    grid-template-columns: repeat(8, auto);
+}
+
 .sleeve-template-form {
     display: grid;
     grid-template-columns: repeat(1, auto);
