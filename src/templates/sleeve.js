@@ -16,11 +16,35 @@ const SleeveTemplate = ({data}) => {
         <Layout>
             <div className="container sleeve-template">
                 <img src={image}/>
-                <div className="sleeve-template-info">
-                    <h2>{name}</h2>
-                    <p>{formatPrice(price)}</p>
-                    <p>{description}</p>
-                    <button>Buy</button>
+
+                <div>
+                    <div className="sleeve-template-info">
+                        <h2>{name}</h2>
+                        <p>{formatPrice(price)}</p>
+                        <p>{description}</p>
+                    </div>
+
+                    <div className="sleeve-template-form">
+                        <div className="sleeve-template-form-field">
+                            <label>Weight</label>
+                            <select>
+                                <option value="20">20KG</option>
+                                <option value="15">15KG</option>
+                            </select>
+                        </div>
+
+                        <div className="sleeve-template-form-field">
+                            <label>Brand</label>
+                            <input type="text"/>
+                        </div>
+
+                        <div className="sleeve-template-form-field">
+                            <label>Model</label>
+                            <input type="text"/>
+                        </div>
+
+                        <button>Buy</button>
+                    </div>
                 </div>
             </div>
         </Layout>
