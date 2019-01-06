@@ -7,30 +7,3 @@
         grid-template-columns: repeat(1, 1fr);
     }
 }
-
-.sleeve-template-info {
-    h2 {
-        margin-top: 0;
-    }
-}
-
-.sleeve-template-colors {
-    display: grid;
-    grid-template-columns: repeat(8, auto);
-}
-
-.sleeve-template-form {
-    display: grid;
-    grid-template-columns: repeat(1, auto);
-    row-gap: 3rem;
-    justify-items: center;
-    margin: 3rem 0;
-}
-
-.sleeve-template-form-field {
-    max-width: 500px;
-    width: 100%;
-    display: grid;
-    grid-template-rows: repeat(2, auto);
-    row-gap: 1rem;
-}

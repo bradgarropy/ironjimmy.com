@@ -1,0 +1,11 @@
+.sleeve-info {
+    h2 {
+        margin-top: 0;
+    }
+
+    @media (max-width: 1000px) {
+        h2 {
+            margin-top: 3rem;
+        }
+    }
+}

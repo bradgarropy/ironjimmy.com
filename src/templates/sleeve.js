@@ -2,15 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
-import formatPrice from "../utils/price"
+import SleeveInfo from "../components/SleeveInfo"
+import SleeveForm from "../components/SleeveForm"
 import "../scss/SleeveTemplate.scss"
 
 const SleeveTemplate = ({data}) => {
     const sleeve = data.contentfulSleeves
-
-    const {name, price} = sleeve
     const image = sleeve.image.file.url
-    const description = sleeve.description.description
 
     return (
         <Layout>
@@ -18,33 +16,8 @@ const SleeveTemplate = ({data}) => {
                 <img src={image}/>
 
                 <div>
-                    <div className="sleeve-template-info">
-                        <h2>{name}</h2>
-                        <p>{formatPrice(price)}</p>
-                        <p>{description}</p>
-                    </div>
-
-                    <div className="sleeve-template-form">
-                        <div className="sleeve-template-form-field">
-                            <label>Weight</label>
-                            <select>
-                                <option value="20">20KG</option>
-                                <option value="15">15KG</option>
-                            </select>
-                        </div>
-
-                        <div className="sleeve-template-form-field">
-                            <label>Brand</label>
-                            <input type="text"/>
-                        </div>
-
-                        <div className="sleeve-template-form-field">
-                            <label>Model</label>
-                            <input type="text"/>
-                        </div>
-
-                        <button>Buy</button>
-                    </div>
+                    <SleeveInfo sleeve={sleeve}/>
+                    <SleeveForm sleeve={sleeve}/>
                 </div>
             </div>
         </Layout>
