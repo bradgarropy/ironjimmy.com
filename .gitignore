@@ -2,11 +2,12 @@
 .vscode
 
 # dependencies
-.cache
-node_modules
+/.cache
+/node_modules
 
 # build
-public
+/public
+/functions
 
 # secrets
 .env*
