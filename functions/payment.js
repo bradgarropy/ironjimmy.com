@@ -3,6 +3,6 @@ exports.handler = (event, context, callback) => {
 
     callback(null, {
         statusCode: 200,
-        body: "payment received!",
+        body: "💳 payment received!",
     })
 }
