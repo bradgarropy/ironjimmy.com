@@ -6,26 +6,35 @@ import SleeveInfo from "../components/SleeveInfo"
 import SleeveForm from "../components/SleeveForm"
 import "../scss/SleeveTemplate.scss"
 
-const SleeveTemplate = ({data}) => {
-    const sleeve = data.contentfulSleeves
-    const image = sleeve.image.file.url
+class SleeveTemplate extends React.Component {
+    static propTypes = {
+        data: PropTypes.object.isRequired,
+    }
 
-    return (
-        <Layout>
-            <div className="container sleeve-template">
-                <img src={image}/>
+    onSubmit = event => {
+        event.preventDefault()
+        console.log("onSubmit")
+        fetch("/.netlify/functions/payment").then(response =>
+            console.log(response), )
+    }
 
-                <div>
-                    <SleeveInfo sleeve={sleeve}/>
-                    <SleeveForm sleeve={sleeve}/>
+    render = () => {
+        const sleeve = this.props.data.contentfulSleeves
+        const image = sleeve.image.file.url
+
+        return (
+            <Layout>
+                <div className="container sleeve-template">
+                    <img src={image}/>
+
+                    <div>
+                        <SleeveInfo sleeve={sleeve}/>
+                        <SleeveForm onSubmit={this.onSubmit}/>
+                    </div>
                 </div>
-            </div>
-        </Layout>
-    )
-}
-
-SleeveTemplate.propTypes = {
-    data: PropTypes.object.isRequired,
+            </Layout>
+        )
+    }
 }
 
 export const query = graphql`
