@@ -1,4 +1,4 @@
-const handler = (event, context, callback) => {
+exports.handler = (event, context, callback) => {
     console.log(event)
     console.log(context)
     console.log(callback)
@@ -8,5 +8,3 @@ const handler = (event, context, callback) => {
         body: "Hello, World",
     })
 }
-
-export default handler
