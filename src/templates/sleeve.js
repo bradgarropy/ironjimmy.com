@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
-import("stripe")("sk_test_m51gis4Lr4sqvj291N8BucPW")
 import Layout from "../components/Layout"
 import SleeveInfo from "../components/SleeveInfo"
 import SleeveForm from "../components/SleeveForm"
