@@ -51,14 +51,6 @@ export const query = graphql`
                     url
                 }
             }
-            color {
-                name
-                image {
-                    file {
-                        url
-                    }
-                }
-            }
         }
     }
 `
