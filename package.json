@@ -24,9 +24,10 @@
     },
     "scripts": {
         "start": "gatsby develop",
-        "build": "gatsby build",
-        "fn:build": "netlify-lambda build src/functions",
-        "fn:serve": "netlify-lambda serve src/functions"
+        "start:lambda": "netlify-lambda serve src/functions",
+        "build": "npm run build:gatsby && npm run build:lambda",
+        "build:gatsby": "gatsby build",
+        "build:lambda": "netlify-lambda build src/functions"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.12",
