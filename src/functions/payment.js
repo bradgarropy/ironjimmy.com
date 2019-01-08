@@ -2,7 +2,7 @@ require("dotenv").config({
     path: `.env.${process.env.NODE_ENV}`,
 })
 
-const stripe = require("stripe")(process.env.STRIPE_KEY)
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 exports.handler = (event, context, callback) => {
     stripe.charges

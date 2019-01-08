@@ -1,10 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
+import StripeCheckout from "react-stripe-checkout"
 import "../scss/SleeveForm.scss"
 
 class SleeveForm extends React.Component {
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
+    }
+
+    onToken = () => {
+        console.log("onToken")
     }
 
     render = () => {
@@ -28,7 +33,12 @@ class SleeveForm extends React.Component {
                     <input type="text"/>
                 </div>
 
-                <button>Buy</button>
+                <StripeCheckout
+                    token={this.onToken}
+                    stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
+                >
+                    <button>Buy</button>
+                </StripeCheckout>
             </form>
         )
     }
