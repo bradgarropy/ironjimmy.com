@@ -13,11 +13,12 @@ class SleeveTemplate extends React.Component {
 
     onSubmit = event => {
         event.preventDefault()
-        console.log("onSubmit")
 
         fetch("/.netlify/functions/payment")
-            .then(response => response.text())
+            .then(response => response.json())
             .then(response => console.log(response))
+
+        return
     }
 
     render = () => {

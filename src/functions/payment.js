@@ -12,14 +12,15 @@ exports.handler = (event, context, callback) => {
             source: "tok_visa",
             receipt_email: "jenny.rosen@example.com",
         })
-        .then((error, charge) => {
-            if (error) {
-                return callback(error)
+        .then(() => {
+            const response = {
+                statusCode: 200,
+                body: JSON.stringify({message: "💳 payment received!"}),
             }
 
-            return callback(null, {
-                statusCode: 200,
-                body: {message: "💳 payment received!"},
-            })
+            callback(null, response)
+            return
         })
+
+    return
 }
