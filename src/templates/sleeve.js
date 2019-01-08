@@ -11,16 +11,6 @@ class SleeveTemplate extends React.Component {
         data: PropTypes.object.isRequired,
     }
 
-    onSubmit = event => {
-        event.preventDefault()
-
-        fetch("/.netlify/functions/payment")
-            .then(response => response.json())
-            .then(response => console.log(response))
-
-        return
-    }
-
     render = () => {
         const sleeve = this.props.data.contentfulSleeves
         const image = sleeve.image.file.url
@@ -32,7 +22,7 @@ class SleeveTemplate extends React.Component {
 
                     <div>
                         <SleeveInfo sleeve={sleeve}/>
-                        <SleeveForm onSubmit={this.onSubmit}/>
+                        <SleeveForm sleeve={sleeve}/>
                     </div>
                 </div>
             </Layout>

@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
-import formatPrice from "../utils/price"
+import {displayPrice} from "../utils/price"
 import "../scss/Sleeves.scss"
 
 const Sleeves = ({data}) => {
@@ -26,7 +26,7 @@ const Sleeves = ({data}) => {
                                 <a href={`/sleeves/${id}`}>{name}</a>
                             </h2>
 
-                            <p>{formatPrice(price)}</p>
+                            <p>{displayPrice(price)}</p>
                         </div>
                     )
                 })}

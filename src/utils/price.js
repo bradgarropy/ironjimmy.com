@@ -1,6 +1,11 @@
-const formatPrice = price => {
+const displayPrice = price => {
     const formattedPrice = "$" + price.toFixed(2)
     return formattedPrice
 }
 
-export default formatPrice
+const toCents = price => {
+    const cents = price * 100
+    return cents
+}
+
+export {displayPrice, toCents}

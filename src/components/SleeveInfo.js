@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import formatPrice from "../utils/price"
+import {displayPrice} from "../utils/price"
 import "../scss/SleeveInfo.scss"
 
 const SleeveInfo = ({sleeve}) => {
@@ -10,7 +10,7 @@ const SleeveInfo = ({sleeve}) => {
     return (
         <div className="sleeve-info">
             <h2>{name}</h2>
-            <p>{formatPrice(price)}</p>
+            <p>{displayPrice(price)}</p>
             <p>{description}</p>
         </div>
     )

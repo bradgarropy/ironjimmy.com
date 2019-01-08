@@ -5,12 +5,17 @@ require("dotenv").config({
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 exports.handler = (event, context, callback) => {
+    const body = JSON.parse(event.body)
+    const amount = body.amount
+    const token = body.token.id
+    const email = body.token.email
+
     stripe.charges
         .create({
-            amount: 999,
+            amount,
             currency: "usd",
-            source: "tok_visa",
-            receipt_email: "jenny.rosen@example.com",
+            source: token,
+            receipt_email: email,
         })
         .then(() => {
             const response = {
