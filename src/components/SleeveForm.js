@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import StripeCheckout from "react-stripe-checkout"
-import Icon from "../../static/icons/iron-jimmy-icon.png"
 import {toCents} from "../utils/price"
 import "../scss/SleeveForm.scss"
 
@@ -59,7 +58,7 @@ class SleeveForm extends React.Component {
                 <StripeCheckout
                     token={this.onToken}
                     stripeKey={process.env.GATSBY_STRIPE_PUBLISHABLE_KEY}
-                    image={Icon}
+                    image="/icons/iron-jimmy-icon.png"
                     name="Iron Jimmy"
                     description={sleeve.name}
                     amount={toCents(sleeve.price)}
