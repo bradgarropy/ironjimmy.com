@@ -58,7 +58,7 @@ class SleeveForm extends React.Component {
 
                 <StripeCheckout
                     token={this.onToken}
-                    stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
+                    stripeKey={process.env.GATSBY_STRIPE_PUBLISHABLE_KEY}
                     image={Icon}
                     name="Iron Jimmy"
                     description={sleeve.name}
