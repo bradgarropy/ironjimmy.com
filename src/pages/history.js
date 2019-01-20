@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Markdown from "markdown-to-jsx"
 import Layout from "../components/Layout"
+import Container from "../styles/Container"
 import "../scss/History.scss"
 
 const History = ({data}) => {
@@ -10,7 +11,7 @@ const History = ({data}) => {
 
     return (
         <Layout>
-            <div className="container history">
+            <Container className="history">
                 {history.map(section => {
                     const id = section.node.contentful_id
                     const image = section.node.image.file.url
@@ -29,7 +30,7 @@ const History = ({data}) => {
                         </div>
                     )
                 })}
-            </div>
+            </Container>
         </Layout>
     )
 }
