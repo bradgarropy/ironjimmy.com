@@ -1,17 +1,23 @@
 import React from "react"
-import {Link} from "gatsby"
+import styled from "styled-components"
+import TopBar from "./TopBar"
 import Logo from "./Logo"
 import Navigation from "./Navigation"
-import "../scss/Header.scss"
+
+const StyledHeader = styled.header`
+    display: grid;
+    row-gap: 1rem;
+    width: 100%;
+    margin: 0 1rem 0 1rem;
+`
 
 const Header = () => {
     return (
-        <header className="header">
-            <Link to="/">
-                <Logo/>
-            </Link>
+        <StyledHeader>
+            <TopBar/>
+            <Logo/>
             <Navigation/>
-        </header>
+        </StyledHeader>
     )
 }
 

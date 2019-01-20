@@ -1,14 +1,32 @@
 import React from "react"
 import {Link} from "gatsby"
-import "../scss/Navigation.scss"
+import styled from "styled-components"
+import colors from "../styles/colors"
+
+const StyledNavigation = styled.nav`
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 2rem;
+    justify-content: center;
+    justify-self: stretch;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 1rem;
+    border-top: 2px solid ${colors.black};
+    border-bottom: 2px solid ${colors.black};
+`
 
 const Navigation = () => {
     return (
-        <nav className="navigation">
-            <Link to="/sleeves">Sleeves</Link> |
-            <Link to="/contact">Contact</Link> |
-            <Link to="/history">Our History</Link>
-        </nav>
+        <StyledNavigation>
+            <Link to="/sleeves">Sleeves</Link>
+            <span>|</span>
+            <Link to="/straps">Straps</Link>
+            <span>|</span>
+            <Link to="/apparel">Apparel</Link>
+            <span>|</span>
+            <Link to="/contact">Contact</Link>
+        </StyledNavigation>
     )
 }
 
