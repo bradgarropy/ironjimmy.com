@@ -7,12 +7,10 @@ const StyledSocial = styled.a`
     margin-right: 3rem;
 `
 
-const Social = () => {
-    return (
-        <StyledSocial href="https://www.instagram.com/iron_jimmy_sleeves">
-            <FontAwesomeIcon icon={faInstagram} size="3x"/>
-        </StyledSocial>
-    )
-}
+const Social = () => (
+    <StyledSocial href="https://www.instagram.com/iron_jimmy_sleeves">
+        <FontAwesomeIcon icon={faInstagram} size="3x"/>
+    </StyledSocial>
+)
 
 export default Social

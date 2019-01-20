@@ -15,13 +15,11 @@ const StyledFooter = styled.footer`
     border-top: 2px solid ${colors.black};
 `
 
-const Footer = () => {
-    return (
-        <StyledFooter>
-            <MadeInUSA/>
-            <Social/>
-        </StyledFooter>
-    )
-}
+const Footer = () => (
+    <StyledFooter>
+        <MadeInUSA/>
+        <Social/>
+    </StyledFooter>
+)
 
 export default Footer
