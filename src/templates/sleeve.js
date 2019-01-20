@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
+import Container from "../styles/Container"
 import SleeveInfo from "../components/SleeveInfo"
 import SleeveForm from "../components/SleeveForm"
 import "../scss/SleeveTemplate.scss"
@@ -17,14 +18,14 @@ class SleeveTemplate extends React.Component {
 
         return (
             <Layout>
-                <div className="container sleeve-template">
+                <Container className="sleeve-template">
                     <img src={image}/>
 
                     <div>
                         <SleeveInfo sleeve={sleeve}/>
                         <SleeveForm sleeve={sleeve}/>
                     </div>
-                </div>
+                </Container>
             </Layout>
         )
     }

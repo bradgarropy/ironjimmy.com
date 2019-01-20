@@ -1,61 +1,79 @@
 import React from "react"
-import PropTypes from "prop-types"
-import {graphql} from "gatsby"
+import styled from "styled-components"
 import Layout from "../components/Layout"
+import Container from "../styles/Container"
 import {displayPrice} from "../utils/price"
-import "../scss/Sleeves.scss"
 
-const Sleeves = ({data}) => {
-    const sleeves = data.allContentfulSleeves.edges
+const Header = styled.div`
+    margin-bottom: 3rem;
+`
+
+const Title = styled.h1`
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 2rem 0;
+`
+
+const SleeveTypes = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 5rem;
+`
+
+const SleeveType = styled.div``
+
+const Sleeves = () => {
+    const image =
+        "https://images.ctfassets.net/d3ttfid6hh7h/2FjRKCSeKxhkLSTOBszVuJ/cb9cd3cac2845356579138755863c58b/IMG_4774.HEIC"
 
     return (
         <Layout>
-            <div className="container sleeves">
-                {sleeves.map(sleeve => {
-                    const id = sleeve.node.contentful_id
-                    const image = sleeve.node.image.file.url
-                    const {name, price} = sleeve.node
+            <Container>
+                <Header>
+                    <Title>Barbell Sleeves</Title>
+                    <img src="https://downloads.ctfassets.net/d3ttfid6hh7h/2bsz5m0iNGso0gGwQAYKMG/f19930b27510d63779354fa17c999d19/DSC04732.jpg"/>
+                </Header>
 
-                    return (
-                        <div key={id}>
-                            <a href={`/sleeves/${id}`}>
-                                <img src={image}/>
-                            </a>
+                <SleeveTypes>
+                    <SleeveType>
+                        <a href="/sleeves/solid">
+                            <img src={image}/>
+                        </a>
 
-                            <h2>
-                                <a href={`/sleeves/${id}`}>{name}</a>
-                            </h2>
+                        <a href="/sleeves/solid">
+                            <h2>Solid</h2>
+                        </a>
 
-                            <p>{displayPrice(price)}</p>
-                        </div>
-                    )
-                })}
-            </div>
+                        <p>{displayPrice(70)}</p>
+                    </SleeveType>
+
+                    <SleeveType>
+                        <a href="/sleeves/limited">
+                            <img src={image}/>
+                        </a>
+
+                        <a href="/sleeves/limited">
+                            <h2>Limited</h2>
+                        </a>
+
+                        <p>{displayPrice(80)}</p>
+                    </SleeveType>
+
+                    <SleeveType>
+                        <a href="/sleeves/custom">
+                            <img src={image}/>
+                        </a>
+
+                        <a href="/sleeves/custom">
+                            <h2>Custom</h2>
+                        </a>
+
+                        <p>{displayPrice(90)}</p>
+                    </SleeveType>
+                </SleeveTypes>
+            </Container>
         </Layout>
     )
 }
-
-Sleeves.propTypes = {
-    data: PropTypes.object.isRequired,
-}
-
-export const query = graphql`
-    {
-        allContentfulSleeves {
-            edges {
-                node {
-                    contentful_id
-                    image {
-                        file {
-                            url
-                        }
-                    }
-                    name
-                    price
-                }
-            }
-        }
-    }
-`
 
 export default Sleeves
