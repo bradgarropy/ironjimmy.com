@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
+import ProductGrid from "../styles/ProductGrid"
 import {displayPrice} from "../utils/price"
 
 const Header = styled.div`
@@ -12,12 +13,6 @@ const Title = styled.h1`
     text-align: center;
     text-transform: uppercase;
     margin: 0 0 2rem 0;
-`
-
-const SleeveTypes = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 5rem;
 `
 
 const SleeveType = styled.div``
@@ -34,7 +29,7 @@ const Sleeves = () => {
                     <img src="https://downloads.ctfassets.net/d3ttfid6hh7h/2bsz5m0iNGso0gGwQAYKMG/f19930b27510d63779354fa17c999d19/DSC04732.jpg"/>
                 </Header>
 
-                <SleeveTypes>
+                <ProductGrid>
                     <SleeveType>
                         <a href="/sleeves/solid">
                             <img src={image}/>
@@ -70,7 +65,7 @@ const Sleeves = () => {
 
                         <p>{displayPrice(90)}</p>
                     </SleeveType>
-                </SleeveTypes>
+                </ProductGrid>
             </Container>
         </Layout>
     )

@@ -1,16 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
-import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
+import ProductGrid from "../../styles/ProductGrid"
 import {displayPrice} from "../../utils/price"
-
-const StyledSleeves = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 5rem;
-`
 
 const Limited = ({data}) => {
     const sleeves = data.allContentfulSleeves.edges
@@ -19,7 +13,8 @@ const Limited = ({data}) => {
         <Layout>
             <Container>
                 <h1>Limited Sleeves</h1>
-                <StyledSleeves>
+
+                <ProductGrid>
                     {sleeves.map(sleeve => {
                         const id = sleeve.node.contentful_id
                         const image = sleeve.node.image.file.url
@@ -39,7 +34,7 @@ const Limited = ({data}) => {
                             </div>
                         )
                     })}
-                </StyledSleeves>
+                </ProductGrid>
             </Container>
         </Layout>
     )

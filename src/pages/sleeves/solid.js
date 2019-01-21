@@ -1,45 +1,73 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
-import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
+import ProductGrid from "../../styles/ProductGrid"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faCartPlus} from "@fortawesome/free-solid-svg-icons"
 import {displayPrice} from "../../utils/price"
 
-const StyledSleeves = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 5rem;
-`
-
 const Solid = ({data}) => {
-    const sleeves = data.allContentfulSleeves.edges
+    console.log(data)
+
+    const image =
+        "https://images.ctfassets.net/d3ttfid6hh7h/2FjRKCSeKxhkLSTOBszVuJ/cb9cd3cac2845356579138755863c58b/IMG_4774.HEIC"
+    const description =
+        "Select your center and sleeve colors, choose the weight of your barbell, and specify the brand and model so I can custom fit your sleeve to your barbell. Don't forget to enter what you want on your custom leather tag!"
+    const sleeveColors = ["Red", "Orange", "Yellow", "Green", "Blue"]
+    const barColors = ["Black", "Grey"]
+    const weights = ["15kg", "20kg"]
 
     return (
         <Layout>
             <Container>
-                <h1>Solid Sleeves</h1>
-                <StyledSleeves>
-                    {sleeves.map(sleeve => {
-                        const id = sleeve.node.contentful_id
-                        const image = sleeve.node.image.file.url
-                        const {name, price} = sleeve.node
+                <ProductGrid>
+                    <div>
+                        <img src={image}/>
+                        <p>{description}</p>
+                    </div>
 
-                        return (
-                            <div key={id}>
-                                <a href={`/sleeves/${id}`}>
-                                    <img src={image}/>
-                                </a>
+                    <div>
+                        <h1>Solid Sleeve</h1>
+                        <p>{displayPrice(70)}</p>
 
-                                <h2>
-                                    <a href={`/sleeves/${id}`}>{name}</a>
-                                </h2>
+                        <p>Sleeve Color</p>
+                        {sleeveColors.map((color, index) => (
+                            <div key={index}>{color}</div>
+                        ))}
 
-                                <p>{displayPrice(price)}</p>
-                            </div>
-                        )
-                    })}
-                </StyledSleeves>
+                        <p>Bar Color</p>
+                        {barColors.map((color, index) => (
+                            <div key={index}>{color}</div>
+                        ))}
+
+                        <label>Weight</label>
+                        <select>
+                            {weights.map((weight, index) => (
+                                <option key={index} value={weight}>
+                                    {weight}
+                                </option>
+                            ))}
+                        </select>
+
+                        <label>Tag</label>
+                        <input type="text"/>
+
+                        <label>Brand</label>
+                        <input type="text"/>
+
+                        <label>Model</label>
+                        <input type="text"/>
+
+                        <label>Notes</label>
+                        <textarea/>
+
+                        <button>
+                            <FontAwesomeIcon icon={faCartPlus}/> Add To Cart
+                        </button>
+                    </div>
+                </ProductGrid>
             </Container>
         </Layout>
     )
