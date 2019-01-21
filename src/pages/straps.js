@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
+import ProductGrid from "../styles/ProductGrid"
 
 const Header = styled.div`
     margin-bottom: 3rem;
@@ -11,12 +12,6 @@ const Title = styled.h1`
     text-align: center;
     text-transform: uppercase;
     margin: 0 0 2rem 0;
-`
-
-const StrapTypes = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 5rem;
 `
 
 const StrapType = styled.div``
@@ -32,7 +27,7 @@ const Straps = () => {
                     <Title>Lifting Straps</Title>
                 </Header>
 
-                <StrapTypes>
+                <ProductGrid columns="2">
                     <StrapType>
                         <a href="/straps/nylon">
                             <img src={image}/>
@@ -52,7 +47,7 @@ const Straps = () => {
                             <h2>Leather</h2>
                         </a>
                     </StrapType>
-                </StrapTypes>
+                </ProductGrid>
             </Container>
         </Layout>
     )
