@@ -25,6 +25,7 @@ const Straps = () => {
             <Container>
                 <Header>
                     <Title>Lifting Straps</Title>
+                    <img src="https://images.ctfassets.net/d3ttfid6hh7h/nwnHD3TJ1QWM8g0Mq8M8k/0b07fd540d77d7a32e353a3a9802b6a4/DSC04681.jpg"/>
                 </Header>
 
                 <ProductGrid columns="2">

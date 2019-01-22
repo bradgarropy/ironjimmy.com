@@ -1,40 +1,123 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
+import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
-import ProductGrid from "../../styles/ProductGrid"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faCartPlus} from "@fortawesome/free-solid-svg-icons"
 import {displayPrice} from "../../utils/price"
 
+const Product = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+`
+
+const Title = styled.h1`
+    margin: 0 0 2rem 0;
+`
+
+const Form = styled.form`
+    display: grid;
+    row-gap: 2rem;
+    margin: 3rem 0;
+`
+
+const Field = styled.div`
+    display: grid;
+`
+
+const Colors = styled.div`
+    margin: 3rem 0;
+`
+
+const ColorGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 2rem;
+    row-gap: 2rem;
+    justify-content: start;
+`
+
+const Color = styled.div`
+    width: 5rem;
+    height: 5rem;
+    background: ${props => props.color};
+`
+
 const Custom = ({data}) => {
-    const sleeves = data.allContentfulSleeves.edges
+    console.log(data)
+
+    const image =
+        "https://images.ctfassets.net/d3ttfid6hh7h/2FjRKCSeKxhkLSTOBszVuJ/cb9cd3cac2845356579138755863c58b/IMG_4774.HEIC"
+    const description =
+        "Feel like having a \"one of a kind\" sleeve?! Iron Jimmy can bring your custom barbell sleeve to life! It may take some communication to finalize what you want, but we'll make it happen! * You will receive emails to confirm fabric prior to your sleeve being created."
+    const price = 90
+    const barColors = ["black", "grey"]
+    const weights = ["20kg", "15kg"]
 
     return (
         <Layout>
             <Container>
-                <h1>Custom Sleeves</h1>
+                <Product>
+                    <div>
+                        <img src={image}/>
+                        <p>{description}</p>
+                    </div>
 
-                <ProductGrid>
-                    {sleeves.map(sleeve => {
-                        const id = sleeve.node.contentful_id
-                        const image = sleeve.node.image.file.url
-                        const {name, price} = sleeve.node
+                    <div>
+                        <Title>Custom Sleeve</Title>
+                        <p>{displayPrice(price)}</p>
 
-                        return (
-                            <div key={id}>
-                                <a href={`/sleeves/${id}`}>
-                                    <img src={image}/>
-                                </a>
+                        <Colors>
+                            <label>Bar Color</label>
+                            <ColorGrid>
+                                {barColors.map((color, index) => (
+                                    <Color key={index} color={color}/>
+                                ))}
+                            </ColorGrid>
+                        </Colors>
 
-                                <h2>
-                                    <a href={`/sleeves/${id}`}>{name}</a>
-                                </h2>
+                        <Form>
+                            <Field>
+                                <label>Weight</label>
+                                <select>
+                                    {weights.map((weight, index) => (
+                                        <option key={index} value={weight}>
+                                            {weight}
+                                        </option>
+                                    ))}
+                                </select>
+                            </Field>
 
-                                <p>{displayPrice(price)}</p>
-                            </div>
-                        )
-                    })}
-                </ProductGrid>
+                            <Field>
+                                <label>Tag</label>
+                                <input type="text"/>
+                            </Field>
+
+                            <Field>
+                                <label>Brand</label>
+                                <input type="text"/>
+                            </Field>
+
+                            <Field>
+                                <label>Model</label>
+                                <input type="text"/>
+                            </Field>
+
+                            <Field>
+                                <label>Notes</label>
+                                <textarea/>
+                            </Field>
+
+                            <button>
+                                <FontAwesomeIcon icon={faCartPlus}/> Add To
+                                Cart
+                            </button>
+                        </Form>
+                    </div>
+                </Product>
             </Container>
         </Layout>
     )

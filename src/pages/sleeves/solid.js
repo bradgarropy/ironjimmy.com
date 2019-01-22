@@ -1,12 +1,50 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
+import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
-import ProductGrid from "../../styles/ProductGrid"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons"
 import {displayPrice} from "../../utils/price"
+
+const Product = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+`
+
+const Title = styled.h1`
+    margin: 0 0 2rem 0;
+`
+
+const Form = styled.form`
+    display: grid;
+    row-gap: 2rem;
+    margin: 3rem 0;
+`
+
+const Field = styled.div`
+    display: grid;
+`
+
+const Colors = styled.div`
+    margin: 3rem 0;
+`
+
+const ColorGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 2rem;
+    row-gap: 2rem;
+    justify-content: start;
+`
+
+const Color = styled.div`
+    width: 5rem;
+    height: 5rem;
+    background: ${props => props.color};
+`
 
 const Solid = ({data}) => {
     console.log(data)
@@ -15,59 +53,81 @@ const Solid = ({data}) => {
         "https://images.ctfassets.net/d3ttfid6hh7h/2FjRKCSeKxhkLSTOBszVuJ/cb9cd3cac2845356579138755863c58b/IMG_4774.HEIC"
     const description =
         "Select your center and sleeve colors, choose the weight of your barbell, and specify the brand and model so I can custom fit your sleeve to your barbell. Don't forget to enter what you want on your custom leather tag!"
-    const sleeveColors = ["Red", "Orange", "Yellow", "Green", "Blue"]
-    const barColors = ["Black", "Grey"]
-    const weights = ["15kg", "20kg"]
+    const price = 70
+    const sleeveColors = ["red", "orange", "yellow", "green", "blue"]
+    const barColors = ["black", "grey"]
+    const weights = ["20kg", "15kg"]
 
     return (
         <Layout>
             <Container>
-                <ProductGrid>
+                <Product>
                     <div>
                         <img src={image}/>
                         <p>{description}</p>
                     </div>
 
                     <div>
-                        <h1>Solid Sleeve</h1>
-                        <p>{displayPrice(70)}</p>
+                        <Title>Solid Sleeve</Title>
+                        <p>{displayPrice(price)}</p>
 
-                        <p>Sleeve Color</p>
-                        {sleeveColors.map((color, index) => (
-                            <div key={index}>{color}</div>
-                        ))}
+                        <Colors>
+                            <label>Sleeve Color</label>
+                            <ColorGrid>
+                                {sleeveColors.map((color, index) => (
+                                    <Color key={index} color={color}/>
+                                ))}
+                            </ColorGrid>
+                        </Colors>
 
-                        <p>Bar Color</p>
-                        {barColors.map((color, index) => (
-                            <div key={index}>{color}</div>
-                        ))}
+                        <Colors>
+                            <label>Bar Color</label>
+                            <ColorGrid>
+                                {barColors.map((color, index) => (
+                                    <Color key={index} color={color}/>
+                                ))}
+                            </ColorGrid>
+                        </Colors>
 
-                        <label>Weight</label>
-                        <select>
-                            {weights.map((weight, index) => (
-                                <option key={index} value={weight}>
-                                    {weight}
-                                </option>
-                            ))}
-                        </select>
+                        <Form>
+                            <Field>
+                                <label>Weight</label>
+                                <select>
+                                    {weights.map((weight, index) => (
+                                        <option key={index} value={weight}>
+                                            {weight}
+                                        </option>
+                                    ))}
+                                </select>
+                            </Field>
 
-                        <label>Tag</label>
-                        <input type="text"/>
+                            <Field>
+                                <label>Tag</label>
+                                <input type="text"/>
+                            </Field>
 
-                        <label>Brand</label>
-                        <input type="text"/>
+                            <Field>
+                                <label>Brand</label>
+                                <input type="text"/>
+                            </Field>
 
-                        <label>Model</label>
-                        <input type="text"/>
+                            <Field>
+                                <label>Model</label>
+                                <input type="text"/>
+                            </Field>
 
-                        <label>Notes</label>
-                        <textarea/>
+                            <Field>
+                                <label>Notes</label>
+                                <textarea/>
+                            </Field>
 
-                        <button>
-                            <FontAwesomeIcon icon={faCartPlus}/> Add To Cart
-                        </button>
+                            <button>
+                                <FontAwesomeIcon icon={faCartPlus}/> Add To
+                                Cart
+                            </button>
+                        </Form>
                     </div>
-                </ProductGrid>
+                </Product>
             </Container>
         </Layout>
     )
