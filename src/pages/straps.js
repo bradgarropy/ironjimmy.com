@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
 import ProductGrid from "../styles/ProductGrid"
+import {displayPrice} from "../utils/price"
 
 const Header = styled.div`
     margin-bottom: 3rem;
@@ -37,6 +38,8 @@ const Straps = () => {
                         <a href="/straps/nylon">
                             <h2>Nylon</h2>
                         </a>
+
+                        <p>{displayPrice(25)}</p>
                     </StrapType>
 
                     <StrapType>
@@ -47,6 +50,8 @@ const Straps = () => {
                         <a href="/straps/leather">
                             <h2>Leather</h2>
                         </a>
+
+                        <p>{displayPrice(25)}</p>
                     </StrapType>
                 </ProductGrid>
             </Container>
