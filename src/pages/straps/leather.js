@@ -22,24 +22,6 @@ const Field = styled.div`
     display: grid;
 `
 
-const Colors = styled.div`
-    margin: 3rem 0;
-`
-
-const ColorGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    column-gap: 2rem;
-    row-gap: 2rem;
-    justify-content: start;
-`
-
-const Color = styled.div`
-    width: 5rem;
-    height: 5rem;
-    background: ${props => props.color};
-`
-
 const Leather = ({data}) => {
     console.log(data)
 

@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
+import ColorGrid from "../../styles/ColorGrid"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
 
@@ -24,14 +25,6 @@ const Field = styled.div`
 
 const Colors = styled.div`
     margin: 3rem 0;
-`
-
-const ColorGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    column-gap: 2rem;
-    row-gap: 2rem;
-    justify-content: start;
 `
 
 const Color = styled.div`
