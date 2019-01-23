@@ -53,6 +53,7 @@ const Leather = ({data}) => {
         "https://downloads.ctfassets.net/d3ttfid6hh7h/2LLl2zMhF6mqm80EAaOGms/24a854839313a91a6d5894febf432015/DSC04650.jpg"
     const description = "Dope t-shirt with our logo on it."
     const price = 20
+    const colors = ["red", "orange", "yellow", "green", "blue"]
 
     return (
         <Layout>
@@ -66,6 +67,15 @@ const Leather = ({data}) => {
                     <div>
                         <Title>T-Shirt</Title>
                         <p>{displayPrice(price)}</p>
+
+                        <Colors>
+                            <label>Color</label>
+                            <ColorGrid>
+                                {colors.map((color, index) => (
+                                    <Color key={index} color={color}/>
+                                ))}
+                            </ColorGrid>
+                        </Colors>
 
                         <Form>
                             <button>
