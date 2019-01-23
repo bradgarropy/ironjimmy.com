@@ -1,20 +1,10 @@
 import React from "react"
-import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
+import ProductCategoryHeader from "../styles/ProductCategoryHeader"
 import ProductGrid from "../styles/ProductGrid"
 import ProductPreview from "../styles/ProductPreview"
 import {displayPrice} from "../utils/price"
-
-const Header = styled.div`
-    margin-bottom: 3rem;
-`
-
-const Title = styled.h1`
-    text-align: center;
-    text-transform: uppercase;
-    margin: 0 0 2rem 0;
-`
 
 const Sleeves = () => {
     const image =
@@ -23,10 +13,10 @@ const Sleeves = () => {
     return (
         <Layout>
             <Container>
-                <Header>
-                    <Title>Barbell Sleeves</Title>
+                <ProductCategoryHeader>
+                    <h1>Barbell Sleeves</h1>
                     <img src="https://downloads.ctfassets.net/d3ttfid6hh7h/2bsz5m0iNGso0gGwQAYKMG/f19930b27510d63779354fa17c999d19/DSC04732.jpg"/>
-                </Header>
+                </ProductCategoryHeader>
 
                 <ProductGrid>
                     <ProductPreview>

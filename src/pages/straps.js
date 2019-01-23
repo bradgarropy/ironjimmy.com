@@ -1,20 +1,10 @@
 import React from "react"
-import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
+import ProductCategoryHeader from "../styles/ProductCategoryHeader"
 import ProductGrid from "../styles/ProductGrid"
 import ProductPreview from "../styles/ProductPreview"
 import {displayPrice} from "../utils/price"
-
-const Header = styled.div`
-    margin-bottom: 3rem;
-`
-
-const Title = styled.h1`
-    text-align: center;
-    text-transform: uppercase;
-    margin: 0 0 2rem 0;
-`
 
 const Straps = () => {
     const image =
@@ -23,10 +13,10 @@ const Straps = () => {
     return (
         <Layout>
             <Container>
-                <Header>
-                    <Title>Lifting Straps</Title>
+                <ProductCategoryHeader>
+                    <h1>Lifting Straps</h1>
                     <img src="https://images.ctfassets.net/d3ttfid6hh7h/nwnHD3TJ1QWM8g0Mq8M8k/0b07fd540d77d7a32e353a3a9802b6a4/DSC04681.jpg"/>
-                </Header>
+                </ProductCategoryHeader>
 
                 <ProductGrid columns="2">
                     <ProductPreview>
