@@ -4,16 +4,11 @@ import {graphql} from "gatsby"
 import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
+import Product from "../../styles/Product"
 import ColorGrid from "../../styles/ColorGrid"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons"
 import {displayPrice} from "../../utils/price"
-
-const Product = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 5rem;
-`
 
 const Title = styled.h1`
     margin: 0 0 2rem 0;
