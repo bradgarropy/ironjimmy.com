@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
+import Colors from "../../components/Colors"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
 
@@ -20,24 +21,6 @@ const Form = styled.form`
 
 const Field = styled.div`
     display: grid;
-`
-
-const Colors = styled.div`
-    margin: 3rem 0;
-`
-
-const ColorGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    column-gap: 2rem;
-    row-gap: 2rem;
-    justify-content: start;
-`
-
-const Color = styled.div`
-    width: 5rem;
-    height: 5rem;
-    background: ${props => props.color};
 `
 
 const Leather = ({data}) => {
@@ -62,14 +45,7 @@ const Leather = ({data}) => {
                         <Title>Hoodie</Title>
                         <p>{displayPrice(price)}</p>
 
-                        <Colors>
-                            <label>Color</label>
-                            <ColorGrid>
-                                {colors.map((color, index) => (
-                                    <Color key={index} color={color}/>
-                                ))}
-                            </ColorGrid>
-                        </Colors>
+                        <Colors title="Color" colors={colors}/>
 
                         <Form>
                             <AddToCart/>
