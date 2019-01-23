@@ -6,8 +6,7 @@ import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
 import ColorGrid from "../../styles/ColorGrid"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faCartPlus} from "@fortawesome/free-solid-svg-icons"
+import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
 
 const Title = styled.h1`
@@ -109,10 +108,7 @@ const Solid = ({data}) => {
                                 <textarea/>
                             </Field>
 
-                            <button>
-                                <FontAwesomeIcon icon={faCartPlus}/> Add To
-                                Cart
-                            </button>
+                            <AddToCart/>
                         </Form>
                     </div>
                 </Product>
