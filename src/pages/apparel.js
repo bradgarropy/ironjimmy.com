@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
 import ProductGrid from "../styles/ProductGrid"
+import ProductPreview from "../styles/ProductPreview"
 
 const Header = styled.div`
     margin-bottom: 3rem;
@@ -13,8 +14,6 @@ const Title = styled.h1`
     text-transform: uppercase;
     margin: 0 0 2rem 0;
 `
-
-const ApparelType = styled.div``
 
 const Straps = () => {
     const image =
@@ -28,7 +27,7 @@ const Straps = () => {
                 </Header>
 
                 <ProductGrid columns="2">
-                    <ApparelType>
+                    <ProductPreview>
                         <a href="/apparel/tshirt">
                             <img src={image}/>
                         </a>
@@ -36,9 +35,9 @@ const Straps = () => {
                         <a href="/apparel/tshirt">
                             <h2>T-Shirt</h2>
                         </a>
-                    </ApparelType>
+                    </ProductPreview>
 
-                    <ApparelType>
+                    <ProductPreview>
                         <a href="/apparel/hoodie">
                             <img src={image}/>
                         </a>
@@ -46,7 +45,7 @@ const Straps = () => {
                         <a href="/apparel/hoodie">
                             <h2>Hoodie</h2>
                         </a>
-                    </ApparelType>
+                    </ProductPreview>
                 </ProductGrid>
             </Container>
         </Layout>

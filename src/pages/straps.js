@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
 import ProductGrid from "../styles/ProductGrid"
+import ProductPreview from "../styles/ProductPreview"
 import {displayPrice} from "../utils/price"
 
 const Header = styled.div`
@@ -14,8 +15,6 @@ const Title = styled.h1`
     text-transform: uppercase;
     margin: 0 0 2rem 0;
 `
-
-const StrapType = styled.div``
 
 const Straps = () => {
     const image =
@@ -30,7 +29,7 @@ const Straps = () => {
                 </Header>
 
                 <ProductGrid columns="2">
-                    <StrapType>
+                    <ProductPreview>
                         <a href="/straps/nylon">
                             <img src={image}/>
                         </a>
@@ -40,9 +39,9 @@ const Straps = () => {
                         </a>
 
                         <p>{displayPrice(25)}</p>
-                    </StrapType>
+                    </ProductPreview>
 
-                    <StrapType>
+                    <ProductPreview>
                         <a href="/straps/leather">
                             <img src={image}/>
                         </a>
@@ -52,7 +51,7 @@ const Straps = () => {
                         </a>
 
                         <p>{displayPrice(25)}</p>
-                    </StrapType>
+                    </ProductPreview>
                 </ProductGrid>
             </Container>
         </Layout>

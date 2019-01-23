@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
 import ProductGrid from "../styles/ProductGrid"
+import ProductPreview from "../styles/ProductPreview"
 import {displayPrice} from "../utils/price"
 
 const Header = styled.div`
@@ -14,8 +15,6 @@ const Title = styled.h1`
     text-transform: uppercase;
     margin: 0 0 2rem 0;
 `
-
-const SleeveType = styled.div``
 
 const Sleeves = () => {
     const image =
@@ -30,7 +29,7 @@ const Sleeves = () => {
                 </Header>
 
                 <ProductGrid>
-                    <SleeveType>
+                    <ProductPreview>
                         <a href="/sleeves/solid">
                             <img src={image}/>
                         </a>
@@ -40,9 +39,9 @@ const Sleeves = () => {
                         </a>
 
                         <p>{displayPrice(70)}</p>
-                    </SleeveType>
+                    </ProductPreview>
 
-                    <SleeveType>
+                    <ProductPreview>
                         <a href="/sleeves/limited">
                             <img src={image}/>
                         </a>
@@ -52,9 +51,9 @@ const Sleeves = () => {
                         </a>
 
                         <p>{displayPrice(80)}</p>
-                    </SleeveType>
+                    </ProductPreview>
 
-                    <SleeveType>
+                    <ProductPreview>
                         <a href="/sleeves/custom">
                             <img src={image}/>
                         </a>
@@ -64,7 +63,7 @@ const Sleeves = () => {
                         </a>
 
                         <p>{displayPrice(90)}</p>
-                    </SleeveType>
+                    </ProductPreview>
                 </ProductGrid>
             </Container>
         </Layout>
