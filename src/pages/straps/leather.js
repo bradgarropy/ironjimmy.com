@@ -5,12 +5,9 @@ import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
+import ProductHeader from "../../styles/ProductHeader"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
-
-const Title = styled.h1`
-    margin: 0 0 2rem 0;
-`
 
 const Form = styled.form`
     display: grid;
@@ -40,8 +37,10 @@ const Leather = ({data}) => {
                     </div>
 
                     <div>
-                        <Title>Leather Strap</Title>
-                        <p>{displayPrice(price)}</p>
+                        <ProductHeader>
+                            <h1>Leather Strap</h1>
+                            <p>{displayPrice(price)}</p>
+                        </ProductHeader>
 
                         <Form>
                             <AddToCart/>

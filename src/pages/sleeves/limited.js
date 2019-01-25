@@ -5,13 +5,10 @@ import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
+import ProductHeader from "../../styles/ProductHeader"
 import Colors from "../../components/Colors"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
-
-const Title = styled.h1`
-    margin: 0 0 2rem 0;
-`
 
 const Form = styled.form`
     display: grid;
@@ -45,8 +42,10 @@ const Limited = ({data}) => {
                     </div>
 
                     <div>
-                        <Title>Limited Sleeve</Title>
-                        <p>{displayPrice(price)}</p>
+                        <ProductHeader>
+                            <h1>Limited Sleeve</h1>
+                            <p>{displayPrice(price)}</p>
+                        </ProductHeader>
 
                         <Colors title="Sleeve Color" colors={sleeveColors}/>
                         <Colors title="Bar Color" colors={barColors}/>
