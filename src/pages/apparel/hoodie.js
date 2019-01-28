@@ -11,10 +11,6 @@ import Colors from "../../components/Colors"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
 
-const Field = styled.div`
-    display: grid;
-`
-
 const Leather = ({data}) => {
     console.log(data)
 

@@ -7,13 +7,10 @@ import Container from "../../styles/Container"
 import Product from "../../styles/Product"
 import ProductHeader from "../../styles/ProductHeader"
 import ProductForm from "../../styles/ProductForm"
+import Field from "../../styles/Field"
 import Colors from "../../components/Colors"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
-
-const Field = styled.div`
-    display: grid;
-`
 
 const Custom = ({data}) => {
     console.log(data)
