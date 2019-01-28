@@ -6,14 +6,9 @@ import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
 import ProductHeader from "../../styles/ProductHeader"
+import ProductForm from "../../styles/ProductForm"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
-
-const Form = styled.form`
-    display: grid;
-    row-gap: 2rem;
-    margin: 3rem 0;
-`
 
 const Field = styled.div`
     display: grid;
@@ -42,9 +37,9 @@ const Leather = ({data}) => {
                             <p>{displayPrice(price)}</p>
                         </ProductHeader>
 
-                        <Form>
+                        <ProductForm>
                             <AddToCart/>
-                        </Form>
+                        </ProductForm>
                     </div>
                 </Product>
             </Container>

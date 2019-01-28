@@ -6,15 +6,10 @@ import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
 import ProductHeader from "../../styles/ProductHeader"
+import ProductForm from "../../styles/ProductForm"
 import Colors from "../../components/Colors"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
-
-const Form = styled.form`
-    display: grid;
-    row-gap: 2rem;
-    margin: 3rem 0;
-`
 
 const Field = styled.div`
     display: grid;
@@ -48,7 +43,7 @@ const Custom = ({data}) => {
 
                         <Colors title="Bar Color" colors={barColors}/>
 
-                        <Form>
+                        <ProductForm>
                             <Field>
                                 <label>Weight</label>
                                 <select>
@@ -81,7 +76,7 @@ const Custom = ({data}) => {
                             </Field>
 
                             <AddToCart/>
-                        </Form>
+                        </ProductForm>
                     </div>
                 </Product>
             </Container>
