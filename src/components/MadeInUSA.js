@@ -16,13 +16,11 @@ const StyledMadeInUSA = styled.div`
     }
 `
 
-const MadeInUSA = () => {
-    return (
-        <StyledMadeInUSA>
-            <img src={usa}/>
-            <span>Made In USA</span>
-        </StyledMadeInUSA>
-    )
-}
+const MadeInUSA = () => (
+    <StyledMadeInUSA>
+        <img src={usa}/>
+        <span>Made In USA</span>
+    </StyledMadeInUSA>
+)
 
 export default MadeInUSA

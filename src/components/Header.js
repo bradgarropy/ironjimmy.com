@@ -11,14 +11,12 @@ const StyledHeader = styled.header`
     margin: 0 1rem 0 1rem;
 `
 
-const Header = () => {
-    return (
-        <StyledHeader>
-            <TopBar/>
-            <Logo/>
-            <Navigation/>
-        </StyledHeader>
-    )
-}
+const Header = () => (
+    <StyledHeader>
+        <TopBar/>
+        <Logo/>
+        <Navigation/>
+    </StyledHeader>
+)
 
 export default Header

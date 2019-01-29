@@ -20,19 +20,17 @@ const Color = styled.div`
     background: ${props => props.color};
 `
 
-const Colors = ({title, colors}) => {
-    return (
-        <StyledColors>
-            <label>{title}</label>
+const Colors = ({title, colors}) => (
+    <StyledColors>
+        <label>{title}</label>
 
-            <ColorGrid>
-                {colors.map((color, index) => (
-                    <Color key={index} color={color}/>
-                ))}
-            </ColorGrid>
-        </StyledColors>
-    )
-}
+        <ColorGrid>
+            {colors.map((color, index) => (
+                <Color key={index} color={color}/>
+            ))}
+        </ColorGrid>
+    </StyledColors>
+)
 
 Colors.propTypes = {
     title: PropTypes.shape.isRequired,

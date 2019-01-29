@@ -10,12 +10,10 @@ const StyledTopBar = styled.a`
     font-weight: 600;
 `
 
-const TopBar = () => {
-    return (
-        <StyledTopBar href="/cart">
-            <FontAwesomeIcon icon={faShoppingCart}/> Cart
-        </StyledTopBar>
-    )
-}
+const TopBar = () => (
+    <StyledTopBar href="/cart">
+        <FontAwesomeIcon icon={faShoppingCart}/> Cart
+    </StyledTopBar>
+)
 
 export default TopBar

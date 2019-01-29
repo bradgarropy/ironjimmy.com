@@ -5,8 +5,8 @@ import Layout from "../components/Layout"
 import Carousel from "../components/Carousel"
 
 const Index = ({data}) => {
-    const home = data.allContentfulCarousel.edges[0].node
-    const images = home.images.map(image => image.file.url)
+    const carousel = data.allContentfulCarousel.edges[0].node
+    const images = carousel.images.map(image => image.file.url)
 
     return (
         <Layout>

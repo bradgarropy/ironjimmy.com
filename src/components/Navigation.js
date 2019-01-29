@@ -16,20 +16,18 @@ const StyledNavigation = styled.nav`
     border-bottom: 2px solid ${colors.black};
 `
 
-const Navigation = () => {
-    return (
-        <StyledNavigation>
-            <Link to="/sleeves">Sleeves</Link>
-            <span>|</span>
-            <Link to="/straps">Straps</Link>
-            <span>|</span>
-            <Link to="/apparel">Apparel</Link>
-            <span>|</span>
-            <Link to="/about">About</Link>
-            <span>|</span>
-            <Link to="/contact">Contact</Link>
-        </StyledNavigation>
-    )
-}
+const Navigation = () => (
+    <StyledNavigation>
+        <Link to="/sleeves">Sleeves</Link>
+        <span>|</span>
+        <Link to="/straps">Straps</Link>
+        <span>|</span>
+        <Link to="/apparel">Apparel</Link>
+        <span>|</span>
+        <Link to="/about">About</Link>
+        <span>|</span>
+        <Link to="/contact">Contact</Link>
+    </StyledNavigation>
+)
 
 export default Navigation
