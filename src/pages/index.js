@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 import Carousel from "../components/Carousel"
 
 const Index = ({data}) => {
-    const home = data.allContentfulHome.edges[0].node
+    const home = data.allContentfulCarousel.edges[0].node
     const images = home.images.map(image => image.file.url)
 
     return (
@@ -21,7 +21,7 @@ Index.propTypes = {
 
 export const query = graphql`
     {
-        allContentfulHome {
+        allContentfulCarousel {
             edges {
                 node {
                     images {
