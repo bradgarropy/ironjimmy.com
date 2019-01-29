@@ -21,21 +21,31 @@ const Nylon = ({data}) => {
         "I don't know about y'all but I want more choices! Pick 1 or 2 colors, mix and match how you please! Check out the add on sayings for your straps. You'll never put them on the wrong hand again! 🙌🏼"
     const price = 25
     const colors = ["red", "orange", "yellow", "green", "blue"]
-    const sayings = [
-        "MAX EFFORT",
-        "LIFT BITCH",
-        "PULL LONGER",
-        "STRAP UP",
-        "DEAD LIFT",
-        "SLAY BITCH",
-        "LOCAL LEGEND",
-        "GYM HERO",
-        "SAVAGE LIFE",
-        "LIGHT WEIGHT",
-        "LIFT SAVAGE",
-        "DREAM KILLER",
-        "INSTA FAMOUS",
-        "WORK BITCH",
+    const words = [
+        "",
+        "BITCH",
+        "DEAD",
+        "DREAM",
+        "EFFORT",
+        "FAMOUS",
+        "GYM",
+        "HERO",
+        "INSTA",
+        "KILLER",
+        "LEGEND",
+        "LIFE",
+        "LIFT",
+        "LIGHT",
+        "LOCAL",
+        "LONGER",
+        "MAX",
+        "PULL",
+        "SAVAGE",
+        "SLAY",
+        "STRAP",
+        "UP",
+        "WEIGHT",
+        "WORK",
     ]
 
     return (
@@ -57,11 +67,22 @@ const Nylon = ({data}) => {
 
                         <ProductForm>
                             <Field>
-                                <label>Sayings</label>
+                                <label>Left</label>
                                 <select>
-                                    {sayings.map((saying, index) => (
-                                        <option key={index} value={saying}>
-                                            {saying}
+                                    {words.map((word, index) => (
+                                        <option key={index} value={word}>
+                                            {word}
+                                        </option>
+                                    ))}
+                                </select>
+                            </Field>
+
+                            <Field>
+                                <label>Right</label>
+                                <select>
+                                    {words.map((word, index) => (
+                                        <option key={index} value={word}>
+                                            {word}
                                         </option>
                                     ))}
                                 </select>
