@@ -4,5 +4,9 @@
     functions = "functions"
 
 [[redirects]]
-    from = "/admin"
+    from = "/contentful"
     to = "https://app.contentful.com/spaces/d3ttfid6hh7h/entries"
+
+[[redirects]]
+    from = "/shopify"
+    to = "https://iron-jimmy-sleeves.myshopify.com/admin"
