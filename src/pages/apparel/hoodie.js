@@ -1,13 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
-import styled from "styled-components"
 import Layout from "../../components/Layout"
 import Container from "../../styles/Container"
 import Product from "../../styles/Product"
 import ProductHeader from "../../styles/ProductHeader"
 import ProductForm from "../../styles/ProductForm"
-import Colors from "../../components/Colors"
+import Field from "../../styles/Field"
 import AddToCart from "../../components/AddToCart"
 import {displayPrice} from "../../utils/price"
 
@@ -18,7 +17,7 @@ const Leather = ({data}) => {
         "https://images.ctfassets.net/d3ttfid6hh7h/6LV92LcOGo3cfCvDctgvxY/b9e846dbf79d368a2f1cb91fe635f375/DSC04643.jpg"
     const description = "Cozy comfy hoodie with our logo on it."
     const price = 40
-    const colors = ["red", "orange", "yellow", "green", "blue"]
+    const sizes = ["XS", "S", "M", "L", "XL"]
 
     return (
         <Layout>
@@ -35,9 +34,18 @@ const Leather = ({data}) => {
                             <p>{displayPrice(price)}</p>
                         </ProductHeader>
 
-                        <Colors title="Color" colors={colors}/>
-
                         <ProductForm>
+                            <Field>
+                                <label>Size</label>
+                                <select>
+                                    {sizes.map((size, index) => (
+                                        <option key={index} value={size}>
+                                            {size}
+                                        </option>
+                                    ))}
+                                </select>
+                            </Field>
+
                             <AddToCart/>
                         </ProductForm>
                     </div>

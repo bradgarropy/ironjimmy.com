@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const Product = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 65fr 35fr;
     column-gap: 5rem;
 `
 
