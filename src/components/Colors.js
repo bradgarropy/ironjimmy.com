@@ -18,6 +18,7 @@ const Color = styled.div`
     width: 5rem;
     height: 5rem;
     background: ${props => props.color};
+    border: 3px dotted black;
 `
 
 const Colors = ({title, colors}) => (
@@ -33,7 +34,7 @@ const Colors = ({title, colors}) => (
 )
 
 Colors.propTypes = {
-    title: PropTypes.shape.isRequired,
+    title: PropTypes.string.isRequired,
     colors: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 

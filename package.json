@@ -23,7 +23,8 @@
         "url": "https://github.com/bradgarropy/iron-jimmy"
     },
     "scripts": {
-        "start": "concurrently \"npm:start:*\"",
+        "start": "npm run start:gatsby",
+        "start:all": "concurrently \"npm:start:*\"",
         "start:gatsby": "gatsby develop",
         "start:lambda": "netlify-lambda serve src/functions",
         "build": "npm run build:gatsby && npm run build:lambda",
@@ -52,8 +53,6 @@
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
         "react-helmet": "^5.2.0",
-        "react-stripe-checkout": "^2.6.3",
-        "stripe": "^6.20.0",
         "styled-components": "^4.1.3"
     },
     "devDependencies": {

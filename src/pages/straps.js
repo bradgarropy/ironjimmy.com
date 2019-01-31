@@ -1,4 +1,5 @@
 import React from "react"
+import {StaticQuery, graphql} from "gatsby"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
 import ProductCategoryHeader from "../styles/ProductCategoryHeader"
@@ -6,46 +7,77 @@ import ProductGrid from "../styles/ProductGrid"
 import ProductPreview from "../styles/ProductPreview"
 import {displayPrice} from "../utils/price"
 
-const Straps = () => {
-    const image =
-        "https://images.ctfassets.net/d3ttfid6hh7h/640yVRzrFYuIM2Ew8sSOOC/1274095d33264b89208a061dab57c757/DSC04584.jpg"
+const Straps = () => (
+    <StaticQuery
+        query={query}
+        render={data => {
+            const products = data.allShopifyProduct.edges
 
-    return (
-        <Layout>
-            <Container>
-                <ProductCategoryHeader>
-                    <h1>Lifting Straps</h1>
-                    <img src="https://images.ctfassets.net/d3ttfid6hh7h/nwnHD3TJ1QWM8g0Mq8M8k/0b07fd540d77d7a32e353a3a9802b6a4/DSC04681.jpg"/>
-                </ProductCategoryHeader>
+            return (
+                <Layout>
+                    <Container>
+                        <ProductCategoryHeader>
+                            <h1>Lifting Straps</h1>
+                            <img src="https://images.ctfassets.net/d3ttfid6hh7h/nwnHD3TJ1QWM8g0Mq8M8k/0b07fd540d77d7a32e353a3a9802b6a4/DSC04681.jpg"/>
+                        </ProductCategoryHeader>
 
-                <ProductGrid columns="2">
-                    <ProductPreview>
-                        <a href="/straps/nylon">
-                            <img src={image}/>
-                        </a>
+                        <ProductGrid columns="2">
+                            {products.map(product => {
+                                product = product.node
 
-                        <a href="/straps/nylon">
-                            <h2>Nylon</h2>
-                        </a>
+                                const id = product.shopifyId
+                                const type = product.productType.toLowerCase()
+                                const handle = product.handle
+                                const title = product.title
+                                const price =
+                                    product.priceRange.minVariantPrice.amount
+                                const image = product.images[0].originalSrc
 
-                        <p>{displayPrice(25)}</p>
-                    </ProductPreview>
+                                const link = `/${type}/${handle}`
 
-                    <ProductPreview>
-                        <a href="/straps/leather">
-                            <img src={image}/>
-                        </a>
+                                return (
+                                    <ProductPreview key={id}>
+                                        <a href={link}>
+                                            <img src={image}/>
+                                        </a>
 
-                        <a href="/straps/leather">
-                            <h2>Leather</h2>
-                        </a>
+                                        <a href={link}>
+                                            <h2>{title}</h2>
+                                        </a>
 
-                        <p>{displayPrice(25)}</p>
-                    </ProductPreview>
-                </ProductGrid>
-            </Container>
-        </Layout>
-    )
-}
+                                        <p>{displayPrice(price)}</p>
+                                    </ProductPreview>
+                                )
+                            })}
+                        </ProductGrid>
+                    </Container>
+                </Layout>
+            )
+        }}
+    />
+)
+
+const query = graphql`
+    {
+        allShopifyProduct(filter: {productType: {eq: "Straps"}}) {
+            edges {
+                node {
+                    shopifyId
+                    productType
+                    handle
+                    title
+                    priceRange {
+                        minVariantPrice {
+                            amount
+                        }
+                    }
+                    images {
+                        originalSrc
+                    }
+                }
+            }
+        }
+    }
+`
 
 export default Straps

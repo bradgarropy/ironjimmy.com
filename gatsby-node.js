@@ -1,33 +1,56 @@
 const path = require("path")
 
-exports.createPages = ({graphql, actions}) => {
+const createPages = ({graphql, actions}) => {
     const {createPage} = actions
 
-    return new Promise((resolve, reject) => {
-        graphql(`
-            {
-                allContentfulSleeves {
-                    edges {
-                        node {
-                            contentful_id
-                        }
+    const products = graphql(`
+        {
+            allShopifyProduct {
+                edges {
+                    node {
+                        shopifyId
+                        productType
+                        handle
+                        title
                     }
                 }
             }
-        `).then(result => {
-            const sleeves = result.data.allContentfulSleeves.edges
+        }
+    `).then(result => {
+        const products = result.data.allShopifyProduct.edges
 
-            sleeves.forEach(({node}) => {
-                const id = node.contentful_id
+        products.forEach(({node}) => {
+            const id = node.shopifyId
+            const slug = node.handle
+            const type = node.productType.toLowerCase()
 
-                createPage({
-                    path: `sleeves/${id}`,
-                    component: path.resolve("./src/templates/sleeve.js"),
-                    context: {id},
-                })
-            })
-
-            resolve()
+            switch (type) {
+                case "sleeves":
+                    createPage({
+                        path: `${type}/${slug}`,
+                        component: path.resolve("./src/templates/sleeves.js"),
+                        context: {id},
+                    })
+                    break
+                case "straps":
+                    createPage({
+                        path: `${type}/${slug}`,
+                        component: path.resolve("./src/templates/straps.js"),
+                        context: {id},
+                    })
+                    break
+                case "apparel":
+                    createPage({
+                        path: `${type}/${slug}`,
+                        component: path.resolve("./src/templates/apparel.js"),
+                        context: {id},
+                    })
+                    break
+            }
         })
     })
+
+    return Promise.all([products])
 }
+
+module.exports = {createPages}
