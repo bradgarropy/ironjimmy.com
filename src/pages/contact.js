@@ -25,17 +25,17 @@ const Contact = ({data}) => {
 
                     <div className="contact-form-field">
                         <label>Name</label>
-                        <input type="text"/>
+                        <input type="text" name="name"/>
                     </div>
 
                     <div className="contact-form-field">
                         <label>Email</label>
-                        <input type="email"/>
+                        <input type="email" name="email"/>
                     </div>
 
                     <div className="contact-form-field">
                         <label>Message</label>
-                        <textarea rows="7"/>
+                        <textarea name="message" rows="7"/>
                     </div>
 
                     <button>Submit</button>
