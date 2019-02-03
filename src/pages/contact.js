@@ -15,7 +15,11 @@ const Contact = ({data}) => {
             <Container className="contact">
                 <Markdown>{description}</Markdown>
 
-                <form className="contact-form">
+                <form
+                    className="contact-form"
+                    name="contact"
+                    data-netlify="true"
+                >
                     <div className="contact-form-field">
                         <label>Name</label>
                         <input type="text"/>
