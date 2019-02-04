@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
+import Image from "../components/Image"
 import Container from "../styles/Container"
 import Product from "../styles/Product"
 import ProductHeader from "../styles/ProductHeader"
@@ -28,7 +29,7 @@ const SleevesTemplate = ({data}) => {
             <Container>
                 <Product>
                     <div>
-                        <img src={image}/>
+                        <Image src={image}/>
                         <p>{description}</p>
                     </div>
 

@@ -6,7 +6,7 @@ import Carousel from "../components/Carousel"
 
 const Index = ({data}) => {
     const carousel = data.allContentfulCarousel.edges[0].node
-    const images = carousel.images.map(image => image.file.url)
+    const images = carousel.images.map(image => `https:${image.file.url}`)
 
     return (
         <Layout>

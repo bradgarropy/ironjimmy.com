@@ -4,6 +4,7 @@ import {graphql} from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
+import Image from "../components/Image"
 import Markdown from "markdown-to-jsx"
 
 const StyledAbout = styled.div`
@@ -14,14 +15,14 @@ const StyledAbout = styled.div`
 
 const About = ({data}) => {
     const about = data.allContentfulAbout.edges[0].node
-    const image = about.image.file.url
+    const image = `https:${about.image.file.url}`
     const description = about.description.description
 
     return (
         <Layout>
             <Container>
                 <StyledAbout>
-                    <img src={image}/>
+                    <Image src={image}/>
                     <Markdown>{description}</Markdown>
                 </StyledAbout>
             </Container>

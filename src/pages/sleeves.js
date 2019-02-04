@@ -1,6 +1,7 @@
 import React from "react"
 import {StaticQuery, graphql} from "gatsby"
 import Layout from "../components/Layout"
+import Image from "../components/Image"
 import Container from "../styles/Container"
 import ProductCategoryHeader from "../styles/ProductCategoryHeader"
 import ProductGrid from "../styles/ProductGrid"
@@ -18,7 +19,7 @@ const Sleeves = () => (
                     <Container>
                         <ProductCategoryHeader>
                             <h1>Barbell Sleeves</h1>
-                            <img src="https://downloads.ctfassets.net/d3ttfid6hh7h/2bsz5m0iNGso0gGwQAYKMG/f19930b27510d63779354fa17c999d19/DSC04732.jpg"/>
+                            <Image src="https://images.ctfassets.net/d3ttfid6hh7h/2s6sDDAqDxAvAlnm2ZfXJ1/9909c861f1238be5145bc89a5fb6957c/sleeves.jpg"/>
                         </ProductCategoryHeader>
 
                         <ProductGrid>
@@ -38,7 +39,7 @@ const Sleeves = () => (
                                 return (
                                     <ProductPreview key={id}>
                                         <a href={link}>
-                                            <img src={image}/>
+                                            <Image src={image}/>
                                         </a>
 
                                         <a href={link}>
