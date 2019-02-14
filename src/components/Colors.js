@@ -14,20 +14,18 @@ const ColorGrid = styled.div`
     justify-content: start;
 `
 
-const Color = styled.div`
+const Color = styled.img`
     width: 5rem;
     height: 5rem;
-    background: ${props => props.color};
-    border: 3px dotted black;
 `
 
-const Colors = ({title, colors}) => (
+const Colors = ({title, images}) => (
     <StyledColors>
         <label>{title}</label>
 
         <ColorGrid>
-            {colors.map((color, index) => (
-                <Color key={index} color={color}/>
+            {images.map((image, index) => (
+                <Color key={index} src={image}/>
             ))}
         </ColorGrid>
     </StyledColors>
@@ -35,7 +33,7 @@ const Colors = ({title, colors}) => (
 
 Colors.propTypes = {
     title: PropTypes.string.isRequired,
-    colors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default Colors

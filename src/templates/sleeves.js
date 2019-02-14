@@ -19,9 +19,21 @@ const SleevesTemplate = ({data}) => {
         priceRange,
         title,
         options,
+        variants,
     } = data.shopifyProduct
 
-    const image = images[0].originalSrc
+    const variantImages = variants.reduce((acc, curr) => {
+        const image = curr.image.originalSrc
+        !acc.includes(image) && acc.push(image)
+        return acc
+    }, [])
+
+    const productImages = images.reduce((acc, curr) => {
+        const image = curr.originalSrc
+        !variantImages.includes(image) && acc.push(image)
+        return acc
+    }, [])
+
     const price = priceRange.minVariantPrice.amount
 
     return (
@@ -29,7 +41,7 @@ const SleevesTemplate = ({data}) => {
             <Container>
                 <Product>
                     <div>
-                        <Image src={image}/>
+                        <Image src={productImages[0]}/>
                         <p>{description}</p>
                     </div>
 
@@ -39,19 +51,7 @@ const SleevesTemplate = ({data}) => {
                             <p>{displayPrice(price)}</p>
                         </ProductHeader>
 
-                        {options.map((option, index) => {
-                            const {name, values} = option
-
-                            if (isColor(name) && !isDefault(name)) {
-                                return (
-                                    <Colors
-                                        key={index}
-                                        title={name}
-                                        colors={values}
-                                    />
-                                )
-                            }
-                        })}
+                        <Colors title={name} images={variantImages}/>
 
                         <ProductForm>
                             {options.map((option, index) => {
@@ -135,6 +135,15 @@ export const query = graphql`
             options {
                 name
                 values
+            }
+            variants {
+                selectedOptions {
+                    name
+                    value
+                }
+                image {
+                    originalSrc
+                }
             }
         }
     }
