@@ -61,7 +61,7 @@ class StrapsTemplate extends React.Component {
                                 <p>{displayPrice(price)}</p>
                             </ProductHeader>
 
-                            <Colors title={name} images={variantImages}/>
+                            <Colors images={variantImages}/>
 
                             <ProductForm onSubmit={this.handleSubmit}>
                                 {options.map((option, index) => {

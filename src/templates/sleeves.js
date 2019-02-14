@@ -51,7 +51,7 @@ const SleevesTemplate = ({data}) => {
                             <p>{displayPrice(price)}</p>
                         </ProductHeader>
 
-                        <Colors title={name} images={variantImages}/>
+                        <Colors images={variantImages}/>
 
                         <ProductForm>
                             {options.map((option, index) => {

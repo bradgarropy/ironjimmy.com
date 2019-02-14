@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import Image from "../components/Image"
 
 const StyledColors = styled.div`
     margin: 3rem 0;
@@ -14,14 +15,14 @@ const ColorGrid = styled.div`
     justify-content: start;
 `
 
-const Color = styled.img`
+const Color = styled(Image)`
     width: 5rem;
     height: 5rem;
 `
 
-const Colors = ({title, images}) => (
+const Colors = ({images}) => (
     <StyledColors>
-        <label>{title}</label>
+        <label>Color</label>
 
         <ColorGrid>
             {images.map((image, index) => (
@@ -32,7 +33,6 @@ const Colors = ({title, images}) => (
 )
 
 Colors.propTypes = {
-    title: PropTypes.string.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 

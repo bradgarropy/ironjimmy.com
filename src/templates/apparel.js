@@ -39,20 +39,6 @@ const ApparelTemplate = ({data}) => {
                             <p>{displayPrice(price)}</p>
                         </ProductHeader>
 
-                        {options.map((option, index) => {
-                            const {name, values} = option
-
-                            if (isColor(name) && !isDefault(name)) {
-                                return (
-                                    <Colors
-                                        key={index}
-                                        title={name}
-                                        colors={values}
-                                    />
-                                )
-                            }
-                        })}
-
                         <ProductForm>
                             {options.map((option, index) => {
                                 const {name, values} = option
