@@ -12,20 +12,20 @@ const Apparel = () => (
     <StaticQuery
         query={query}
         render={data => {
-            const products = data.allShopifyProduct.edges
+            const title = data.shopifyCollection.title
+            const image = data.shopifyCollection.image.src
+            const products = data.shopifyCollection.products
 
             return (
                 <Layout>
                     <Container>
                         <ProductCategoryHeader>
-                            <h1>Apparel</h1>
-                            <Image src="https://images.ctfassets.net/d3ttfid6hh7h/28ZigUvlP22QoZJ3THKfr0/4fe26ee471d5d33cc3de6d5495013cdd/apparel.jpg"/>
+                            <h1>{title}</h1>
+                            <Image src={image}/>
                         </ProductCategoryHeader>
 
                         <ProductGrid columns="2">
                             {products.map(product => {
-                                product = product.node
-
                                 const id = product.shopifyId
                                 const type = product.productType.toLowerCase()
                                 const handle = product.handle
@@ -60,21 +60,23 @@ const Apparel = () => (
 
 const query = graphql`
     {
-        allShopifyProduct(filter: {productType: {eq: "Apparel"}}) {
-            edges {
-                node {
-                    shopifyId
-                    productType
-                    handle
-                    title
-                    priceRange {
-                        minVariantPrice {
-                            amount
-                        }
+        shopifyCollection(title: {eq: "Apparel"}) {
+            title
+            image {
+                src
+            }
+            products {
+                shopifyId
+                title
+                handle
+                productType
+                priceRange {
+                    minVariantPrice {
+                        amount
                     }
-                    images {
-                        originalSrc
-                    }
+                }
+                images {
+                    originalSrc
                 }
             }
         }

@@ -12,20 +12,20 @@ const Straps = () => (
     <StaticQuery
         query={query}
         render={data => {
-            const products = data.allShopifyProduct.edges
+            const title = data.shopifyCollection.title
+            const image = data.shopifyCollection.image.src
+            const products = data.shopifyCollection.products
 
             return (
                 <Layout>
                     <Container>
                         <ProductCategoryHeader>
-                            <h1>Lifting Straps</h1>
-                            <Image src="https://images.ctfassets.net/d3ttfid6hh7h/6jTvsieHobKyzGyNtSCtxs/d4d0e540ec2516df60a41133644e579f/straps.jpg"/>
+                            <h1>{title}</h1>
+                            <Image src={image}/>
                         </ProductCategoryHeader>
 
-                        <ProductGrid columns="2">
+                        <ProductGrid>
                             {products.map(product => {
-                                product = product.node
-
                                 const id = product.shopifyId
                                 const type = product.productType.toLowerCase()
                                 const handle = product.handle
@@ -60,21 +60,23 @@ const Straps = () => (
 
 const query = graphql`
     {
-        allShopifyProduct(filter: {productType: {eq: "Straps"}}) {
-            edges {
-                node {
-                    shopifyId
-                    productType
-                    handle
-                    title
-                    priceRange {
-                        minVariantPrice {
-                            amount
-                        }
+        shopifyCollection(title: {eq: "Lifting Straps"}) {
+            title
+            image {
+                src
+            }
+            products {
+                shopifyId
+                title
+                handle
+                productType
+                priceRange {
+                    minVariantPrice {
+                        amount
                     }
-                    images {
-                        originalSrc
-                    }
+                }
+                images {
+                    originalSrc
                 }
             }
         }
