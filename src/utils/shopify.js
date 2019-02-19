@@ -14,16 +14,28 @@ const createClient = () => {
     return shopify
 }
 
+const initializeCart = async() => {
+    const cartId = localStorage.getItem("shopifyCartId")
+
+    if (!cartId) {
+        console.log("🛒⛔")
+        const cart = await createCart()
+        console.log(`🛒🔧 ${cart.id}`)
+        localStorage.setItem("shopifyCartId", cart.id)
+    } else {
+        console.log(`🛒✨ ${cartId}`)
+    }
+}
+
 const createCart = async() => {
     const cart = await shopify.checkout.create()
-    // localStorage.setItem("shopifyCartId", cart.id)
     return cart
 }
 
 const getCart = async() => {
-    // const id = localStorage.getItem("shopifyCartId")
-    // const cart = await shopify.checkout.fetch(id)
-    // return cart
+    const id = localStorage.getItem("shopifyCartId")
+    const cart = await shopify.checkout.fetch(id)
+    return cart
 }
 
 const addToCart = async(cartId, item) => {
@@ -44,4 +56,11 @@ const removeFromCart = async(cartId, item) => {
     return cart
 }
 
-export {createClient, createCart, getCart, addToCart, removeFromCart}
+export {
+    createClient,
+    initializeCart,
+    createCart,
+    getCart,
+    addToCart,
+    removeFromCart,
+}
