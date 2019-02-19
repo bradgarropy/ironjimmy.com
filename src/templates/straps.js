@@ -17,7 +17,7 @@ class StrapsTemplate extends React.Component {
         data: PropTypes.object.isRequired,
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault()
         console.log("handleSubmit!")
     }

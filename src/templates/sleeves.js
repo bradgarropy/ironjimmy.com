@@ -12,97 +12,110 @@ import Colors from "../components/Colors"
 import AddToCart from "../components/AddToCart"
 import {displayPrice} from "../utils/price"
 
-const SleevesTemplate = ({data}) => {
-    const {
-        images,
-        description,
-        priceRange,
-        title,
-        options,
-        variants,
-    } = data.shopifyProduct
+class SleevesTemplate extends React.Component {
+    static propTypes = {
+        data: PropTypes.object.isRequired,
+    }
 
-    const variantImages = variants.reduce((acc, curr) => {
-        const image = curr.image.originalSrc
-        !acc.includes(image) && acc.push(image)
-        return acc
-    }, [])
+    handleSubmit = async event => {
+        event.preventDefault()
+        console.log("handleSubmit!")
+    }
 
-    const productImages = images.reduce((acc, curr) => {
-        const image = curr.originalSrc
-        !variantImages.includes(image) && acc.push(image)
-        return acc
-    }, [])
+    render = () => {
+        const {
+            images,
+            description,
+            priceRange,
+            title,
+            options,
+            variants,
+        } = this.props.data.shopifyProduct
 
-    const price = priceRange.minVariantPrice.amount
+        const variantImages = variants.reduce((acc, curr) => {
+            const image = curr.image.originalSrc
+            !acc.includes(image) && acc.push(image)
+            return acc
+        }, [])
 
-    return (
-        <Layout>
-            <Container>
-                <Product>
-                    <div>
-                        <Image src={productImages[0]}/>
-                        <p>{description}</p>
-                    </div>
+        const productImages = images.reduce((acc, curr) => {
+            const image = curr.originalSrc
+            !variantImages.includes(image) && acc.push(image)
+            return acc
+        }, [])
 
-                    <div>
-                        <ProductHeader>
-                            <h1>{title}</h1>
-                            <p>{displayPrice(price)}</p>
-                        </ProductHeader>
+        const price = priceRange.minVariantPrice.amount
 
-                        <Colors images={variantImages}/>
+        return (
+            <Layout>
+                <Container>
+                    <Product>
+                        <div>
+                            <Image src={productImages[0]}/>
+                            <p>{description}</p>
+                        </div>
 
-                        <ProductForm>
-                            {options.map((option, index) => {
-                                const {name, values} = option
+                        <div>
+                            <ProductHeader>
+                                <h1>{title}</h1>
+                                <p>{displayPrice(price)}</p>
+                            </ProductHeader>
 
-                                if (!isColor(name) && !isDefault(name)) {
-                                    return (
-                                        <Field key={index}>
-                                            <label>{name}</label>
-                                            <select>
-                                                {values.map((value, index) => (
-                                                    <option
-                                                        key={index}
-                                                        value={value}
-                                                    >
-                                                        {value}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </Field>
-                                    )
-                                }
-                            })}
+                            <Colors images={variantImages}/>
 
-                            <Field>
-                                <label>Tag</label>
-                                <input type="text"/>
-                            </Field>
+                            <ProductForm onSubmit={this.handleSubmit}>
+                                {options.map((option, index) => {
+                                    const {name, values} = option
 
-                            <Field>
-                                <label>Brand</label>
-                                <input type="text"/>
-                            </Field>
+                                    if (!isColor(name) && !isDefault(name)) {
+                                        return (
+                                            <Field key={index}>
+                                                <label>{name}</label>
+                                                <select>
+                                                    {values.map(
+                                                        (value, index) => (
+                                                            <option
+                                                                key={index}
+                                                                value={value}
+                                                            >
+                                                                {value}
+                                                            </option>
+                                                        ),
+                                                    )}
+                                                </select>
+                                            </Field>
+                                        )
+                                    }
+                                })}
 
-                            <Field>
-                                <label>Model</label>
-                                <input type="text"/>
-                            </Field>
+                                <Field>
+                                    <label>Tag</label>
+                                    <input type="text"/>
+                                </Field>
 
-                            <Field>
-                                <label>Notes</label>
-                                <textarea/>
-                            </Field>
+                                <Field>
+                                    <label>Brand</label>
+                                    <input type="text"/>
+                                </Field>
 
-                            <AddToCart/>
-                        </ProductForm>
-                    </div>
-                </Product>
-            </Container>
-        </Layout>
-    )
+                                <Field>
+                                    <label>Model</label>
+                                    <input type="text"/>
+                                </Field>
+
+                                <Field>
+                                    <label>Notes</label>
+                                    <textarea/>
+                                </Field>
+
+                                <AddToCart/>
+                            </ProductForm>
+                        </div>
+                    </Product>
+                </Container>
+            </Layout>
+        )
+    }
 }
 
 const isDefault = name => {
@@ -115,13 +128,10 @@ const isColor = name => {
     return matches.some(element => name.includes(element))
 }
 
-SleevesTemplate.propTypes = {
-    data: PropTypes.object.isRequired,
-}
-
 export const query = graphql`
     query($id: String!) {
         shopifyProduct(shopifyId: {eq: $id}) {
+            shopifyId
             title
             description
             images {
@@ -137,6 +147,7 @@ export const query = graphql`
                 values
             }
             variants {
+                shopifyId
                 selectedOptions {
                     name
                     value

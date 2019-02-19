@@ -10,10 +10,25 @@ const StyledTopBar = styled.a`
     font-weight: 600;
 `
 
-const TopBar = () => (
-    <StyledTopBar href="/cart">
-        <FontAwesomeIcon icon={faShoppingCart}/> Cart
-    </StyledTopBar>
-)
+class TopBar extends React.Component {
+    state = {
+        link: "#",
+        items: 0,
+    }
+
+    componentDidMount = async() => {
+        // retrieve cart
+        // set link
+        return
+    }
+
+    render = () => {
+        return (
+            <StyledTopBar href={this.state.link}>
+                <FontAwesomeIcon icon={faShoppingCart}/> Cart
+            </StyledTopBar>
+        )
+    }
+}
 
 export default TopBar
