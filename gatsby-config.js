@@ -2,6 +2,9 @@ require("dotenv").config({
     path: `.env.${process.env.NODE_ENV}`,
 })
 
+console.log("BRG++")
+console.log(process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN)
+
 let contentfulOptions
 
 if (process.env.CONTEXT === "production") {
