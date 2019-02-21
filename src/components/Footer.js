@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import colors from "../styles/colors"
+import Policies from "./Policies"
 import MadeInUSA from "./MadeInUSA"
 import Social from "./Social"
 
@@ -10,6 +11,7 @@ const StyledFooter = styled.footer`
     grid-template-columns: repeat(2, auto);
     justify-content: space-between;
     justify-items: stretch;
+    align-items: start;
     padding: 3rem;
     width: 100%;
     border-top: 2px solid ${colors.black};
@@ -17,8 +19,9 @@ const StyledFooter = styled.footer`
 
 const Footer = () => (
     <StyledFooter>
-        <MadeInUSA/>
+        <Policies/>
         <Social/>
+        <MadeInUSA/>
     </StyledFooter>
 )
 

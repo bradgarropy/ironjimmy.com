@@ -1,9 +1,11 @@
 const path = require("path")
+const helpers = require("./src/utils/helpers")
 
-const createPages = ({graphql, actions}) => {
+const createPages = async({graphql, actions}) => {
     const {createPage} = actions
+    let response = null
 
-    const products = graphql(`
+    response = await graphql(`
         {
             allShopifyProduct {
                 edges {
@@ -11,46 +13,56 @@ const createPages = ({graphql, actions}) => {
                         shopifyId
                         productType
                         handle
-                        title
                     }
                 }
             }
         }
-    `).then(result => {
-        const products = result.data.allShopifyProduct.edges
+    `)
 
-        products.forEach(({node}) => {
-            const id = node.shopifyId
-            const slug = node.handle
-            const type = node.productType.toLowerCase()
+    const products = response.data.allShopifyProduct.edges.map(
+        edge => edge.node,
+    )
 
-            switch (type) {
-                case "sleeves":
-                    createPage({
-                        path: `${type}/${slug}`,
-                        component: path.resolve("./src/templates/sleeves.js"),
-                        context: {id},
-                    })
-                    break
-                case "straps":
-                    createPage({
-                        path: `${type}/${slug}`,
-                        component: path.resolve("./src/templates/straps.js"),
-                        context: {id},
-                    })
-                    break
-                case "apparel":
-                    createPage({
-                        path: `${type}/${slug}`,
-                        component: path.resolve("./src/templates/apparel.js"),
-                        context: {id},
-                    })
-                    break
-            }
+    products.forEach(product => {
+        const shopifyId = product.shopifyId
+        const slug = product.handle
+        const type = product.productType.toLowerCase()
+
+        createPage({
+            path: `${type}/${slug}`,
+            component: path.resolve(`./src/templates/${type}.js`),
+            context: {shopifyId},
         })
     })
 
-    return Promise.all([products])
+    response = await graphql(`
+        {
+            allShopifyShopPolicy {
+                edges {
+                    node {
+                        shopifyId
+                        type
+                    }
+                }
+            }
+        }
+    `)
+
+    const policies = response.data.allShopifyShopPolicy.edges.map(
+        edge => edge.node,
+    )
+
+    policies.forEach(policy => {
+        const {type, shopifyId} = policy
+
+        createPage({
+            path: helpers.camelToDash(type),
+            component: path.resolve("./src/templates/policy.js"),
+            context: {shopifyId},
+        })
+    })
+
+    return
 }
 
 module.exports = {createPages}

@@ -129,8 +129,8 @@ const isColor = name => {
 }
 
 export const query = graphql`
-    query($id: String!) {
-        shopifyProduct(shopifyId: {eq: $id}) {
+    query($shopifyId: String!) {
+        shopifyProduct(shopifyId: {eq: $shopifyId}) {
             shopifyId
             title
             description
