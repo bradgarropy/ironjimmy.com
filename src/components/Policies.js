@@ -22,7 +22,7 @@ const Policies = () => {
                         {policies.map(policy => (
                             <Link
                                 key={policy.shopifyId}
-                                to={camelToDash(policy.type)}
+                                to={`/${camelToDash(policy.type)}`}
                             >
                                 {policy.title}
                             </Link>
