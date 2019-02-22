@@ -2,13 +2,14 @@ import Client from "shopify-buy"
 
 const shopify = Client.buildClient({
     domain: "iron-jimmy-sleeves.myshopify.com",
-    storefrontAccessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
+    storefrontAccessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
 })
 
 const createClient = () => {
     const shopify = Client.buildClient({
         domain: "iron-jimmy-sleeves.myshopify.com",
-        storefrontAccessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
+        storefrontAccessToken:
+            process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
     })
 
     return shopify

@@ -65,7 +65,7 @@ module.exports = {
             resolve: "gatsby-source-shopify",
             options: {
                 shopName: "iron-jimmy-sleeves",
-                accessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
+                accessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
                 verbose: true,
             },
         },
