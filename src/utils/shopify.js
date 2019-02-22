@@ -5,41 +5,34 @@ const shopify = Client.buildClient({
     storefrontAccessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
 })
 
-const createClient = () => {
-    const shopify = Client.buildClient({
-        domain: "iron-jimmy-sleeves.myshopify.com",
-        storefrontAccessToken:
-            process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
-    })
-
-    return shopify
-}
-
 const initializeCart = async() => {
-    const cartId = localStorage.getItem("shopifyCartId")
+    const id = localStorage.getItem("shopifyCartId")
 
-    if (!cartId) {
+    if (!id) {
         console.log("🛒⛔")
         const cart = await createCart()
-        console.log(`🛒🔧 ${cart.id}`)
         localStorage.setItem("shopifyCartId", cart.id)
     } else {
-        console.log(`🛒✨ ${cartId}`)
+        console.log("🛒✨")
     }
 }
 
 const createCart = async() => {
+    console.log("🛒🔧")
     const cart = await shopify.checkout.create()
     return cart
 }
 
 const getCart = async() => {
+    console.log("🛒🤲🏼")
     const id = localStorage.getItem("shopifyCartId")
-    const cart = await shopify.checkout.fetch(id)
-    return cart
+    return await shopify.checkout.fetch(id)
 }
 
-const addToCart = async(cartId, item) => {
+const addToCart = async item => {
+    console.log("🛒✅")
+    const id = localStorage.getItem("shopifyCartId")
+
     const lineItems = [
         {
             variantId: item,
@@ -47,21 +40,16 @@ const addToCart = async(cartId, item) => {
         },
     ]
 
-    const cart = await shopify.checkout.addLineItems(cartId, lineItems)
+    const cart = await shopify.checkout.addLineItems(id, lineItems)
     return cart
 }
 
-const removeFromCart = async(cartId, item) => {
+const removeFromCart = async item => {
+    console.log("🛒❌")
+    const id = localStorage.getItem("shopifyCartId")
     const lineItems = [item]
-    const cart = await shopify.checkout.removeLineItems(cartId, lineItems)
+    const cart = await shopify.checkout.removeLineItems(id, lineItems)
     return cart
 }
 
-export {
-    createClient,
-    initializeCart,
-    createCart,
-    getCart,
-    addToCart,
-    removeFromCart,
-}
+export {initializeCart, createCart, getCart, addToCart, removeFromCart}

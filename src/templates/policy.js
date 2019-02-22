@@ -4,23 +4,21 @@ import {graphql} from "gatsby"
 import Layout from "../components/Layout"
 import Container from "../styles/Container"
 
-class PolicyTemplate extends React.Component {
-    static propTypes = {
-        data: PropTypes.object.isRequired,
-    }
+const PolicyTemplate = ({data}) => {
+    const policy = data.shopifyShopPolicy
 
-    render = () => {
-        const policy = this.props.data.shopifyShopPolicy
+    return (
+        <Layout>
+            <Container>
+                <h1>{policy.title}</h1>
+                <p>{policy.body}</p>
+            </Container>
+        </Layout>
+    )
+}
 
-        return (
-            <Layout>
-                <Container>
-                    <h1>{policy.title}</h1>
-                    <p>{policy.body}</p>
-                </Container>
-            </Layout>
-        )
-    }
+PolicyTemplate.propTypes = {
+    data: PropTypes.object.isRequired,
 }
 
 export const query = graphql`

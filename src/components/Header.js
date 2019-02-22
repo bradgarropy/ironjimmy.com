@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import TopBar from "./TopBar"
+import Cart from "./Cart"
 import Logo from "./Logo"
 import Navigation from "./Navigation"
 
@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
 
 const Header = () => (
     <StyledHeader>
-        <TopBar/>
+        <Cart/>
         <Logo/>
         <Navigation/>
     </StyledHeader>

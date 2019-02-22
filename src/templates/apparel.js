@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
@@ -10,77 +10,79 @@ import ProductForm from "../styles/ProductForm"
 import Field from "../styles/Field"
 import AddToCart from "../components/AddToCart"
 import {displayPrice} from "../utils/price"
+import {addToCart} from "../utils/shopify"
 
-class ApparelTemplate extends React.Component {
-    static propTypes = {
-        data: PropTypes.object.isRequired,
-    }
+const ApparelTemplate = ({data}) => {
+    const [variant, setVariant] = useState(
+        "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8xNDM3NzA4NjcxMzkyMg==",
+    )
 
-    handleSubmit = async event => {
+    const handleSubmit = event => {
         event.preventDefault()
-        console.log("handleSubmit!")
+        addToCart(variant)
+        return
     }
 
-    render = () => {
-        const {
-            images,
-            description,
-            priceRange,
-            title,
-            options,
-        } = this.props.data.shopifyProduct
+    const {
+        images,
+        description,
+        priceRange,
+        title,
+        options,
+    } = data.shopifyProduct
 
-        const image = images[0].originalSrc
-        const price = priceRange.minVariantPrice.amount
+    const image = images[0].originalSrc
+    const price = priceRange.minVariantPrice.amount
 
-        return (
-            <Layout>
-                <Container>
-                    <Product>
-                        <div>
-                            <Image src={image}/>
-                            <p>{description}</p>
-                        </div>
+    return (
+        <Layout>
+            <Container>
+                <Product>
+                    <div>
+                        <Image src={image}/>
+                        <p>{description}</p>
+                    </div>
 
-                        <div>
-                            <ProductHeader>
-                                <h1>{title}</h1>
-                                <p>{displayPrice(price)}</p>
-                            </ProductHeader>
+                    <div>
+                        <ProductHeader>
+                            <h1>{title}</h1>
+                            <p>{displayPrice(price)}</p>
+                        </ProductHeader>
 
-                            <ProductForm onSubmit={this.handleSubmit}>
-                                {options.map((option, index) => {
-                                    const {name, values} = option
+                        <ProductForm onSubmit={handleSubmit}>
+                            {options.map((option, index) => {
+                                const {name, values} = option
 
-                                    if (!isColor(name) && !isDefault(name)) {
-                                        return (
-                                            <Field key={index}>
-                                                <label>{name}</label>
-                                                <select>
-                                                    {values.map(
-                                                        (value, index) => (
-                                                            <option
-                                                                key={index}
-                                                                value={value}
-                                                            >
-                                                                {value}
-                                                            </option>
-                                                        ),
-                                                    )}
-                                                </select>
-                                            </Field>
-                                        )
-                                    }
-                                })}
+                                if (!isColor(name) && !isDefault(name)) {
+                                    return (
+                                        <Field key={index}>
+                                            <label>{name}</label>
+                                            <select>
+                                                {values.map((value, index) => (
+                                                    <option
+                                                        key={index}
+                                                        value={value}
+                                                    >
+                                                        {value}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </Field>
+                                    )
+                                }
+                            })}
 
-                                <AddToCart/>
-                            </ProductForm>
-                        </div>
-                    </Product>
-                </Container>
-            </Layout>
-        )
-    }
+                            <AddToCart/>
+                        </ProductForm>
+                    </div>
+                </Product>
+            </Container>
+        </Layout>
+    )
+}
+
+ApparelTemplate.propTypes = {
+    data: PropTypes.object.isRequired,
 }
 
 const isDefault = name => {
@@ -96,6 +98,7 @@ const isColor = name => {
 export const query = graphql`
     query($shopifyId: String!) {
         shopifyProduct(shopifyId: {eq: $shopifyId}) {
+            shopifyId
             title
             description
             images {
@@ -109,6 +112,16 @@ export const query = graphql`
             options {
                 name
                 values
+            }
+            variants {
+                shopifyId
+                selectedOptions {
+                    name
+                    value
+                }
+                image {
+                    originalSrc
+                }
             }
         }
     }
