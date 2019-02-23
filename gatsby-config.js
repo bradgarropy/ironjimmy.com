@@ -69,5 +69,17 @@ module.exports = {
                 verbose: true,
             },
         },
+        {
+            resolve: "gatsby-source-apiserver",
+            options: {
+                url:
+                    "https://iron-jimmy-sleeves.myshopify.com/admin/policies.json",
+                name: "ShopifyPolicy",
+                auth: {
+                    username: process.env.SHOPIFY_ADMIN_API_KEY,
+                    password: process.env.SHOPIFY_ADMIN_API_PASSWORD,
+                },
+            },
+        },
     ],
 }

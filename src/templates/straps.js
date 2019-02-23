@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
-import {graphql} from "gatsby"
 import Layout from "../components/Layout"
 import Image from "../components/Image"
 import Container from "../styles/Container"
@@ -13,7 +12,7 @@ import AddToCart from "../components/AddToCart"
 import {displayPrice} from "../utils/price"
 import {addToCart} from "../utils/shopify"
 
-const StrapsTemplate = ({data}) => {
+const StrapsTemplate = ({pageContext}) => {
     const [variant, setVariant] = useState(
         "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8xNDMwNTYwMzI4OTE1NA==",
     )
@@ -31,7 +30,7 @@ const StrapsTemplate = ({data}) => {
         title,
         options,
         variants,
-    } = data.shopifyProduct
+    } = pageContext.product
 
     const variantImages = variants.reduce((acc, curr) => {
         const image = curr.image.originalSrc
@@ -97,7 +96,7 @@ const StrapsTemplate = ({data}) => {
 }
 
 StrapsTemplate.propTypes = {
-    data: PropTypes.object.isRequired,
+    pageContext: PropTypes.object.isRequired,
 }
 
 const isDefault = name => {
@@ -109,37 +108,5 @@ const isColor = name => {
     name = name.toLowerCase()
     return matches.some(element => name.includes(element))
 }
-
-export const query = graphql`
-    query($shopifyId: String!) {
-        shopifyProduct(shopifyId: {eq: $shopifyId}) {
-            shopifyId
-            title
-            description
-            images {
-                originalSrc
-            }
-            priceRange {
-                minVariantPrice {
-                    amount
-                }
-            }
-            options {
-                name
-                values
-            }
-            variants {
-                shopifyId
-                selectedOptions {
-                    name
-                    value
-                }
-                image {
-                    originalSrc
-                }
-            }
-        }
-    }
-`
 
 export default StrapsTemplate

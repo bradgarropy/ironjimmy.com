@@ -1,7 +1,7 @@
 import React from "react"
 import {Link, useStaticQuery, graphql} from "gatsby"
 import styled from "styled-components"
-import {camelToDash} from "../utils/helpers"
+import {capitalize} from "../utils/helpers"
 
 const StyledPolicies = styled.div`
     display: grid;
@@ -10,17 +10,14 @@ const StyledPolicies = styled.div`
 `
 
 const Policies = () => {
-    const {allShopifyShopPolicy} = useStaticQuery(query)
-    const policies = allShopifyShopPolicy.edges.map(edge => edge.node)
+    const {allShopifyPolicy} = useStaticQuery(query)
+    const policies = allShopifyPolicy.edges[0].node.policies
 
     return (
         <StyledPolicies>
             {policies.map(policy => (
-                <Link
-                    key={policy.shopifyId}
-                    to={`/${camelToDash(policy.type)}`}
-                >
-                    {policy.title}
+                <Link key={policy.handle} to={`/${policy.handle}`}>
+                    {capitalize(policy.title)}
                 </Link>
             ))}
         </StyledPolicies>
@@ -29,12 +26,13 @@ const Policies = () => {
 
 const query = graphql`
     {
-        allShopifyShopPolicy {
+        allShopifyPolicy {
             edges {
                 node {
-                    shopifyId
-                    type
-                    title
+                    policies {
+                        title
+                        handle
+                    }
                 }
             }
         }

@@ -1,5 +1,4 @@
 const path = require("path")
-const helpers = require("./src/utils/helpers")
 
 const createPages = async({graphql, actions}) => {
     const {createPage} = actions
@@ -10,9 +9,32 @@ const createPages = async({graphql, actions}) => {
             allShopifyProduct {
                 edges {
                     node {
-                        shopifyId
                         productType
                         handle
+                        title
+                        description
+                        images {
+                            originalSrc
+                        }
+                        priceRange {
+                            minVariantPrice {
+                                amount
+                            }
+                        }
+                        options {
+                            name
+                            values
+                        }
+                        variants {
+                            shopifyId
+                            selectedOptions {
+                                name
+                                value
+                            }
+                            image {
+                                originalSrc
+                            }
+                        }
                     }
                 }
             }
@@ -24,41 +46,39 @@ const createPages = async({graphql, actions}) => {
     )
 
     products.forEach(product => {
-        const shopifyId = product.shopifyId
         const slug = product.handle
         const type = product.productType.toLowerCase()
 
         createPage({
             path: `${type}/${slug}`,
             component: path.resolve(`./src/templates/${type}.js`),
-            context: {shopifyId},
+            context: {product},
         })
     })
 
     response = await graphql(`
         {
-            allShopifyShopPolicy {
+            allShopifyPolicy {
                 edges {
                     node {
-                        shopifyId
-                        type
+                        policies {
+                            handle
+                            title
+                            body
+                        }
                     }
                 }
             }
         }
     `)
 
-    const policies = response.data.allShopifyShopPolicy.edges.map(
-        edge => edge.node,
-    )
+    const policies = response.data.allShopifyPolicy.edges[0].node.policies
 
     policies.forEach(policy => {
-        const {type, shopifyId} = policy
-
         createPage({
-            path: helpers.camelToDash(type),
+            path: policy.handle,
             component: path.resolve("./src/templates/policy.js"),
-            context: {shopifyId},
+            context: {policy},
         })
     })
 
