@@ -72,7 +72,9 @@ const createPages = async({graphql, actions}) => {
         }
     `)
 
-    const policies = response.data.allShopifyPolicy.edges[0].node.policies
+    const edges = response.data.allShopifyPolicy.edges.filter(edge =>
+        edge.node.policies ? true : false,)
+    const policies = edges[0].node.policies
 
     policies.forEach(policy => {
         createPage({

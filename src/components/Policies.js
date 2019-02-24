@@ -11,7 +11,9 @@ const StyledPolicies = styled.div`
 
 const Policies = () => {
     const {allShopifyPolicy} = useStaticQuery(query)
-    const policies = allShopifyPolicy.edges[0].node.policies
+    const edges = allShopifyPolicy.edges.filter(edge =>
+        edge.node.policies ? true : false,)
+    const policies = edges[0].node.policies
 
     return (
         <StyledPolicies>
