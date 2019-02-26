@@ -52,4 +52,16 @@ const removeFromCart = async item => {
     return cart
 }
 
-export {initializeCart, createCart, getCart, addToCart, removeFromCart}
+const getVariant = (product, options) => {
+    const variant = shopify.product.helpers.variantForOptions(product, options)
+    return variant
+}
+
+export {
+    initializeCart,
+    createCart,
+    getCart,
+    addToCart,
+    removeFromCart,
+    getVariant,
+}

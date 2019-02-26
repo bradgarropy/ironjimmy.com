@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/Layout"
 import Image from "../components/Image"
@@ -10,27 +10,11 @@ import Field from "../styles/Field"
 import Colors from "../components/Colors"
 import AddToCart from "../components/AddToCart"
 import {displayPrice} from "../utils/price"
-import {addToCart} from "../utils/shopify"
+import {addToCart, getVariant} from "../utils/shopify"
 
 const SleevesTemplate = ({pageContext}) => {
-    const [variant, setVariant] = useState(
-        "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8xNDMwNTUxOTE3MzY5OA==",
-    )
-
-    const handleSubmit = event => {
-        event.preventDefault()
-        addToCart(variant)
-        return
-    }
-
-    const {
-        images,
-        description,
-        priceRange,
-        title,
-        options,
-        variants,
-    } = pageContext.product
+    const {product} = pageContext
+    const {images, description, priceRange, title, options, variants} = product
 
     const variantImages = variants.reduce((acc, curr) => {
         const image = curr.image.originalSrc
@@ -44,7 +28,34 @@ const SleevesTemplate = ({pageContext}) => {
         return acc
     }, [])
 
+    const initialOptions = options.reduce((acc, curr) => {
+        const name = curr.name
+        const value = curr.values[0]
+        acc[name] = value
+        return acc
+    }, {})
+
     const price = priceRange.minVariantPrice.amount
+
+    const [selectedOptions, setOptions] = useState(initialOptions)
+    const [variant, setVariant] = useState()
+
+    useEffect(() => {
+        const variant = getVariant(product, selectedOptions)
+        setVariant(variant.shopifyId)
+    }, [selectedOptions])
+
+    const onSubmit = event => {
+        event.preventDefault()
+        addToCart(variant)
+        return
+    }
+
+    const onChange = event => {
+        const {name, value} = event.target
+        setOptions({...selectedOptions, [name]: value})
+        return
+    }
 
     return (
         <Layout>
@@ -63,15 +74,15 @@ const SleevesTemplate = ({pageContext}) => {
 
                         <Colors images={variantImages}/>
 
-                        <ProductForm onSubmit={handleSubmit}>
+                        <ProductForm onSubmit={onSubmit}>
                             {options.map((option, index) => {
                                 const {name, values} = option
 
-                                if (!isColor(name) && !isDefault(name)) {
+                                if (!isDefault(name)) {
                                     return (
-                                        <Field key={index}>
+                                        <Field key={index} onChange={onChange}>
                                             <label>{name}</label>
-                                            <select>
+                                            <select name={name}>
                                                 {values.map((value, index) => (
                                                     <option
                                                         key={index}
@@ -86,7 +97,7 @@ const SleevesTemplate = ({pageContext}) => {
                                 }
                             })}
 
-                            <Field>
+                            {/* <Field>
                                 <label>Tag</label>
                                 <input type="text"/>
                             </Field>
@@ -104,7 +115,7 @@ const SleevesTemplate = ({pageContext}) => {
                             <Field>
                                 <label>Notes</label>
                                 <textarea/>
-                            </Field>
+                            </Field> */}
 
                             <AddToCart/>
                         </ProductForm>
