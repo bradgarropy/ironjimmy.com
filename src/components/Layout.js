@@ -34,7 +34,7 @@ const Layout = ({children}) => {
 
     return (
         <>
-            {/* <Meta/> */}
+            <Meta/>
 
             <div className="layout">
                 <CartContext.Provider
