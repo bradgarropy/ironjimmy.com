@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
-import Layout from "../components/Layout"
 import Image from "../components/Image"
 import Container from "../styles/Container"
 import Product from "../styles/Product"
@@ -34,7 +33,7 @@ const ApparelTemplate = ({pageContext}) => {
     const price = priceRange.minVariantPrice.amount
 
     return (
-        <Layout>
+        <>
             <Container>
                 <Product>
                     <div>
@@ -76,7 +75,7 @@ const ApparelTemplate = ({pageContext}) => {
                     </div>
                 </Product>
             </Container>
-        </Layout>
+        </>
     )
 }
 

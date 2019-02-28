@@ -5,18 +5,6 @@ const shopify = Client.buildClient({
     storefrontAccessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
 })
 
-const initializeCart = async() => {
-    const id = localStorage.getItem("shopifyCartId")
-
-    if (!id) {
-        console.log("🛒⛔")
-        const cart = await createCart()
-        localStorage.setItem("shopifyCartId", cart.id)
-    } else {
-        console.log("🛒✨")
-    }
-}
-
 const createCart = async() => {
     console.log("🛒🔧")
     const cart = await shopify.checkout.create()
@@ -25,8 +13,20 @@ const createCart = async() => {
 
 const getCart = async() => {
     console.log("🛒🤲🏼")
+    let cart = {}
+
     const id = localStorage.getItem("shopifyCartId")
-    return await shopify.checkout.fetch(id)
+
+    if (!id) {
+        console.log("🛒⛔")
+        cart = await createCart()
+        localStorage.setItem("shopifyCartId", cart.id)
+    } else {
+        console.log("🛒✨")
+        cart = await shopify.checkout.fetch(id)
+    }
+
+    return cart
 }
 
 const addToCart = async item => {
@@ -57,11 +57,4 @@ const getVariant = (product, options) => {
     return variant
 }
 
-export {
-    initializeCart,
-    createCart,
-    getCart,
-    addToCart,
-    removeFromCart,
-    getVariant,
-}
+export {createCart, getCart, addToCart, removeFromCart, getVariant}

@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Markdown from "markdown-to-jsx"
-import Layout from "../components/Layout"
 import Container from "../styles/Container"
 import "../scss/Contact.scss"
 
@@ -11,7 +10,7 @@ const Contact = ({data}) => {
     const {description} = history.description
 
     return (
-        <Layout>
+        <>
             <Container className="contact">
                 <Markdown>{description}</Markdown>
 
@@ -43,7 +42,7 @@ const Contact = ({data}) => {
                     <button>Submit</button>
                 </form>
             </Container>
-        </Layout>
+        </>
     )
 }
 

@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
-import Layout from "../components/Layout"
 import Image from "../components/Image"
 import Container from "../styles/Container"
 import ProductCategoryHeader from "../styles/ProductCategoryHeader"
@@ -15,7 +14,7 @@ const Apparel = ({data}) => {
     const products = data.shopifyCollection.products
 
     return (
-        <Layout>
+        <>
             <Container>
                 <ProductCategoryHeader>
                     <h1>{title}</h1>
@@ -49,7 +48,7 @@ const Apparel = ({data}) => {
                     })}
                 </ProductGrid>
             </Container>
-        </Layout>
+        </>
     )
 }
 

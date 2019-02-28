@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from "react"
+import React, {useContext} from "react"
+import {Link} from "gatsby"
 import styled from "styled-components"
+import CartContext from "../context/CartContext"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons"
-import {getCart} from "../utils/shopify"
 
-const StyledCart = styled.a`
+const StyledCart = styled(Link)`
     justify-self: right;
     margin: 2rem 2rem 0 0;
     text-transform: uppercase;
@@ -12,25 +13,13 @@ const StyledCart = styled.a`
 `
 
 const Cart = () => {
-    const [cart, setCart] = useState({
-        link: "#",
-        items: 0,
-    })
-
-    useEffect(() => {
-        getCart().then(cart => {
-            setCart({
-                ...cart,
-                link: cart.webUrl,
-                items: cart.lineItems.length,
-            })
-        })
-    }, [])
+    const cartContext = useContext(CartContext)
+    const items = cartContext.cart.lineItems.length
 
     return (
-        <StyledCart href={cart.link}>
+        <StyledCart to="/cart">
             <FontAwesomeIcon icon={faShoppingCart}/>
-            <span> Cart {cart.items}</span>
+            <span>{" Cart" + (items ? ` ${items}` : "")}</span>
         </StyledCart>
     )
 }

@@ -1,24 +1,51 @@
-import React, {useEffect} from "react"
+import React, {useState, useEffect} from "react"
 import PropTypes from "prop-types"
 import Meta from "./Meta"
 import Header from "./Header"
 import Footer from "./Footer"
-import {initializeCart} from "../utils/shopify"
+import {getCart, addToCart} from "../utils/shopify"
 import "../scss/Layout.scss"
+import CartContext from "../context/CartContext"
 
 const Layout = ({children}) => {
+    const [cart, setCart] = useState({lineItems: []})
+
     useEffect(() => {
         initializeCart()
-    })
+    }, [])
+
+    const initializeCart = async() => {
+        const cart = await getCart()
+        setCart(cart)
+        return
+    }
+
+    const add = async variant => {
+        const cart = await addToCart(variant)
+        setCart(cart)
+        return
+    }
+
+    const remove = () => {
+        console.log("remove")
+    }
 
     return (
         <>
             {/* <Meta/> */}
 
             <div className="layout">
-                <Header/>
-                {children}
-                <Footer/>
+                <CartContext.Provider
+                    value={{
+                        cart: cart,
+                        add: add,
+                        remove: remove,
+                    }}
+                >
+                    <Header/>
+                    {children}
+                    <Footer/>
+                </CartContext.Provider>
             </div>
         </>
     )

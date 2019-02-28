@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import PropTypes from "prop-types"
-import Layout from "../components/Layout"
 import Image from "../components/Image"
 import Container from "../styles/Container"
 import Product from "../styles/Product"
@@ -11,6 +10,7 @@ import Colors from "../components/Colors"
 import AddToCart from "../components/AddToCart"
 import {displayPrice} from "../utils/price"
 import {addToCart, getVariant} from "../utils/shopify"
+import CartContext from "../context/CartContext"
 
 const SleevesTemplate = ({pageContext}) => {
     const {product} = pageContext
@@ -40,6 +40,8 @@ const SleevesTemplate = ({pageContext}) => {
     const [selectedOptions, setOptions] = useState(initialOptions)
     const [variant, setVariant] = useState()
 
+    const cartContext = useContext(CartContext)
+
     useEffect(() => {
         const variant = getVariant(product, selectedOptions)
         setVariant(variant.shopifyId)
@@ -47,7 +49,7 @@ const SleevesTemplate = ({pageContext}) => {
 
     const onSubmit = event => {
         event.preventDefault()
-        addToCart(variant)
+        cartContext.add(variant)
         return
     }
 
@@ -58,7 +60,7 @@ const SleevesTemplate = ({pageContext}) => {
     }
 
     return (
-        <Layout>
+        <>
             <Container>
                 <Product>
                     <div>
@@ -122,7 +124,7 @@ const SleevesTemplate = ({pageContext}) => {
                     </div>
                 </Product>
             </Container>
-        </Layout>
+        </>
     )
 }
 

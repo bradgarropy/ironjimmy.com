@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import styled from "styled-components"
-import Layout from "../components/Layout"
 import Container from "../styles/Container"
 import Image from "../components/Image"
 import Markdown from "markdown-to-jsx"
@@ -19,14 +18,14 @@ const About = ({data}) => {
     const description = about.description.description
 
     return (
-        <Layout>
+        <>
             <Container>
                 <StyledAbout>
                     <Image src={image}/>
                     <Markdown>{description}</Markdown>
                 </StyledAbout>
             </Container>
-        </Layout>
+        </>
     )
 }
 

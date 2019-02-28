@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
-import Layout from "../components/Layout"
 import Carousel from "../components/Carousel"
 import Container from "../styles/Container"
 import Image from "../components/Image"
@@ -17,7 +16,7 @@ const Index = ({data}) => {
     const products = data.shopifyCollection.products
 
     return (
-        <Layout>
+        <>
             <Carousel images={images}/>
 
             <Container>
@@ -52,7 +51,7 @@ const Index = ({data}) => {
                     })}
                 </ProductGrid>
             </Container>
-        </Layout>
+        </>
     )
 }
 
