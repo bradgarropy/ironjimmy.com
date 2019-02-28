@@ -29,13 +29,13 @@ const getCart = async() => {
     return cart
 }
 
-const addToCart = async item => {
+const addToCart = async variant => {
     console.log("🛒✅")
     const id = localStorage.getItem("shopifyCartId")
 
     const lineItems = [
         {
-            variantId: item,
+            variantId: variant,
             quantity: 1,
         },
     ]
@@ -44,10 +44,10 @@ const addToCart = async item => {
     return cart
 }
 
-const removeFromCart = async item => {
+const removeFromCart = async lineItem => {
     console.log("🛒❌")
     const id = localStorage.getItem("shopifyCartId")
-    const lineItems = [item]
+    const lineItems = [lineItem]
     const cart = await shopify.checkout.removeLineItems(id, lineItems)
     return cart
 }

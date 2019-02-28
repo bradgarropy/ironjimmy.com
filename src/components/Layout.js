@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Meta from "./Meta"
 import Header from "./Header"
 import Footer from "./Footer"
-import {getCart, addToCart} from "../utils/shopify"
+import {getCart, addToCart, removeFromCart} from "../utils/shopify"
 import "../scss/Layout.scss"
 import CartContext from "../context/CartContext"
 
@@ -26,8 +26,10 @@ const Layout = ({children}) => {
         return
     }
 
-    const remove = () => {
-        console.log("remove")
+    const remove = async lineItem => {
+        const cart = await removeFromCart(lineItem)
+        setCart(cart)
+        return
     }
 
     return (
