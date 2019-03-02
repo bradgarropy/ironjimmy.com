@@ -9,7 +9,7 @@ import Field from "../styles/Field"
 import Colors from "../components/Colors"
 import AddToCart from "../components/AddToCart"
 import {displayPrice} from "../utils/price"
-import {addToCart, getVariant} from "../utils/shopify"
+import {getVariant} from "../utils/shopify"
 import CartContext from "../context/CartContext"
 
 const SleevesTemplate = ({pageContext}) => {

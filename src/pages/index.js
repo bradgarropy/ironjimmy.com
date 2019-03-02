@@ -72,7 +72,7 @@ export const query = graphql`
                 }
             }
         }
-        shopifyCollection(title: {eq: "Featured"}) {
+        shopifyCollection(title: {eq: "HOT ITEMS"}) {
             title
             image {
                 src

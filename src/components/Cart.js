@@ -1,9 +1,9 @@
 import React, {useContext} from "react"
 import {Link} from "gatsby"
 import styled from "styled-components"
-import CartContext from "../context/CartContext"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons"
+import CartContext from "../context/CartContext"
 
 const StyledCart = styled(Link)`
     justify-self: right;
