@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import PropTypes from "prop-types"
 import Image from "../components/Image"
 import Container from "../styles/Container"
@@ -9,27 +9,12 @@ import Field from "../styles/Field"
 import Colors from "../components/Colors"
 import AddToCart from "../components/AddToCart"
 import {displayPrice} from "../utils/price"
-import {addToCart} from "../utils/shopify"
+import {getVariant} from "../utils/shopify"
+import CartContext from "../context/CartContext"
 
-const StrapsTemplate = ({pageContext}) => {
-    const [variant, setVariant] = useState(
-        "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8xNDMwNTYwMzI4OTE1NA==",
-    )
-
-    const handleSubmit = event => {
-        event.preventDefault()
-        addToCart(variant)
-        return
-    }
-
-    const {
-        images,
-        description,
-        priceRange,
-        title,
-        options,
-        variants,
-    } = pageContext.product
+const ProductTemplate = ({pageContext}) => {
+    const {product} = pageContext
+    const {images, description, priceRange, title, options, variants} = product
 
     const variantImages = variants.reduce((acc, curr) => {
         const image = curr.image.originalSrc
@@ -43,7 +28,36 @@ const StrapsTemplate = ({pageContext}) => {
         return acc
     }, [])
 
+    const initialOptions = options.reduce((acc, curr) => {
+        const name = curr.name
+        const value = curr.values[0]
+        acc[name] = value
+        return acc
+    }, {})
+
     const price = priceRange.minVariantPrice.amount
+
+    const [selectedOptions, setOptions] = useState(initialOptions)
+    const [variant, setVariant] = useState()
+
+    const cartContext = useContext(CartContext)
+
+    useEffect(() => {
+        const variant = getVariant(product, selectedOptions)
+        setVariant(variant.shopifyId)
+    }, [selectedOptions])
+
+    const onSubmit = event => {
+        event.preventDefault()
+        cartContext.add(variant)
+        return
+    }
+
+    const onChange = event => {
+        const {name, value} = event.target
+        setOptions({...selectedOptions, [name]: value})
+        return
+    }
 
     return (
         <>
@@ -62,15 +76,15 @@ const StrapsTemplate = ({pageContext}) => {
 
                         <Colors images={variantImages}/>
 
-                        <ProductForm onSubmit={handleSubmit}>
+                        <ProductForm onSubmit={onSubmit}>
                             {options.map((option, index) => {
                                 const {name, values} = option
 
-                                if (!isColor(name) && !isDefault(name)) {
+                                if (!isDefault(name)) {
                                     return (
-                                        <Field key={index}>
+                                        <Field key={index} onChange={onChange}>
                                             <label>{name}</label>
-                                            <select>
+                                            <select name={name}>
                                                 {values.map((value, index) => (
                                                     <option
                                                         key={index}
@@ -85,6 +99,26 @@ const StrapsTemplate = ({pageContext}) => {
                                 }
                             })}
 
+                            {/* <Field>
+                                <label>Tag</label>
+                                <input type="text"/>
+                            </Field>
+
+                            <Field>
+                                <label>Brand</label>
+                                <input type="text"/>
+                            </Field>
+
+                            <Field>
+                                <label>Model</label>
+                                <input type="text"/>
+                            </Field>
+
+                            <Field>
+                                <label>Notes</label>
+                                <textarea/>
+                            </Field> */}
+
                             <AddToCart/>
                         </ProductForm>
                     </div>
@@ -94,7 +128,7 @@ const StrapsTemplate = ({pageContext}) => {
     )
 }
 
-StrapsTemplate.propTypes = {
+ProductTemplate.propTypes = {
     pageContext: PropTypes.object.isRequired,
 }
 
@@ -108,4 +142,4 @@ const isColor = name => {
     return matches.some(element => name.includes(element))
 }
 
-export default StrapsTemplate
+export default ProductTemplate

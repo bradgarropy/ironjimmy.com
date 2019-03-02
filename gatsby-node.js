@@ -51,8 +51,52 @@ const createPages = async({graphql, actions}) => {
 
         createPage({
             path: `${type}/${slug}`,
-            component: path.resolve(`./src/templates/${type}.js`),
+            component: path.resolve("./src/templates/product.js"),
             context: {product},
+        })
+    })
+
+    response = await graphql(`
+        {
+            allShopifyCollection {
+                edges {
+                    node {
+                        handle
+                        title
+                        image {
+                            src
+                        }
+                        products {
+                            shopifyId
+                            title
+                            handle
+                            productType
+                            priceRange {
+                                minVariantPrice {
+                                    amount
+                                }
+                            }
+                            images {
+                                originalSrc
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `)
+
+    const collections = response.data.allShopifyCollection.edges.map(
+        edge => edge.node,
+    )
+
+    collections.forEach(collection => {
+        const slug = collection.handle.split("-").pop()
+
+        createPage({
+            path: slug,
+            component: path.resolve("./src/templates/collection.js"),
+            context: {collection},
         })
     })
 

@@ -4,8 +4,8 @@ import {graphql} from "gatsby"
 import Container from "../styles/Container"
 import Collection from "../components/Collection"
 
-const Straps = ({data}) => {
-    const collection = data.shopifyCollection
+const CollectionTemplate = ({pageContext}) => {
+    const {collection} = pageContext
 
     return (
         <Container>
@@ -14,7 +14,7 @@ const Straps = ({data}) => {
     )
 }
 
-Straps.propTypes = {
+CollectionTemplate.propTypes = {
     data: PropTypes.object.isRequired,
 }
 
@@ -43,4 +43,8 @@ export const query = graphql`
     }
 `
 
-export default Straps
+CollectionTemplate.propTypes = {
+    pageContext: PropTypes.object.isRequired,
+}
+
+export default CollectionTemplate
