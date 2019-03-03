@@ -5,7 +5,7 @@ import colors from "../styles/colors"
 
 const ImageSlider = styled.div`
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(7, 1fr);
     align-items: center;
     column-gap: 2rem;
     row-gap: 2rem;
