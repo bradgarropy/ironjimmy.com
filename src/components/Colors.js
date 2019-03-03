@@ -20,17 +20,19 @@ const Color = styled(Image)`
     height: 5rem;
 `
 
-const Colors = ({images}) => (
-    <StyledColors>
-        <label>Color</label>
+const Colors = ({images}) => {
+    return (
+        <StyledColors>
+            <label>Color</label>
 
-        <ColorGrid>
-            {images.map((image, index) => (
-                <Color key={index} src={image}/>
-            ))}
-        </ColorGrid>
-    </StyledColors>
-)
+            <ColorGrid>
+                {images.map((image, index) => (
+                    <Color key={index} src={image}/>
+                ))}
+            </ColorGrid>
+        </StyledColors>
+    )
+}
 
 Colors.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,

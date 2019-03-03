@@ -1,30 +1,25 @@
 import React, {useState, useEffect, useContext} from "react"
 import PropTypes from "prop-types"
-import Image from "../components/Image"
+import CartContext from "../context/CartContext"
+import Colors from "../components/Colors"
+import AddToCart from "../components/AddToCart"
+import ProductImages from "../components/ProductImages"
+import {displayPrice} from "../utils/price"
+import {getVariant} from "../utils/shopify"
 import Container from "../styles/Container"
 import Product from "../styles/Product"
 import ProductHeader from "../styles/ProductHeader"
 import ProductForm from "../styles/ProductForm"
 import Field from "../styles/Field"
-import Colors from "../components/Colors"
-import AddToCart from "../components/AddToCart"
-import {displayPrice} from "../utils/price"
-import {getVariant} from "../utils/shopify"
-import CartContext from "../context/CartContext"
 
 const ProductTemplate = ({pageContext}) => {
     const {product} = pageContext
-    const {images, description, priceRange, title, options, variants} = product
+    const {description, priceRange, title, options, variants} = product
+    const images = product.images.map(image => image.originalSrc)
 
     const variantImages = variants.reduce((acc, curr) => {
         const image = curr.image.originalSrc
         !acc.includes(image) && acc.push(image)
-        return acc
-    }, [])
-
-    const productImages = images.reduce((acc, curr) => {
-        const image = curr.originalSrc
-        !variantImages.includes(image) && acc.push(image)
         return acc
     }, [])
 
@@ -64,7 +59,7 @@ const ProductTemplate = ({pageContext}) => {
             <Container>
                 <Product>
                     <div>
-                        <Image src={productImages[0]}/>
+                        <ProductImages images={images}/>
                         <p>{description}</p>
                     </div>
 
