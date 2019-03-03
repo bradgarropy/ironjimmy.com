@@ -9,10 +9,11 @@ const createPages = async({graphql, actions}) => {
             allShopifyProduct {
                 edges {
                     node {
-                        productType
                         handle
                         title
+                        productType
                         description
+                        availableForSale
                         images {
                             originalSrc
                         }

@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Markdown from "markdown-to-jsx"
 import Container from "../styles/Container"
+import Button from "../styles/Button"
 import "../scss/Contact.scss"
 
 const Contact = ({data}) => {
@@ -39,7 +40,7 @@ const Contact = ({data}) => {
                         <textarea name="message" rows="7"/>
                     </div>
 
-                    <button>Submit</button>
+                    <Button>Submit</Button>
                 </form>
             </Container>
         </>

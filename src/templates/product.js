@@ -14,7 +14,14 @@ import Field from "../styles/Field"
 
 const ProductTemplate = ({pageContext}) => {
     const {product} = pageContext
-    const {description, priceRange, title, options, variants} = product
+    const {
+        description,
+        availableForSale,
+        priceRange,
+        title,
+        options,
+        variants,
+    } = product
     const images = product.images.map(image => image.originalSrc)
 
     const variantImages = variants.reduce((acc, curr) => {
@@ -114,7 +121,7 @@ const ProductTemplate = ({pageContext}) => {
                                 <textarea/>
                             </Field> */}
 
-                            <AddToCart/>
+                            <AddToCart soldOut={!availableForSale}/>
                         </ProductForm>
                     </div>
                 </Product>
