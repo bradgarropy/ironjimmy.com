@@ -60,6 +60,15 @@ const RemoveFromCart = styled(FontAwesomeIcon)`
     }
 `
 
+const CartTotal = styled.p`
+    border-top: 2px solid ${colors.black};
+    padding-top: 3rem;
+    text-align: right;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+`
+
 const Checkout = styled.a`
     color: ${colors.black};
     justify-self: center;
@@ -80,9 +89,10 @@ const Checkout = styled.a`
 
 const Cart = () => {
     const cartContext = useContext(CartContext)
+    const {cart, remove} = cartContext
 
     const onClick = variant => {
-        cartContext.remove(variant)
+        remove(variant)
         return
     }
 
@@ -92,7 +102,7 @@ const Cart = () => {
                 <h1>Cart</h1>
 
                 <CartLineItems>
-                    {cartContext.cart.lineItems.map(item => {
+                    {cart.lineItems.map(item => {
                         return (
                             <CartLineItem key={item.id}>
                                 <CartLineItemImage
@@ -122,7 +132,9 @@ const Cart = () => {
                     })}
                 </CartLineItems>
 
-                <Checkout href={cartContext.cart.webUrl}>Checkout</Checkout>
+                <CartTotal>{displayPrice(cart.totalPrice)}</CartTotal>
+
+                <Checkout href={cart.webUrl}>Checkout</Checkout>
             </StyledCart>
         </Container>
     )
