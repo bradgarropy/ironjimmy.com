@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import Image from "../components/Image"
+import Image from "../Image"
 
 const StyledColors = styled.div`
     margin: 3rem 0;

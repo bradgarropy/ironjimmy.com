@@ -3,8 +3,8 @@ import PropTypes from "prop-types"
 import Meta from "./Meta"
 import Header from "./Header"
 import Footer from "./Footer"
-import "../scss/Layout.scss"
-import CartProvider from "../context/CartProvider"
+import CartProvider from "../../context/CartProvider"
+import "../../scss/Layout.scss"
 
 const Layout = ({children}) => {
     return (

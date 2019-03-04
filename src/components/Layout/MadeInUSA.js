@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import usa from "../../static/images/usa.svg"
+import usa from "../../../static/images/usa.svg"
 
 const StyledMadeInUSA = styled.div`
     display: grid;

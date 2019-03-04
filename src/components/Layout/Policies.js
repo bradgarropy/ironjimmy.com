@@ -1,7 +1,7 @@
 import React from "react"
 import {Link, useStaticQuery, graphql} from "gatsby"
 import styled from "styled-components"
-import {capitalize} from "../utils/helpers"
+import {capitalize} from "../../utils/helpers"
 
 const StyledPolicies = styled.div`
     display: grid;

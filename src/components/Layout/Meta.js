@@ -1,6 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
-import Icon from "../../static/icons/iron-jimmy-icon.png"
+import Icon from "../../../static/icons/iron-jimmy-icon.png"
 
 const Meta = () => {
     const image =

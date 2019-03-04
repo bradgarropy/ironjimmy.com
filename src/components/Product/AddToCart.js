@@ -5,7 +5,7 @@ import {
     faCartPlus,
     faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons"
-import Button from "../styles/Button"
+import Button from "../../styles/Button"
 
 const AddToCart = ({soldOut}) => {
     const icon = soldOut ? faExclamationCircle : faCartPlus

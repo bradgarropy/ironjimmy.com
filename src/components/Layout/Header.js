@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Cart from "./Cart"
+import Cart from "../Cart"
 import Logo from "./Logo"
 import Navigation from "./Navigation"
 

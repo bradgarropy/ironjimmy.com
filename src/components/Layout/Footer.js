@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import colors from "../styles/colors"
+import colors from "../../styles/colors"
 import Policies from "./Policies"
 import MadeInUSA from "./MadeInUSA"
 import Social from "./Social"
