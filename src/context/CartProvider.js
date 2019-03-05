@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from "react"
 import PropTypes from "prop-types"
 import CartContext from "./CartContext"
-import {getCart, addToCart, removeFromCart} from "../utils/shopify"
+import {
+    getCart,
+    addToCart,
+    removeFromCart,
+    updateLineItem,
+} from "../utils/shopify"
 
 const CartProvider = ({children}) => {
     const [cart, setCart] = useState({lineItems: []})
@@ -28,10 +33,17 @@ const CartProvider = ({children}) => {
         return
     }
 
+    const update = async lineItem => {
+        const cart = await updateLineItem(lineItem)
+        setCart(cart)
+        return
+    }
+
     const context = {
-        cart: cart,
-        add: add,
-        remove: remove,
+        cart,
+        add,
+        remove,
+        update,
     }
 
     return (

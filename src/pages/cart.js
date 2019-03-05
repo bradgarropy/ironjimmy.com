@@ -1,8 +1,8 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faTimesCircle} from "@fortawesome/free-solid-svg-icons"
 import CartContext from "../context/CartContext"
+import Quantity from "../components/Cart/Quantity"
+import Remove from "../components/Cart/Remove"
 import {displayPrice} from "../utils/price"
 import Container from "../styles/Container"
 import colors from "../styles/colors"
@@ -25,7 +25,7 @@ const CartLineItems = styled.div`
 
 const CartLineItem = styled.div`
     display: grid;
-    grid-template-columns: auto 70fr 40fr auto;
+    grid-template-columns: auto auto auto auto auto;
     column-gap: 5rem;
     align-items: start;
     justify-items: center;
@@ -49,15 +49,6 @@ const CartLineItemVariant = styled.p`
 const CartLineItemPrice = styled.p`
     margin: 0;
     font-size: 2rem;
-`
-
-const RemoveFromCart = styled(FontAwesomeIcon)`
-    cursor: pointer;
-    transition: all 300ms;
-
-    &:hover {
-        color: ${colors.red};
-    }
 `
 
 const CartTotal = styled.p`
@@ -89,12 +80,7 @@ const Checkout = styled.a`
 
 const Cart = () => {
     const cartContext = useContext(CartContext)
-    const {cart, remove} = cartContext
-
-    const onClick = variant => {
-        remove(variant)
-        return
-    }
+    const {cart} = cartContext
 
     return (
         <Container>
@@ -113,6 +99,7 @@ const Cart = () => {
                                     <CartLineItemTitle>
                                         {item.title}
                                     </CartLineItemTitle>
+
                                     <CartLineItemVariant>
                                         {item.variant.title}
                                     </CartLineItemVariant>
@@ -122,11 +109,9 @@ const Cart = () => {
                                     {displayPrice(item.variant.price)}
                                 </CartLineItemPrice>
 
-                                <RemoveFromCart
-                                    icon={faTimesCircle}
-                                    size="2x"
-                                    onClick={() => onClick(item.id)}
-                                />
+                                <Quantity item={item}/>
+
+                                <Remove item={item}/>
                             </CartLineItem>
                         )
                     })}

@@ -52,9 +52,24 @@ const removeFromCart = async lineItem => {
     return cart
 }
 
+const updateLineItem = async lineItem => {
+    console.log("🛒📝")
+    const id = localStorage.getItem("shopifyCartId")
+    const lineItems = [lineItem]
+    const cart = await shopify.checkout.updateLineItems(id, lineItems)
+    return cart
+}
+
 const getVariant = (product, options) => {
     const variant = shopify.product.helpers.variantForOptions(product, options)
     return variant
 }
 
-export {createCart, getCart, addToCart, removeFromCart, getVariant}
+export {
+    createCart,
+    getCart,
+    addToCart,
+    removeFromCart,
+    getVariant,
+    updateLineItem,
+}
