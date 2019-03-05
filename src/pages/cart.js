@@ -3,6 +3,7 @@ import styled from "styled-components"
 import CartContext from "../context/CartContext"
 import Quantity from "../components/Cart/Quantity"
 import Remove from "../components/Cart/Remove"
+import Empty from "../components/Cart/Empty"
 import {displayPrice} from "../utils/price"
 import Container from "../styles/Container"
 import colors from "../styles/colors"
@@ -87,39 +88,45 @@ const Cart = () => {
             <StyledCart>
                 <h1>Cart</h1>
 
-                <CartLineItems>
-                    {cart.lineItems.map(item => {
-                        return (
-                            <CartLineItem key={item.id}>
-                                <CartLineItemImage
-                                    src={item.variant.image.src}
-                                />
+                {!cart.lineItems.length ? (
+                    <Empty/>
+                ) : (
+                    <>
+                        <CartLineItems>
+                            {cart.lineItems.map(item => {
+                                return (
+                                    <CartLineItem key={item.id}>
+                                        <CartLineItemImage
+                                            src={item.variant.image.src}
+                                        />
 
-                                <div>
-                                    <CartLineItemTitle>
-                                        {item.title}
-                                    </CartLineItemTitle>
+                                        <div>
+                                            <CartLineItemTitle>
+                                                {item.title}
+                                            </CartLineItemTitle>
 
-                                    <CartLineItemVariant>
-                                        {item.variant.title}
-                                    </CartLineItemVariant>
-                                </div>
+                                            <CartLineItemVariant>
+                                                {item.variant.title}
+                                            </CartLineItemVariant>
+                                        </div>
 
-                                <CartLineItemPrice>
-                                    {displayPrice(item.variant.price)}
-                                </CartLineItemPrice>
+                                        <CartLineItemPrice>
+                                            {displayPrice(item.variant.price)}
+                                        </CartLineItemPrice>
 
-                                <Quantity item={item}/>
+                                        <Quantity item={item}/>
 
-                                <Remove item={item}/>
-                            </CartLineItem>
-                        )
-                    })}
-                </CartLineItems>
+                                        <Remove item={item}/>
+                                    </CartLineItem>
+                                )
+                            })}
+                        </CartLineItems>
 
-                <CartTotal>{displayPrice(cart.totalPrice)}</CartTotal>
+                        <CartTotal>{displayPrice(cart.totalPrice)}</CartTotal>
 
-                <Checkout href={cart.webUrl}>Checkout</Checkout>
+                        <Checkout href={cart.webUrl}>Checkout</Checkout>
+                    </>
+                )}
             </StyledCart>
         </Container>
     )
