@@ -12,6 +12,7 @@ const createPages = async({graphql, actions}) => {
                         handle
                         title
                         productType
+                        tags
                         description
                         availableForSale
                         images {

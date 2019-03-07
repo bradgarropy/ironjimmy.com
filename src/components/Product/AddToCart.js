@@ -4,15 +4,31 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {
     faCartPlus,
     faExclamationCircle,
+    faArrowAltCircleRight,
 } from "@fortawesome/free-solid-svg-icons"
 import Button from "../../styles/Button"
 
-const AddToCart = ({soldOut}) => {
-    const icon = soldOut ? faExclamationCircle : faCartPlus
-    const text = soldOut ? "Sold Out" : "Add To Cart"
+const AddToCart = ({soldOut, comingSoon}) => {
+    let icon
+    let text
+    let disabled
+
+    if (comingSoon) {
+        icon = faArrowAltCircleRight
+        text = "Coming Soon"
+        disabled = true
+    } else if (soldOut) {
+        icon = faExclamationCircle
+        text = "Sold Out"
+        disabled = true
+    } else {
+        icon = faCartPlus
+        text = "Add To Cart"
+        disabled = false
+    }
 
     return (
-        <Button disabled={soldOut}>
+        <Button disabled={disabled}>
             <FontAwesomeIcon icon={icon}/> {text}
         </Button>
     )
@@ -20,6 +36,7 @@ const AddToCart = ({soldOut}) => {
 
 AddToCart.propTypes = {
     soldOut: PropTypes.bool.isRequired,
+    comingSoon: PropTypes.bool.isRequired,
 }
 
 export default AddToCart

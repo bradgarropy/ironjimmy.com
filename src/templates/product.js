@@ -22,6 +22,7 @@ const ProductTemplate = ({pageContext}) => {
         options,
         variants,
         productType,
+        tags,
     } = product
     const images = product.images.map(image => image.originalSrc)
 
@@ -151,7 +152,10 @@ const ProductTemplate = ({pageContext}) => {
                                 </>
                             )}
 
-                            <AddToCart soldOut={!availableForSale}/>
+                            <AddToCart
+                                soldOut={!availableForSale}
+                                comingSoon={tags.includes("coming-soon")}
+                            />
                         </ProductForm>
                     </div>
                 </Product>
