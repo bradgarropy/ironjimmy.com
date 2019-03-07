@@ -29,7 +29,7 @@ const getCart = async() => {
     return cart
 }
 
-const addToCart = async variant => {
+const addToCart = async(variant, attributes = {}) => {
     console.log("🛒✅")
     const id = localStorage.getItem("shopifyCartId")
 
@@ -37,6 +37,7 @@ const addToCart = async variant => {
         {
             variantId: variant,
             quantity: 1,
+            customAttributes: attributes,
         },
     ]
 

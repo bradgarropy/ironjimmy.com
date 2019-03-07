@@ -21,6 +21,7 @@ const ProductTemplate = ({pageContext}) => {
         title,
         options,
         variants,
+        productType,
     } = product
     const images = product.images.map(image => image.originalSrc)
 
@@ -39,7 +40,8 @@ const ProductTemplate = ({pageContext}) => {
 
     const price = priceRange.minVariantPrice.amount
 
-    const [selectedOptions, setOptions] = useState(initialOptions)
+    const [selectedOptions, setSelectedOptions] = useState(initialOptions)
+    const [customAttributes, setCustomAttributes] = useState({})
     const [variant, setVariant] = useState()
 
     const cartContext = useContext(CartContext)
@@ -49,15 +51,24 @@ const ProductTemplate = ({pageContext}) => {
         setVariant(variant.shopifyId)
     }, [selectedOptions])
 
-    const onSubmit = event => {
-        event.preventDefault()
-        cartContext.add(variant)
+    const onOptionsChange = event => {
+        const {name, value} = event.target
+        setSelectedOptions({...selectedOptions, [name]: value})
         return
     }
 
-    const onChange = event => {
+    const onPropertiesChange = event => {
         const {name, value} = event.target
-        setOptions({...selectedOptions, [name]: value})
+        setCustomAttributes({...customAttributes, [name]: value})
+        return
+    }
+
+    const onSubmit = event => {
+        event.preventDefault()
+        const attributes = Object.entries(customAttributes).map(entry => {
+            return {key: entry[0], value: entry[1]}
+        })
+        cartContext.add(variant, attributes)
         return
     }
 
@@ -84,7 +95,10 @@ const ProductTemplate = ({pageContext}) => {
 
                                 if (!isDefault(name)) {
                                     return (
-                                        <Field key={index} onChange={onChange}>
+                                        <Field
+                                            key={index}
+                                            onChange={onOptionsChange}
+                                        >
                                             <label>{name}</label>
                                             <select name={name}>
                                                 {values.map((value, index) => (
@@ -101,25 +115,41 @@ const ProductTemplate = ({pageContext}) => {
                                 }
                             })}
 
-                            {/* <Field>
-                                <label>Tag</label>
-                                <input type="text"/>
-                            </Field>
+                            {productType.toLowerCase() === "sleeves" && (
+                                <>
+                                    <Field onChange={onPropertiesChange}>
+                                        <label>Tag</label>
+                                        <input
+                                            type="text"
+                                            name="Tag"
+                                            maxLength="10"
+                                        />
+                                    </Field>
 
-                            <Field>
-                                <label>Brand</label>
-                                <input type="text"/>
-                            </Field>
+                                    <Field onChange={onPropertiesChange}>
+                                        <label>Collar Measurement</label>
+                                        <input
+                                            type="text"
+                                            name="Collar Measurement"
+                                        />
+                                    </Field>
 
-                            <Field>
-                                <label>Model</label>
-                                <input type="text"/>
-                            </Field>
+                                    <Field onChange={onPropertiesChange}>
+                                        <label>Brand</label>
+                                        <input type="text" name="Brand"/>
+                                    </Field>
 
-                            <Field>
-                                <label>Notes</label>
-                                <textarea/>
-                            </Field> */}
+                                    <Field onChange={onPropertiesChange}>
+                                        <label>Model</label>
+                                        <input type="text" name="Model"/>
+                                    </Field>
+
+                                    <Field onChange={onPropertiesChange}>
+                                        <label>Special Instructions</label>
+                                        <textarea name="Special Instructions"/>
+                                    </Field>
+                                </>
+                            )}
 
                             <AddToCart soldOut={!availableForSale}/>
                         </ProductForm>

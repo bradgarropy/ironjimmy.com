@@ -21,8 +21,8 @@ const CartProvider = ({children}) => {
         return
     }
 
-    const add = async variant => {
-        const cart = await addToCart(variant)
+    const add = async(variant, attributes = {}) => {
+        const cart = await addToCart(variant, attributes)
         setCart(cart)
         return
     }
