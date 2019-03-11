@@ -66,6 +66,24 @@ const getVariant = (product, options) => {
     return variant
 }
 
+const getColors = product => {
+    const colors = product.variants.reduce((acc, curr) => {
+        const {selectedOptions} = curr
+        const colorOption = selectedOptions.find(selectedOption => ["color", "pattern"].includes(selectedOption.name.toLowerCase()))
+
+        const color = {
+            name: colorOption.name,
+            value: colorOption.value,
+            image: curr.image.originalSrc,
+        }
+
+        !acc.some(element => element.value === color.value) && acc.push(color)
+        return acc
+    }, [])
+
+    return colors
+}
+
 export {
     createCart,
     getCart,
@@ -73,4 +91,5 @@ export {
     removeFromCart,
     getVariant,
     updateLineItem,
+    getColors,
 }

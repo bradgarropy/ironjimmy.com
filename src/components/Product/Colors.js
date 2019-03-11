@@ -1,7 +1,8 @@
-import React from "react"
+import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import Image from "../Image"
+import {getColors} from "../../utils/shopify"
+import colors from "../../styles/colors"
 
 const StyledColors = styled.div`
     margin: 3rem 0;
@@ -15,27 +16,52 @@ const ColorGrid = styled.div`
     justify-content: start;
 `
 
-const Color = styled(Image)`
+const Color = styled.img`
     width: 5rem;
     height: 5rem;
+    border: ${props =>
+        props.selected
+            ? `5px solid ${colors.black}`
+            : `5px solid ${colors.white}`};
 `
 
-const Colors = ({images}) => {
+const Colors = props => {
+    const {product} = props
+    const colors = getColors(product)
+
+    const [selectedColor, setSelectedColor] = useState(colors[0])
+
+    const onClick = event => {
+        const color = colors.find(
+            element => element.value === event.target.getAttribute("alt"),
+        )
+        setSelectedColor(color)
+        return
+    }
+
     return (
-        <StyledColors>
+        <StyledColors {...props}>
             <label>Color</label>
 
             <ColorGrid>
-                {images.map((image, index) => (
-                    <Color key={index} src={image}/>
-                ))}
+                {colors.map(color => {
+                    return (
+                        <Color
+                            key={color.value}
+                            src={color.image}
+                            alt={color.value}
+                            selected={selectedColor.value === color.value}
+                            onClick={onClick}
+                        />
+                    )
+                })}
             </ColorGrid>
         </StyledColors>
     )
 }
 
 Colors.propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    product: PropTypes.object.isRequired,
 }
 
 export default Colors

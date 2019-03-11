@@ -20,17 +20,10 @@ const ProductTemplate = ({pageContext}) => {
         priceRange,
         title,
         options,
-        variants,
         productType,
         tags,
     } = product
     const images = product.images.map(image => image.originalSrc)
-
-    const variantImages = variants.reduce((acc, curr) => {
-        const image = curr.image.originalSrc
-        !acc.includes(image) && acc.push(image)
-        return acc
-    }, [])
 
     const initialOptions = options.reduce((acc, curr) => {
         const name = curr.name
@@ -50,7 +43,7 @@ const ProductTemplate = ({pageContext}) => {
     useEffect(() => {
         const variant = getVariant(product, selectedOptions)
         setVariant(variant.shopifyId)
-    }, [selectedOptions])
+    }, [product, selectedOptions])
 
     const onOptionsChange = event => {
         const {name, value} = event.target
@@ -73,6 +66,15 @@ const ProductTemplate = ({pageContext}) => {
         return
     }
 
+    const onColorChange = event => {
+        const name = event.target.getAttribute("alt")
+        const image = event.target.getAttribute("src")
+        console.log(name)
+        console.log(image)
+        console.log(selectedOptions)
+        // setSelectedOptions({...selectedOptions, [name]: value})
+    }
+
     return (
         <>
             <Container>
@@ -88,13 +90,13 @@ const ProductTemplate = ({pageContext}) => {
                             <p>{displayPrice(price)}</p>
                         </ProductHeader>
 
-                        <Colors images={variantImages}/>
+                        <Colors product={product} onClick={onColorChange}/>
 
                         <ProductForm onSubmit={onSubmit}>
                             {options.map((option, index) => {
                                 const {name, values} = option
 
-                                if (!isDefault(name)) {
+                                if (!isDefault(name) && !isColor(name)) {
                                     return (
                                         <Field
                                             key={index}
