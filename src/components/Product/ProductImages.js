@@ -21,7 +21,10 @@ const StyledImage = styled.img`
             : `5px solid ${colors.white}`};
 `
 
-const ProductImages = ({images}) => {
+const ProductImages = props => {
+    const {product} = props
+    const images = product.images.map(image => image.originalSrc)
+
     const [selectedImage, setSelectedImage] = useState(images[0])
 
     const onClick = event => {
@@ -31,8 +34,8 @@ const ProductImages = ({images}) => {
     }
 
     return (
-        <>
-            <img src={selectedImage}/>
+        <div {...props}>
+            <img src={selectedImage} alt={product.title}/>
             <ImageSlider>
                 {images.map((image, index) => (
                     <StyledImage
@@ -43,12 +46,12 @@ const ProductImages = ({images}) => {
                     />
                 ))}
             </ImageSlider>
-        </>
+        </div>
     )
 }
 
 ProductImages.propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    product: PropTypes.object.isRequired,
 }
 
 export default ProductImages

@@ -23,7 +23,6 @@ const ProductTemplate = ({pageContext}) => {
         productType,
         tags,
     } = product
-    const images = product.images.map(image => image.originalSrc)
 
     const initialOptions = options.reduce((acc, curr) => {
         const name = curr.name
@@ -51,7 +50,7 @@ const ProductTemplate = ({pageContext}) => {
         return
     }
 
-    const onPropertiesChange = event => {
+    const onAttributesChange = event => {
         const {name, value} = event.target
         setCustomAttributes({...customAttributes, [name]: value})
         return
@@ -73,12 +72,20 @@ const ProductTemplate = ({pageContext}) => {
         return
     }
 
+    const onProductImageChange = event => {
+        console.log("onProductImageChange")
+        return
+    }
+
     return (
         <>
             <Container>
                 <Product>
                     <div>
-                        <ProductImages images={images}/>
+                        <ProductImages
+                            product={product}
+                            onClick={onProductImageChange}
+                        />
                         <p>{description}</p>
                     </div>
 
@@ -118,7 +125,7 @@ const ProductTemplate = ({pageContext}) => {
 
                             {productType.toLowerCase() === "sleeves" && (
                                 <>
-                                    <Field onChange={onPropertiesChange}>
+                                    <Field onChange={onAttributesChange}>
                                         <label>Tag</label>
                                         <input
                                             type="text"
@@ -127,7 +134,7 @@ const ProductTemplate = ({pageContext}) => {
                                         />
                                     </Field>
 
-                                    <Field onChange={onPropertiesChange}>
+                                    <Field onChange={onAttributesChange}>
                                         <label>Collar Measurement</label>
                                         <input
                                             type="text"
@@ -135,17 +142,17 @@ const ProductTemplate = ({pageContext}) => {
                                         />
                                     </Field>
 
-                                    <Field onChange={onPropertiesChange}>
+                                    <Field onChange={onAttributesChange}>
                                         <label>Brand</label>
                                         <input type="text" name="Brand"/>
                                     </Field>
 
-                                    <Field onChange={onPropertiesChange}>
+                                    <Field onChange={onAttributesChange}>
                                         <label>Model</label>
                                         <input type="text" name="Model"/>
                                     </Field>
 
-                                    <Field onChange={onPropertiesChange}>
+                                    <Field onChange={onAttributesChange}>
                                         <label>Special Instructions</label>
                                         <textarea name="Special Instructions"/>
                                     </Field>
