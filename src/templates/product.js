@@ -67,12 +67,10 @@ const ProductTemplate = ({pageContext}) => {
     }
 
     const onColorChange = event => {
-        const name = event.target.getAttribute("alt")
-        const image = event.target.getAttribute("src")
-        console.log(name)
-        console.log(image)
-        console.log(selectedOptions)
-        // setSelectedOptions({...selectedOptions, [name]: value})
+        const name = event.target.getAttribute("data-name")
+        const value = event.target.getAttribute("alt")
+        setSelectedOptions({...selectedOptions, [name]: value})
+        return
     }
 
     return (

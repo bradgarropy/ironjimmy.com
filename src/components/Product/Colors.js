@@ -50,6 +50,7 @@ const Colors = props => {
                             key={color.value}
                             src={color.image}
                             alt={color.value}
+                            data-name={color.name}
                             selected={selectedColor.value === color.value}
                             onClick={onClick}
                         />

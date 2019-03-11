@@ -69,7 +69,8 @@ const getVariant = (product, options) => {
 const getColors = product => {
     const colors = product.variants.reduce((acc, curr) => {
         const {selectedOptions} = curr
-        const colorOption = selectedOptions.find(selectedOption => ["color", "pattern"].includes(selectedOption.name.toLowerCase()))
+        const colorOption = selectedOptions.find(selectedOption =>
+            ["color", "pattern"].includes(selectedOption.name.toLowerCase()),)
 
         const color = {
             name: colorOption.name,
