@@ -157,6 +157,13 @@ const ProductTemplate = ({pageContext}) => {
                                         <label>Right Color</label>
                                         <input type="text" name="Right Color"/>
                                     </Field>
+
+                                    <p>
+                                        Email your logo to{" "}
+                                        <i href="mailto:uploads@ironjimmy.com">
+                                            uploads@ironjimmy.com
+                                        </i>
+                                    </p>
                                 </>
                             )}
 
