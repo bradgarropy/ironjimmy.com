@@ -39,6 +39,10 @@ const Colors = props => {
         return
     }
 
+    if (!colors.length) {
+        return null
+    }
+
     return (
         <StyledColors {...props}>
             <label>Color</label>

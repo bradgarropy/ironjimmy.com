@@ -72,6 +72,10 @@ const getColors = product => {
         const colorOption = selectedOptions.find(selectedOption =>
             ["color", "pattern"].includes(selectedOption.name.toLowerCase()),)
 
+        if (!colorOption) {
+            return acc
+        }
+
         const color = {
             name: colorOption.name,
             value: colorOption.value,
