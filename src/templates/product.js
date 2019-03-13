@@ -160,9 +160,7 @@ const ProductTemplate = ({pageContext}) => {
 
                                     <p>
                                         Email your logo to{" "}
-                                        <i href="mailto:uploads@ironjimmy.com">
-                                            uploads@ironjimmy.com
-                                        </i>
+                                        <i>uploads@ironjimmy.com</i>
                                     </p>
                                 </>
                             )}
