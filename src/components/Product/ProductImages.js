@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import colors from "../../styles/colors"
+import {getProductImages, getVariantImages} from "../../utils/shopify"
 
 const ImageSlider = styled.div`
     display: grid;
@@ -23,7 +24,13 @@ const StyledImage = styled.img`
 
 const ProductImages = props => {
     const {product} = props
-    const images = product.images.map(image => image.originalSrc)
+
+    const productImages = getProductImages(product)
+    const variantImages = getVariantImages(product)
+
+    const images = productImages.filter(
+        productImage => !variantImages.includes(productImage),
+    )
 
     const [selectedImage, setSelectedImage] = useState(images[0])
 

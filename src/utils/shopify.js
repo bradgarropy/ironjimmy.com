@@ -66,6 +66,16 @@ const getVariant = (product, options) => {
     return variant
 }
 
+const getProductImages = product => {
+    const images = product.images.map(image => image.originalSrc)
+    return images
+}
+
+const getVariantImages = product => {
+    const images = product.variants.map(variant => variant.image.originalSrc)
+    return images
+}
+
 const getColors = product => {
     const colors = product.variants.reduce((acc, curr) => {
         const {selectedOptions} = curr
@@ -94,7 +104,9 @@ export {
     getCart,
     addToCart,
     removeFromCart,
-    getVariant,
     updateLineItem,
+    getVariant,
+    getProductImages,
+    getVariantImages,
     getColors,
 }
