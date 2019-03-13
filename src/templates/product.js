@@ -129,6 +129,36 @@ const ProductTemplate = ({pageContext}) => {
                                 }
                             })}
 
+                            {/*
+                                Custom Club Lifting Strap Color Options
+                                - Blazing Blue
+                                - Military Green
+                                - Hot Pink
+                                - Teal
+                                - Sand Gold
+                                - Maroon
+                                - Orange
+                                - Black
+                                - Sky Blue
+                                - Hunter Green
+                                - White
+                                - Kilo Kolors
+                            */}
+
+                            {title === "Custom Club Lifting Straps" && (
+                                <>
+                                    <Field onChange={onAttributesChange}>
+                                        <label>Left Color</label>
+                                        <input type="text" name="Left Color"/>
+                                    </Field>
+
+                                    <Field onChange={onAttributesChange}>
+                                        <label>Right Color</label>
+                                        <input type="text" name="Right Color"/>
+                                    </Field>
+                                </>
+                            )}
+
                             {productType.toLowerCase() === "sleeves" && (
                                 <>
                                     <Field onChange={onAttributesChange}>
