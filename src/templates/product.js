@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from "react"
 import PropTypes from "prop-types"
+import Markdown from "markdown-to-jsx"
 import CartContext from "../context/CartContext"
 import Colors from "../components/Product/Colors"
 import AddToCart from "../components/Product/AddToCart"
@@ -15,7 +16,7 @@ import Field from "../styles/Field"
 const ProductTemplate = ({pageContext}) => {
     const {product} = pageContext
     const {
-        description,
+        descriptionHtml,
         availableForSale,
         priceRange,
         title,
@@ -92,7 +93,7 @@ const ProductTemplate = ({pageContext}) => {
                             product={product}
                             onClick={onProductImageChange}
                         />
-                        <p>{description}</p>
+                        <Markdown>{descriptionHtml}</Markdown>
                     </div>
 
                     <div>

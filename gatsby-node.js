@@ -13,7 +13,7 @@ const createPages = async({graphql, actions}) => {
                         title
                         productType
                         tags
-                        description
+                        descriptionHtml
                         availableForSale
                         images {
                             originalSrc
