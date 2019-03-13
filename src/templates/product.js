@@ -5,7 +5,7 @@ import Colors from "../components/Product/Colors"
 import AddToCart from "../components/Product/AddToCart"
 import ProductImages from "../components/Product/ProductImages"
 import {displayPrice} from "../utils/price"
-import {getVariant} from "../utils/shopify"
+import {getVariant, getProductImages} from "../utils/shopify"
 import Container from "../styles/Container"
 import Product from "../styles/Product"
 import ProductHeader from "../styles/ProductHeader"
@@ -24,6 +24,9 @@ const ProductTemplate = ({pageContext}) => {
         tags,
     } = product
 
+    const price = priceRange.minVariantPrice.amount
+    const image = getProductImages(product)[0]
+
     const initialOptions = options.reduce((acc, curr) => {
         const name = curr.name
         const value = curr.values[0]
@@ -31,8 +34,7 @@ const ProductTemplate = ({pageContext}) => {
         return acc
     }, {})
 
-    const price = priceRange.minVariantPrice.amount
-
+    const [featuredImage, setFeaturedImage] = useState(image)
     const [selectedOptions, setSelectedOptions] = useState(initialOptions)
     const [customAttributes, setCustomAttributes] = useState({})
     const [variant, setVariant] = useState()
@@ -68,12 +70,15 @@ const ProductTemplate = ({pageContext}) => {
     const onColorChange = event => {
         const name = event.target.getAttribute("data-name")
         const value = event.target.getAttribute("alt")
+        const image = event.target.getAttribute("src")
         setSelectedOptions({...selectedOptions, [name]: value})
+        setFeaturedImage(image)
         return
     }
 
     const onProductImageChange = event => {
-        console.log("onProductImageChange")
+        const image = event.target.getAttribute("src")
+        setFeaturedImage(image)
         return
     }
 
@@ -82,6 +87,7 @@ const ProductTemplate = ({pageContext}) => {
             <Container>
                 <Product>
                     <div>
+                        <img src={featuredImage} alt={product.title}/>
                         <ProductImages
                             product={product}
                             onClick={onProductImageChange}

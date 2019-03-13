@@ -24,13 +24,7 @@ const StyledImage = styled.img`
 
 const ProductImages = props => {
     const {product} = props
-
-    const productImages = getProductImages(product)
-    const variantImages = getVariantImages(product)
-
-    const images = productImages.filter(
-        productImage => !variantImages.includes(productImage),
-    )
+    const images = getProductImages(product)
 
     const [selectedImage, setSelectedImage] = useState(images[0])
 
@@ -41,19 +35,16 @@ const ProductImages = props => {
     }
 
     return (
-        <div {...props}>
-            <img src={selectedImage} alt={product.title}/>
-            <ImageSlider>
-                {images.map((image, index) => (
-                    <StyledImage
-                        key={index}
-                        onClick={onClick}
-                        src={image}
-                        selected={selectedImage === image}
-                    />
-                ))}
-            </ImageSlider>
-        </div>
+        <ImageSlider {...props}>
+            {images.map((image, index) => (
+                <StyledImage
+                    key={index}
+                    onClick={onClick}
+                    src={image}
+                    selected={selectedImage === image}
+                />
+            ))}
+        </ImageSlider>
     )
 }
 

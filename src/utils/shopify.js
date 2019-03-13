@@ -67,8 +67,14 @@ const getVariant = (product, options) => {
 }
 
 const getProductImages = product => {
-    const images = product.images.map(image => image.originalSrc)
-    return images
+    const allImages = product.images.map(image => image.originalSrc)
+    const variantImages = getVariantImages(product)
+
+    const productImages = allImages.filter(
+        productImage => !variantImages.includes(productImage),
+    )
+
+    return productImages
 }
 
 const getVariantImages = product => {
