@@ -1,10 +1,10 @@
 import React from "react"
 import Helmet from "react-helmet"
-import Icon from "../../../static/icons/iron-jimmy-icon.png"
+import Icon from "../../../static/images/icon.png"
 
 const Meta = () => {
     const image =
-        "https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/iron-jimmy-sleeves.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
+        "https://images.ctfassets.net/d3ttfid6hh7h/3AjiFEmNzaKqCaEkK6cukS/c762918a62d55964bcac6aa2eeeed38f/logo-black.png?fit=pad&w=4000&h=2000&bg=rgb:ffffff"
 
     return (
         <Helmet

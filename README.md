@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://ironjimmy.com">
-        <img alt="Iron Jimmy Sleeves" src="/static/images/iron-jimmy-sleeves.png" width="600">
+        <img alt="Iron Jimmy Sleeves" src="/static/images/logo-black.png" width="600">
     </a>
 </p>
 

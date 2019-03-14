@@ -1,7 +1,7 @@
 import React from "react"
 import {Link} from "gatsby"
 import styled from "styled-components"
-import IronJimmy from "../../../static/images/iron-jimmy-sleeves.png"
+import IronJimmy from "../../../static/images/logo-black.png"
 
 const StyledLogo = styled(Link)`
     max-width: 750px;
