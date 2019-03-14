@@ -43,6 +43,11 @@ const CartLineItemTitle = styled.p`
 `
 
 const CartLineItemVariant = styled.p`
+    margin: 0 0 0.75rem 0;
+    color: ${colors.grey};
+`
+
+const CartLineItemAttribute = styled.p`
     margin: 0;
     color: ${colors.grey};
 `
@@ -108,6 +113,17 @@ const Cart = () => {
                                             <CartLineItemVariant>
                                                 {item.variant.title}
                                             </CartLineItemVariant>
+
+                                            {item.customAttributes.map(
+                                                attribute => (
+                                                    <CartLineItemAttribute
+                                                        key={attribute.key}
+                                                    >
+                                                        {attribute.key}:{" "}
+                                                        {attribute.value}
+                                                    </CartLineItemAttribute>
+                                                ),
+                                            )}
                                         </div>
 
                                         <CartLineItemPrice>
