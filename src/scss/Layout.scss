@@ -1,17 +1,2 @@
-@import "colors";
 @import "reset";
 @import "base";
-
-.layout {
-    display: grid;
-    justify-items: center;
-    min-height: 100vh;
-    align-items: start;
-    grid-template-rows: auto 1fr auto;
-    font-family: "Roboto", sans-serif;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 3rem;
-}
