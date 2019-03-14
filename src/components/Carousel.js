@@ -1,6 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
-import "../scss/Carousel.scss"
+import styled from "styled-components"
+
+const StyledCarousel = styled.div`
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition-property: background-image;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+`
 
 class Carousel extends React.Component {
     static propTypes = {
@@ -44,9 +55,8 @@ class Carousel extends React.Component {
         const image = this.props.images[index]
 
         return (
-            <div
+            <StyledCarousel
                 ref={this.carousel}
-                className="carousel"
                 style={{backgroundImage: `url(${image})`}}
             />
         )
