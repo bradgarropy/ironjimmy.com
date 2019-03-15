@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import colors from "../../styles/colors"
-import {getProductImages, getVariantImages} from "../../utils/shopify"
+import {getProductImages} from "../../utils/shopify"
 
 const ImageSlider = styled.div`
     display: grid;
@@ -31,11 +31,12 @@ const ProductImages = props => {
     const onClick = event => {
         const selectedImage = event.target.getAttribute("src")
         setSelectedImage(selectedImage)
+        props.onClick(event)
         return
     }
 
     return (
-        <ImageSlider {...props}>
+        <ImageSlider>
             {images.map((image, index) => (
                 <StyledImage
                     key={index}
@@ -50,6 +51,7 @@ const ProductImages = props => {
 
 ProductImages.propTypes = {
     product: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
 }
 
 export default ProductImages

@@ -36,6 +36,7 @@ const Colors = props => {
             element => element.value === event.target.getAttribute("alt"),
         )
         setSelectedColor(color)
+        props.onClick(event)
         return
     }
 
@@ -44,7 +45,7 @@ const Colors = props => {
     }
 
     return (
-        <StyledColors {...props}>
+        <StyledColors>
             <label>Color</label>
 
             <ColorGrid>
@@ -67,6 +68,7 @@ const Colors = props => {
 
 Colors.propTypes = {
     product: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
 }
 
 export default Colors
