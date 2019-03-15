@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Image from "../components/Image"
 import ProductCategoryHeader from "../styles/ProductCategoryHeader"
 import ProductGrid from "../styles/ProductGrid"
 import ProductPreview from "../styles/ProductPreview"
@@ -15,7 +14,7 @@ const Collection = ({collection}) => {
         <>
             <ProductCategoryHeader>
                 <h1>{title}</h1>
-                <Image src={image}/>
+                <img src={image}/>
             </ProductCategoryHeader>
 
             <ProductGrid>
@@ -32,7 +31,7 @@ const Collection = ({collection}) => {
                     return (
                         <ProductPreview key={id}>
                             <a href={link}>
-                                <Image src={image}/>
+                                <img src={image}/>
                             </a>
 
                             <a href={link}>

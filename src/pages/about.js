@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import styled from "styled-components"
 import Container from "../styles/Container"
-import Image from "../components/Image"
 import Markdown from "markdown-to-jsx"
 
 const StyledAbout = styled.div`
@@ -21,7 +20,7 @@ const About = ({data}) => {
         <>
             <Container>
                 <StyledAbout>
-                    <Image src={image}/>
+                    <img src={image}/>
                     <Markdown>{description}</Markdown>
                 </StyledAbout>
             </Container>

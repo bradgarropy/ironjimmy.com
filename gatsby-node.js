@@ -93,13 +93,15 @@ const createPages = async({graphql, actions}) => {
     )
 
     collections.forEach(collection => {
-        const slug = collection.handle.split("-").pop()
+        if (collection.handle !== "frontpage") {
+            const slug = collection.handle.split("-").pop()
 
-        createPage({
-            path: slug,
-            component: path.resolve("./src/templates/collection.js"),
-            context: {collection},
-        })
+            createPage({
+                path: slug,
+                component: path.resolve("./src/templates/collection.js"),
+                context: {collection},
+            })
+        }
     })
 
     response = await graphql(`

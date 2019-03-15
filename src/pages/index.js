@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Carousel from "../components/Carousel"
 import Container from "../styles/Container"
-import Image from "../components/Image"
 import ProductCategoryHeader from "../styles/ProductCategoryHeader"
 import ProductGrid from "../styles/ProductGrid"
 import ProductPreview from "../styles/ProductPreview"
@@ -38,7 +37,7 @@ const Index = ({data}) => {
                         return (
                             <ProductPreview key={id}>
                                 <a href={link}>
-                                    <Image src={image}/>
+                                    <img src={image}/>
                                 </a>
 
                                 <a href={link}>
@@ -72,7 +71,7 @@ export const query = graphql`
                 }
             }
         }
-        shopifyCollection(title: {eq: "HOT ITEMS"}) {
+        shopifyCollection(handle: {eq: "frontpage"}) {
             title
             image {
                 src
