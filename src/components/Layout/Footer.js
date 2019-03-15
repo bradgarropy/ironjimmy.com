@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Policies from "./Policies"
 import MadeInUSA from "./MadeInUSA"
+import BuiltBy from "./BuiltBy"
 import Social from "./Social"
 import LogoSquareWhite from "../../../static/images/logo-square-white.png"
 import colors from "../../styles/colors"
@@ -29,7 +30,10 @@ const Footer = () => {
             />
             <Policies/>
             <Social/>
-            <MadeInUSA/>
+            <div>
+                <BuiltBy/>
+                <MadeInUSA/>
+            </div>
         </StyledFooter>
     )
 }

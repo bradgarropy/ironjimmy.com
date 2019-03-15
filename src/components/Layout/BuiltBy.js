@@ -4,11 +4,17 @@ import styled from "styled-components"
 const StyledBuildBy = styled.div`
     display: grid;
     grid-template-columns: repeat(2, auto);
-    column-gap: 0.4rem;
-    padding-top: 0.25rem;
+    justify-content: center;
+    align-content: start;
+    align-items: center;
+    column-gap: 0.5rem;
 
-    svg {
-        width: 1.25rem;
+    a {
+        cursor: pointer;
+
+        svg {
+            width: 1.75rem;
+        }
     }
 `
 
