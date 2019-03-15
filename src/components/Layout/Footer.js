@@ -3,8 +3,7 @@ import styled from "styled-components"
 import Policies from "./Policies"
 import MadeInUSA from "./MadeInUSA"
 import Social from "./Social"
-// import LogoSquareWhite from "../../../static/images/logo-square-white.png"
-import LogoSquareWhite from "../../../static/images/frame.png"
+import LogoSquareWhite from "../../../static/images/logo-square-white.png"
 import colors from "../../styles/colors"
 
 const StyledFooter = styled.footer`
