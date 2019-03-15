@@ -5,7 +5,7 @@ import Meta from "./Meta"
 import Header from "./Header"
 import Footer from "./Footer"
 import CartProvider from "../../context/CartProvider"
-import "../../scss/Layout.scss"
+import GlobalStyles from "../../styles/GlobalStyles"
 
 const StyledLayout = styled.div`
     display: grid;
@@ -20,6 +20,7 @@ const Layout = ({children}) => {
     return (
         <>
             <Meta/>
+            <GlobalStyles/>
 
             <StyledLayout>
                 <CartProvider>
