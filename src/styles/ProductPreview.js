@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import colors from "./colors"
 
 const ProductPreview = styled.div`
     h2 {
@@ -8,7 +7,7 @@ const ProductPreview = styled.div`
 
     p {
         margin: 0;
-        color: ${colors.grey};
+        color: ${({theme}) => theme.colors.grey};
     }
 `
 

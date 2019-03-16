@@ -11,7 +11,6 @@ import {getVariant, getProductImages} from "../utils/shopify"
 import Container from "../styles/Container"
 import Form from "../styles/Form"
 import FormField from "../styles/FormField"
-import colors from "../styles/colors"
 
 const Product = styled.div`
     display: grid;
@@ -26,7 +25,7 @@ const ProductHeader = styled.div`
 
     p {
         margin: 0;
-        color: ${colors.grey};
+        color: ${({theme}) => theme.colors.grey};
     }
 `
 

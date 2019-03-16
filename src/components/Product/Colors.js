@@ -2,7 +2,6 @@ import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import {getColors} from "../../utils/shopify"
-import colors from "../../styles/colors"
 
 const StyledColors = styled.div`
     margin: 3rem 0;
@@ -19,10 +18,10 @@ const ColorGrid = styled.div`
 const Color = styled.img`
     width: 5rem;
     height: 5rem;
-    border: ${props =>
-        props.selected
-            ? `5px solid ${colors.black}`
-            : `5px solid ${colors.white}`};
+    border: ${({selected, theme}) =>
+        selected
+            ? `5px solid ${theme.colors.black}`
+            : `5px solid ${theme.colors.white}`};
 `
 
 const Colors = props => {

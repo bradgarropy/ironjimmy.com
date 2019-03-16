@@ -1,7 +1,6 @@
 import React from "react"
 import {Link} from "gatsby"
 import styled from "styled-components"
-import colors from "../../styles/colors"
 
 const StyledNavigation = styled.nav`
     display: grid;
@@ -12,8 +11,8 @@ const StyledNavigation = styled.nav`
     text-transform: uppercase;
     font-weight: 600;
     padding: 1rem;
-    border-top: 2px solid ${colors.black};
-    border-bottom: 2px solid ${colors.black};
+    border-top: 2px solid ${({theme}) => theme.colors.black};
+    border-bottom: 2px solid ${({theme}) => theme.colors.black};
 `
 
 const Navigation = () => (

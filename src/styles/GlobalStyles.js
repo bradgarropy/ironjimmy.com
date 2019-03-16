@@ -1,5 +1,4 @@
 import {createGlobalStyle} from "styled-components"
-import colors from "./colors"
 
 const GlobalStyles = createGlobalStyle`
     html {
@@ -12,18 +11,18 @@ const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        color: ${colors.black};
+        color: ${({theme}) => theme.colors.black};
         text-decoration: none;
         transition: all 300ms;
     }
 
     a:visited {
         text-decoration: none;
-        color: ${colors.black};
+        color: ${({theme}) => theme.colors.black};
     }
 
     a:hover {
-        color: ${colors.red};
+        color: ${({theme}) => theme.colors.red};
     }
 
     img {
@@ -40,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
     select {
         border-radius: 3px;
         border: none;
-        background: ${colors.lightergrey};
+        background: ${({theme}) => theme.colors.lightergrey};
         font-family: "Roboto", sans-serif;
         font-size: 1.5rem;
         padding: 1rem 2rem;

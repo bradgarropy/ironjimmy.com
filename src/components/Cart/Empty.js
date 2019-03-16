@@ -1,19 +1,18 @@
 import React from "react"
 import {Link} from "gatsby"
 import styled from "styled-components"
-import colors from "../../styles/colors"
 
 const StyledEmpty = styled.div`
     text-align: center;
 
     p {
         font-style: italic;
-        color: ${colors.grey};
+        color: ${({theme}) => theme.colors.grey};
     }
 `
 
 const StyledLink = styled(Link)`
-    color: ${colors.black};
+    color: ${({theme}) => theme.colors.black};
     display: block;
     justify-self: center;
     padding: 1.5rem 6rem;
@@ -21,13 +20,13 @@ const StyledLink = styled(Link)`
     font-weight: 600;
     text-transform: uppercase;
     border-radius: 3px;
-    background-color: ${colors.red};
+    background-color: ${({theme}) => theme.colors.red};
     cursor: pointer;
     transition: all 300ms;
 
     &:hover {
-        background-color: ${colors.darkred};
-        color: ${colors.black};
+        background-color: ${({theme}) => theme.colors.darkred};
+        color: ${({theme}) => theme.colors.black};
     }
 `
 

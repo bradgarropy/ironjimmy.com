@@ -6,7 +6,6 @@ import Remove from "../components/Cart/Remove"
 import Empty from "../components/Cart/Empty"
 import {displayPrice} from "../utils/price"
 import Container from "../styles/Container"
-import colors from "../styles/colors"
 
 const StyledCart = styled.div`
     display: grid;
@@ -44,12 +43,12 @@ const CartLineItemTitle = styled.p`
 
 const CartLineItemVariant = styled.p`
     margin: 0 0 0.75rem 0;
-    color: ${colors.grey};
+    color: ${({theme}) => theme.colors.grey};
 `
 
 const CartLineItemAttribute = styled.p`
     margin: 0;
-    color: ${colors.grey};
+    color: ${({theme}) => theme.colors.grey};
 `
 
 const CartLineItemPrice = styled.p`
@@ -58,7 +57,7 @@ const CartLineItemPrice = styled.p`
 `
 
 const CartTotal = styled.p`
-    border-top: 2px solid ${colors.black};
+    border-top: 2px solid ${({theme}) => theme.colors.black};
     padding-top: 3rem;
     text-align: right;
     font-size: 2rem;
@@ -67,20 +66,20 @@ const CartTotal = styled.p`
 `
 
 const Checkout = styled.a`
-    color: ${colors.black};
+    color: ${({theme}) => theme.colors.black};
     justify-self: center;
     padding: 1.5rem 6rem;
     border: none;
     font-weight: 600;
     text-transform: uppercase;
     border-radius: 3px;
-    background-color: ${colors.red};
+    background-color: ${({theme}) => theme.colors.red};
     cursor: pointer;
     transition: all 300ms;
 
     &:hover {
-        background-color: ${colors.darkred};
-        color: ${colors.black};
+        background-color: ${({theme}) => theme.colors.darkred};
+        color: ${({theme}) => theme.colors.black};
     }
 `
 

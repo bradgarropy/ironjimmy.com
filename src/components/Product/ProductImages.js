@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import colors from "../../styles/colors"
 import {getProductImages} from "../../utils/shopify"
 
 const ImageSlider = styled.div`
@@ -16,10 +15,10 @@ const ImageSlider = styled.div`
 const StyledImage = styled.img`
     box-sizing: border-box;
     padding: 0.5rem;
-    border: ${props =>
-        props.selected
-            ? `5px solid ${colors.black}`
-            : `5px solid ${colors.white}`};
+    border: ${({selected, theme}) =>
+        selected
+            ? `5px solid ${theme.colors.black}`
+            : `5px solid ${theme.colors.white}`};
 `
 
 const ProductImages = props => {

@@ -1,11 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled, {ThemeProvider} from "styled-components"
 import Meta from "./Meta"
 import Header from "./Header"
 import Footer from "./Footer"
 import CartProvider from "../../context/CartProvider"
 import GlobalStyles from "../../styles/GlobalStyles"
+import theme from "../../styles/theme"
 
 const StyledLayout = styled.div`
     display: grid;
@@ -18,18 +19,20 @@ const StyledLayout = styled.div`
 
 const Layout = ({children}) => {
     return (
-        <>
-            <Meta/>
-            <GlobalStyles/>
+        <ThemeProvider theme={theme}>
+            <>
+                <Meta/>
+                <GlobalStyles/>
 
-            <StyledLayout>
-                <CartProvider>
-                    <Header/>
-                    {children}
-                    <Footer/>
-                </CartProvider>
-            </StyledLayout>
-        </>
+                <StyledLayout>
+                    <CartProvider>
+                        <Header/>
+                        {children}
+                        <Footer/>
+                    </CartProvider>
+                </StyledLayout>
+            </>
+        </ThemeProvider>
     )
 }
 

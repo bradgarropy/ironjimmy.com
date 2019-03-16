@@ -5,7 +5,6 @@ import MadeInUSA from "./MadeInUSA"
 import BuiltBy from "./BuiltBy"
 import Social from "./Social"
 import LogoSquareWhite from "../../../static/images/logo-square-white.png"
-import colors from "../../styles/colors"
 
 const StyledFooter = styled.footer`
     box-sizing: border-box;
@@ -13,7 +12,7 @@ const StyledFooter = styled.footer`
     grid-template-columns: repeat(4, 1fr);
     padding: 3rem;
     width: 100%;
-    border-top: 2px solid ${colors.black};
+    border-top: 2px solid ${({theme}) => theme.colors.black};
 `
 
 const StyledLogo = styled.img`
