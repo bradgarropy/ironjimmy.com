@@ -66,7 +66,17 @@ const createPages = async({graphql, actions}) => {
                         handle
                         title
                         image {
-                            src
+                            localFile {
+                                childImageSharp {
+                                    fluid(maxWidth: 1000) {
+                                        base64
+                                        aspectRatio
+                                        src
+                                        srcSet
+                                        sizes
+                                    }
+                                }
+                            }
                         }
                         products {
                             shopifyId
@@ -79,7 +89,17 @@ const createPages = async({graphql, actions}) => {
                                 }
                             }
                             images {
-                                originalSrc
+                                localFile {
+                                    childImageSharp {
+                                        fluid(maxWidth: 300) {
+                                            base64
+                                            aspectRatio
+                                            src
+                                            srcSet
+                                            sizes
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

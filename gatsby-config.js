@@ -74,5 +74,11 @@ module.exports = {
                 component: require.resolve("./src/components/Layout/Layout.js"),
             },
         },
+        {
+            resolve: "gatsby-transformer-sharp",
+        },
+        {
+            resolve: "gatsby-plugin-sharp",
+        },
     ],
 }

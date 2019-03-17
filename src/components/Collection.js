@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Img from "gatsby-image"
 import ProductCategoryHeader from "../styles/ProductCategoryHeader"
 import ProductGrid from "../styles/ProductGrid"
 import ProductPreview from "../styles/ProductPreview"
@@ -7,14 +8,14 @@ import {displayPrice} from "../utils/price"
 
 const Collection = ({collection}) => {
     const title = collection.title
-    const image = collection.image.src
+    const image = collection.image.localFile.childImageSharp.fluid
     const products = collection.products
 
     return (
         <>
             <ProductCategoryHeader>
                 <h1>{title}</h1>
-                <img src={image}/>
+                <Img fluid={image}/>
             </ProductCategoryHeader>
 
             <ProductGrid>
@@ -24,14 +25,15 @@ const Collection = ({collection}) => {
                     const handle = product.handle
                     const title = product.title
                     const price = product.priceRange.minVariantPrice.amount
-                    const image = product.images[0].originalSrc
+                    const image =
+                        product.images[0].localFile.childImageSharp.fluid
 
                     const link = `/${type}/${handle}`
 
                     return (
                         <ProductPreview key={id}>
                             <a href={link}>
-                                <img src={image}/>
+                                <Img fluid={image}/>
                             </a>
 
                             <a href={link}>
