@@ -20,7 +20,7 @@ const About = ({data}) => {
         <>
             <Container>
                 <StyledAbout>
-                    <img src={image}/>
+                    <img src={image} alt="About Iron Jimmy"/>
                     <Markdown>{description}</Markdown>
                 </StyledAbout>
             </Container>

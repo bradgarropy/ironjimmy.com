@@ -10,7 +10,7 @@ const StyledLogo = styled(Link)`
 
 const Logo = () => (
     <StyledLogo to="/">
-        <img src={IronJimmy}/>
+        <img src={IronJimmy} alt="Iron Jimmy Premium Sleeves"/>
     </StyledLogo>
 )
 

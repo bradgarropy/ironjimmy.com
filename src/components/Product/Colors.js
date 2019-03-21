@@ -5,6 +5,12 @@ import {getColors} from "../../utils/shopify"
 
 const StyledColors = styled.div`
     margin: 3rem 0;
+
+    p {
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 0;
+    }
 `
 
 const ColorGrid = styled.div`
@@ -45,7 +51,7 @@ const Colors = props => {
 
     return (
         <StyledColors>
-            <label>Color</label>
+            <p>Color</p>
 
             <ColorGrid>
                 {colors.map(color => {

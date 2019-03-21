@@ -26,18 +26,18 @@ const Contact = ({data}) => {
                     <input type="hidden" name="bot-field"/>
 
                     <FormField>
-                        <label>Name</label>
-                        <input type="text" name="name"/>
+                        <label htmlFor="name">Name</label>
+                        <input type="text" id="name" name="name"/>
                     </FormField>
 
                     <FormField>
-                        <label>Email</label>
-                        <input type="email" name="email"/>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email"/>
                     </FormField>
 
                     <FormField>
-                        <label>Message</label>
-                        <textarea name="message" rows="7"/>
+                        <label htmlFor="message">Message</label>
+                        <textarea id="message" name="message" rows="7"/>
                     </FormField>
 
                     <Button>Submit</Button>

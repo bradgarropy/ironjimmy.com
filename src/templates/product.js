@@ -169,13 +169,25 @@ const ProductTemplate = ({pageContext}) => {
                             {title === "Custom Club Lifting Straps" && (
                                 <>
                                     <FormField onChange={onAttributesChange}>
-                                        <label>Left Color</label>
-                                        <input type="text" name="Left Color"/>
+                                        <label htmlFor="left-color">
+                                            Left Color
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="left-color"
+                                            name="Left Color"
+                                        />
                                     </FormField>
 
                                     <FormField onChange={onAttributesChange}>
-                                        <label>Right Color</label>
-                                        <input type="text" name="Right Color"/>
+                                        <label htmlFor="right-color">
+                                            Right Color
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="right-color"
+                                            name="Right Color"
+                                        />
                                     </FormField>
 
                                     <p>
@@ -188,35 +200,52 @@ const ProductTemplate = ({pageContext}) => {
                             {productType.toLowerCase() === "sleeves" && (
                                 <>
                                     <FormField onChange={onAttributesChange}>
-                                        <label>Tag</label>
+                                        <label htmlFor="tag">Tag</label>
                                         <input
                                             type="text"
+                                            id="tag"
                                             name="Tag"
                                             maxLength="10"
                                         />
                                     </FormField>
 
                                     <FormField onChange={onAttributesChange}>
-                                        <label>Collar Measurement</label>
+                                        <label htmlFor="collar-measurement">
+                                            Collar Measurement
+                                        </label>
                                         <input
                                             type="text"
+                                            id="collar-measurement"
                                             name="Collar Measurement"
                                         />
                                     </FormField>
 
                                     <FormField onChange={onAttributesChange}>
-                                        <label>Brand</label>
-                                        <input type="text" name="Brand"/>
+                                        <label htmlFor="brand">Brand</label>
+                                        <input
+                                            type="text"
+                                            id="brand"
+                                            name="Brand"
+                                        />
                                     </FormField>
 
                                     <FormField onChange={onAttributesChange}>
-                                        <label>Model</label>
-                                        <input type="text" name="Model"/>
+                                        <label htmlFor="model">Model</label>
+                                        <input
+                                            type="text"
+                                            id="model"
+                                            name="Model"
+                                        />
                                     </FormField>
 
                                     <FormField onChange={onAttributesChange}>
-                                        <label>Special Instructions</label>
-                                        <textarea name="Special Instructions"/>
+                                        <label htmlFor="special-instructions">
+                                            Special Instructions
+                                        </label>
+                                        <textarea
+                                            id="special-instructions"
+                                            name="Special Instructions"
+                                        />
                                     </FormField>
                                 </>
                             )}

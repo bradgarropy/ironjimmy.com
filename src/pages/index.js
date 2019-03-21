@@ -37,7 +37,7 @@ const Index = ({data}) => {
                         return (
                             <ProductPreview key={id}>
                                 <a href={link}>
-                                    <img src={image}/>
+                                    <img src={image} alt={title}/>
                                 </a>
 
                                 <a href={link}>
