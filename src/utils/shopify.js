@@ -78,8 +78,21 @@ const getProductImages = product => {
 }
 
 const getVariantImages = product => {
-    const images = product.variants.map(variant => variant.image.originalSrc)
-    return images
+    const images = product.images.map(image => image.originalSrc)
+    const variantImages = product.variants.map(
+        variant => variant.image.originalSrc,
+    )
+
+    const same = variantImages.every(
+        variantImage =>
+            variantImage === variantImages[0] && variantImage === images[0],
+    )
+
+    if (same) {
+        return []
+    }
+
+    return variantImages
 }
 
 const getColors = product => {
