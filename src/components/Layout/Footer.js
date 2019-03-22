@@ -4,35 +4,49 @@ import Policies from "./Policies"
 import MadeInUSA from "./MadeInUSA"
 import BuiltBy from "./BuiltBy"
 import Social from "./Social"
+import Container from "../../styles/Container"
 import LogoSquareWhite from "../../../static/images/logo-square-white.png"
 
 const StyledFooter = styled.footer`
-    box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 3rem;
     width: 100%;
+    justify-content: center;
     border-top: 2px solid ${({theme}) => theme.colors.black};
 `
 
+const FooterLayout = styled(Container)`
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 5rem;
+    justify-items: center;
+    align-items: start;
+`
+
 const StyledLogo = styled.img`
-    width: 25rem;
-    margin: 10rem;
+    width: 15rem;
+`
+
+const Credits = styled.div`
+    display: grid;
+    justify-items: start;
 `
 
 const Footer = () => {
     return (
         <StyledFooter>
-            <StyledLogo
-                src={LogoSquareWhite}
-                alt="Iron Jimmy - Protect Your Barbell"
-            />
-            <Policies/>
-            <Social/>
-            <div>
-                <BuiltBy/>
-                <MadeInUSA/>
-            </div>
+            <FooterLayout>
+                <StyledLogo
+                    src={LogoSquareWhite}
+                    alt="Iron Jimmy - Protect Your Barbell"
+                />
+                <Policies/>
+                <Social/>
+                <Credits>
+                    <BuiltBy/>
+                    <MadeInUSA/>
+                </Credits>
+            </FooterLayout>
         </StyledFooter>
     )
 }
