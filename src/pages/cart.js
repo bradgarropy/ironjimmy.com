@@ -73,12 +73,12 @@ const Checkout = styled.a`
     font-weight: 600;
     text-transform: uppercase;
     border-radius: 3px;
-    background-color: ${({theme}) => theme.colors.red};
+    background: ${({theme}) => theme.colors.red};
     cursor: pointer;
     transition: all 300ms;
 
     &:hover {
-        background-color: ${({theme}) => theme.colors.darkred};
+        background: ${({theme}) => theme.colors.darkred};
         color: ${({theme}) => theme.colors.black};
     }
 `

@@ -7,14 +7,13 @@ const Button = styled.button`
     font-weight: 600;
     text-transform: uppercase;
     border-radius: 3px;
-    background-color: ${({disabled, theme}) =>
+    background: ${({disabled, theme}) =>
         disabled ? theme.colors.lightgrey : theme.colors.red};
     cursor: ${({disabled}) => (disabled ? "auto" : "pointer")};
     transition: all 300ms;
 
     &:hover {
-        background-color: ${({disabled, theme}) =>
-        !disabled && theme.colors.darkred};
+        background: ${({disabled, theme}) => !disabled && theme.colors.darkred};
     }
 `
 

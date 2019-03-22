@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
     row-gap: 1rem;
     width: 100%;
     margin: 0 1rem 0 1rem;
+    background: ${({theme}) => theme.colors.red};
 `
 
 const Header = () => (

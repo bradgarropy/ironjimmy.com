@@ -10,6 +10,10 @@ const StyledCart = styled(Link)`
     margin: 2rem 2rem 0 0;
     text-transform: uppercase;
     font-weight: 600;
+
+    &:hover {
+        color: white;
+    }
 `
 
 const Cart = () => {

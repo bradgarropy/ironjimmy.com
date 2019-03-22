@@ -13,6 +13,10 @@ const StyledNavigation = styled.nav`
     padding: 1rem;
     border-top: 2px solid ${({theme}) => theme.colors.black};
     border-bottom: 2px solid ${({theme}) => theme.colors.black};
+
+    a:hover {
+        color: white;
+    }
 `
 
 const Navigation = () => (
