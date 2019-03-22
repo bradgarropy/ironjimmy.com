@@ -1,6 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
-import Icon from "../../../static/images/icon.png"
+import LogoSquareWhite from "../../../static/images/logo-square-white.png"
 
 const Meta = () => {
     const image =
@@ -14,7 +14,7 @@ const Meta = () => {
                 {
                     rel: "icon",
                     type: "image/png",
-                    href: Icon,
+                    href: LogoSquareWhite,
                 },
             ]}
             meta={[
