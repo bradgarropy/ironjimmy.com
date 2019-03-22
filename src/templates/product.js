@@ -201,21 +201,23 @@ const ProductTemplate = ({pageContext}) => {
 
                                     <FormField onChange={onAttributesChange}>
                                         <label htmlFor="collar-measurement">
-                                            Collar Measurement
+                                            *Collar Measurement
                                         </label>
                                         <input
                                             type="text"
                                             id="collar-measurement"
                                             name="Collar Measurement"
+                                            required
                                         />
                                     </FormField>
 
                                     <FormField onChange={onAttributesChange}>
-                                        <label htmlFor="brand">Brand</label>
+                                        <label htmlFor="brand">*Brand</label>
                                         <input
                                             type="text"
                                             id="brand"
                                             name="Brand"
+                                            required
                                         />
                                     </FormField>
 
