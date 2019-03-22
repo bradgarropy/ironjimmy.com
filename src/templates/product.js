@@ -31,6 +31,10 @@ const ProductHeader = styled.div`
 
 const ProductForm = styled(Form)`
     justify-items: stretch;
+
+    p {
+        margin: 0;
+    }
 `
 
 const ProductTemplate = ({pageContext}) => {
@@ -150,23 +154,7 @@ const ProductTemplate = ({pageContext}) => {
                                 }
                             })}
 
-                            {/*
-                                Custom Club Lifting Strap Color Options
-                                - Blazing Blue
-                                - Military Green
-                                - Hot Pink
-                                - Teal
-                                - Sand Gold
-                                - Maroon
-                                - Orange
-                                - Black
-                                - Sky Blue
-                                - Hunter Green
-                                - White
-                                - Kilo Kolors
-                            */}
-
-                            {title === "Custom Club Lifting Straps" && (
+                            {tags.includes("custom-color") && (
                                 <>
                                     <FormField onChange={onAttributesChange}>
                                         <label htmlFor="left-color">
@@ -189,12 +177,14 @@ const ProductTemplate = ({pageContext}) => {
                                             name="Right Color"
                                         />
                                     </FormField>
-
-                                    <p>
-                                        Email your logo to{" "}
-                                        <i>uploads@ironjimmy.com</i>
-                                    </p>
                                 </>
+                            )}
+
+                            {tags.includes("custom-image") && (
+                                <p>
+                                    Email your logo to{" "}
+                                    <i>uploads@ironjimmy.com</i>
+                                </p>
                             )}
 
                             {productType.toLowerCase() === "sleeves" && (
