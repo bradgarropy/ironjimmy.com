@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
+import Img from "gatsby-image"
 import Carousel from "../components/Carousel"
 import Container from "../styles/Container"
 import ProductCategoryHeader from "../styles/ProductCategoryHeader"
@@ -30,14 +31,15 @@ const Index = ({data}) => {
                         const handle = product.handle
                         const title = product.title
                         const price = product.priceRange.minVariantPrice.amount
-                        const image = product.images[0].originalSrc
+                        const image =
+                            product.images[0].localFile.childImageSharp.fluid
 
                         const link = `/${type}/${handle}`
 
                         return (
                             <ProductPreview key={id}>
                                 <a href={link}>
-                                    <img src={image} alt={title}/>
+                                    <Img fluid={image}/>
                                 </a>
 
                                 <a href={link}>
@@ -87,7 +89,17 @@ export const query = graphql`
                     }
                 }
                 images {
-                    originalSrc
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 300) {
+                                base64
+                                aspectRatio
+                                src
+                                srcSet
+                                sizes
+                            }
+                        }
+                    }
                 }
             }
         }

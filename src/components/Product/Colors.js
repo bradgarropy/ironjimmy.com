@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import Img from "gatsby-image"
 import {getColors} from "../../utils/shopify"
 
 const StyledColors = styled.div`
@@ -21,7 +22,7 @@ const ColorGrid = styled.div`
     justify-content: start;
 `
 
-const Color = styled.img`
+const Color = styled(Img)`
     width: 5rem;
     height: 5rem;
     border: ${({selected, theme}) =>
@@ -56,14 +57,14 @@ const Colors = props => {
             <ColorGrid>
                 {colors.map(color => {
                     return (
-                        <Color
-                            key={color.value}
-                            src={color.image}
-                            alt={color.value}
-                            data-name={color.name}
-                            selected={selectedColor.value === color.value}
-                            onClick={onClick}
-                        />
+                        <div onClick={onClick} key={color.value}>
+                            <Color
+                                fluid={color.image}
+                                alt={color.value}
+                                data-name={color.name}
+                                selected={selectedColor.value === color.value}
+                            />
+                        </div>
                     )
                 })}
             </ColorGrid>

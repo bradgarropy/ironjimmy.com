@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import Img from "gatsby-image"
 import {getProductImages} from "../../utils/shopify"
 
 const ImageSlider = styled.div`
@@ -12,7 +13,7 @@ const ImageSlider = styled.div`
     margin: 2rem 0 3rem 0;
 `
 
-const StyledImage = styled.img`
+const StyledImage = styled(Img)`
     box-sizing: border-box;
     padding: 0.5rem;
     border: ${({selected, theme}) =>
@@ -37,12 +38,12 @@ const ProductImages = props => {
     return (
         <ImageSlider>
             {images.map((image, index) => (
-                <StyledImage
-                    key={index}
-                    onClick={onClick}
-                    src={image}
-                    selected={selectedImage === image}
-                />
+                <div onClick={onClick} key={index}>
+                    <StyledImage
+                        fluid={image}
+                        selected={selectedImage === image}
+                    />
+                </div>
             ))}
         </ImageSlider>
     )

@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from "react"
 import PropTypes from "prop-types"
 import Markdown from "markdown-to-jsx"
 import styled from "styled-components"
+import Img from "gatsby-image"
 import CartContext from "../context/CartContext"
 import Colors from "../components/Product/Colors"
 import AddToCart from "../components/Product/AddToCart"
@@ -112,7 +113,7 @@ const ProductTemplate = ({pageContext}) => {
             <Container>
                 <Product>
                     <div>
-                        <img src={featuredImage} alt={product.title}/>
+                        <Img fluid={featuredImage} alt={product.title}/>
                         <ProductImages
                             product={product}
                             onClick={onProductImageChange}

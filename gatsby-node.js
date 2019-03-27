@@ -16,7 +16,17 @@ const createPages = async({graphql, actions}) => {
                         descriptionHtml
                         availableForSale
                         images {
-                            originalSrc
+                            localFile {
+                                childImageSharp {
+                                    fluid(maxWidth: 650) {
+                                        base64
+                                        aspectRatio
+                                        src
+                                        srcSet
+                                        sizes
+                                    }
+                                }
+                            }
                         }
                         priceRange {
                             minVariantPrice {
@@ -34,7 +44,17 @@ const createPages = async({graphql, actions}) => {
                                 value
                             }
                             image {
-                                originalSrc
+                                localFile {
+                                    childImageSharp {
+                                        fluid(maxWidth: 650) {
+                                            base64
+                                            aspectRatio
+                                            src
+                                            srcSet
+                                            sizes
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

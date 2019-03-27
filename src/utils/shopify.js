@@ -1,4 +1,5 @@
 import Client from "shopify-buy"
+import isEqual from "lodash.isequal"
 
 const shopify = Client.buildClient({
     domain: "iron-jimmy-sleeves.myshopify.com",
@@ -67,25 +68,33 @@ const getVariant = (product, options) => {
 }
 
 const getProductImages = product => {
-    const allImages = product.images.map(image => image.originalSrc)
+    const allImages = product.images.map(
+        image => image.localFile.childImageSharp.fluid,
+    )
+
     const variantImages = getVariantImages(product)
 
     const productImages = allImages.filter(
-        productImage => !variantImages.includes(productImage),
+        image =>
+            !variantImages.some(variantImage => variantImage.src === image.src),
     )
 
     return productImages
 }
 
 const getVariantImages = product => {
-    const images = product.images.map(image => image.originalSrc)
+    const images = product.images.map(
+        image => image.localFile.childImageSharp.fluid,
+    )
+
     const variantImages = product.variants.map(
-        variant => variant.image.originalSrc,
+        variant => variant.image.localFile.childImageSharp.fluid,
     )
 
     const same = variantImages.every(
         variantImage =>
-            variantImage === variantImages[0] && variantImage === images[0],
+            isEqual(variantImage, variantImages[0]) &&
+            isEqual(variantImage, images[0]),
     )
 
     if (same) {
@@ -108,7 +117,7 @@ const getColors = product => {
         const color = {
             name: colorOption.name,
             value: colorOption.value,
-            image: curr.image.originalSrc,
+            image: curr.image.localFile.childImageSharp.fluid,
         }
 
         !acc.some(element => element.value === color.value) && acc.push(color)
