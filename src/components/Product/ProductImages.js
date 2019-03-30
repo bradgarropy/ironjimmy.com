@@ -28,17 +28,16 @@ const ProductImages = props => {
 
     const [selectedImage, setSelectedImage] = useState(images[0])
 
-    const onClick = event => {
-        const selectedImage = event.target.getAttribute("src")
-        setSelectedImage(selectedImage)
-        props.onClick(event)
+    const onClick = image => {
+        setSelectedImage(image)
+        props.onClick(image)
         return
     }
 
     return (
         <ImageSlider>
             {images.map((image, index) => (
-                <div onClick={onClick} key={index}>
+                <div onClick={() => onClick(image)} key={index}>
                     <StyledImage
                         fluid={image}
                         selected={selectedImage === image}

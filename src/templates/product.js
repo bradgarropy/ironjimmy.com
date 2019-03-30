@@ -86,24 +86,23 @@ const ProductTemplate = ({pageContext}) => {
 
     const onSubmit = event => {
         event.preventDefault()
+
         const attributes = Object.entries(customAttributes).map(entry => {
             return {key: entry[0], value: entry[1]}
         })
+
         cartContext.add(variant, attributes)
         return
     }
 
-    const onColorChange = event => {
-        const name = event.target.getAttribute("data-name")
-        const value = event.target.getAttribute("alt")
-        const image = event.target.getAttribute("src")
+    const onColorChange = color => {
+        const {name, value, image} = color
         setSelectedOptions({...selectedOptions, [name]: value})
         setFeaturedImage(image)
         return
     }
 
-    const onProductImageChange = event => {
-        const image = event.target.getAttribute("src")
+    const onProductImageChange = image => {
         setFeaturedImage(image)
         return
     }

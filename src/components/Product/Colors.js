@@ -37,12 +37,9 @@ const Colors = props => {
 
     const [selectedColor, setSelectedColor] = useState(colors[0])
 
-    const onClick = event => {
-        const color = colors.find(
-            element => element.value === event.target.getAttribute("alt"),
-        )
+    const onClick = color => {
         setSelectedColor(color)
-        props.onClick(event)
+        props.onClick(color)
         return
     }
 
@@ -57,7 +54,7 @@ const Colors = props => {
             <ColorGrid>
                 {colors.map(color => {
                     return (
-                        <div onClick={onClick} key={color.value}>
+                        <div key={color.value} onClick={() => onClick(color)}>
                             <Color
                                 fluid={color.image}
                                 alt={color.value}
