@@ -6,6 +6,7 @@ const StyledNavigation = styled.nav`
     display: grid;
     grid-auto-flow: column;
     column-gap: 2rem;
+    row-gap: 1rem;
     justify-content: center;
     justify-self: stretch;
     text-transform: uppercase;
@@ -16,6 +17,14 @@ const StyledNavigation = styled.nav`
 
     a:hover {
         color: white;
+    }
+
+    @media (max-width: 550px) {
+        grid-auto-flow: row;
+
+        span {
+            display: none;
+        }
     }
 `
 
