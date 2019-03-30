@@ -20,8 +20,21 @@ const FooterLayout = styled(Container)`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 5rem;
+    row-gap: 5rem;
     justify-items: center;
     align-items: start;
+
+    @media (max-width: 800px) {
+        grid-template-columns: repeat(3, 1fr);
+
+        #footer-logo {
+            display: none;
+        }
+    }
+
+    @media (max-width: 650px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const StyledLogo = styled.img`
@@ -38,6 +51,7 @@ const Footer = () => {
         <StyledFooter>
             <FooterLayout>
                 <StyledLogo
+                    id="footer-logo"
                     src={LogoSquareWhite}
                     alt="Iron Jimmy - Protect Your Barbell"
                 />

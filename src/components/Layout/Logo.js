@@ -1,7 +1,7 @@
 import React from "react"
 import {Link} from "gatsby"
 import styled from "styled-components"
-import IronJimmy from "../../../static/images/logo-black.png"
+import LogoBlack from "../../../static/images/logo-black.png"
 
 const StyledLogo = styled(Link)`
     max-width: 750px;
@@ -10,7 +10,7 @@ const StyledLogo = styled(Link)`
 
 const Logo = () => (
     <StyledLogo to="/">
-        <img src={IronJimmy} alt="Iron Jimmy Premium Sleeves"/>
+        <img src={LogoBlack} alt="Iron Jimmy Premium Sleeves"/>
     </StyledLogo>
 )
 
