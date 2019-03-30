@@ -9,6 +9,10 @@ const StyledAbout = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 5rem;
+
+    @media (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const About = ({data}) => {
