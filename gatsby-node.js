@@ -9,54 +9,9 @@ const createPages = async({graphql, actions}) => {
             allShopifyProduct {
                 edges {
                     node {
+                        shopifyId
                         handle
-                        title
                         productType
-                        tags
-                        descriptionHtml
-                        availableForSale
-                        images {
-                            localFile {
-                                childImageSharp {
-                                    fluid(maxWidth: 650) {
-                                        base64
-                                        aspectRatio
-                                        src
-                                        srcSet
-                                        sizes
-                                    }
-                                }
-                            }
-                        }
-                        priceRange {
-                            minVariantPrice {
-                                amount
-                            }
-                        }
-                        options {
-                            name
-                            values
-                        }
-                        variants {
-                            shopifyId
-                            selectedOptions {
-                                name
-                                value
-                            }
-                            image {
-                                localFile {
-                                    childImageSharp {
-                                        fluid(maxWidth: 650) {
-                                            base64
-                                            aspectRatio
-                                            src
-                                            srcSet
-                                            sizes
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -68,13 +23,13 @@ const createPages = async({graphql, actions}) => {
     )
 
     products.forEach(product => {
-        const slug = product.handle
-        const type = product.productType.toLowerCase()
+        const {shopifyId, handle, productType} = product
+        const type = productType.toLowerCase()
 
         createPage({
-            path: `${type}/${slug}`,
+            path: `${type}/${handle}`,
             component: path.resolve("./src/templates/product.js"),
-            context: {product},
+            context: {shopifyId},
         })
     })
 
@@ -83,45 +38,8 @@ const createPages = async({graphql, actions}) => {
             allShopifyCollection {
                 edges {
                     node {
+                        shopifyId
                         handle
-                        title
-                        image {
-                            localFile {
-                                childImageSharp {
-                                    fluid(maxWidth: 1000) {
-                                        base64
-                                        aspectRatio
-                                        src
-                                        srcSet
-                                        sizes
-                                    }
-                                }
-                            }
-                        }
-                        products {
-                            shopifyId
-                            title
-                            handle
-                            productType
-                            priceRange {
-                                minVariantPrice {
-                                    amount
-                                }
-                            }
-                            images {
-                                localFile {
-                                    childImageSharp {
-                                        fluid(maxWidth: 300) {
-                                            base64
-                                            aspectRatio
-                                            src
-                                            srcSet
-                                            sizes
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -133,13 +51,15 @@ const createPages = async({graphql, actions}) => {
     )
 
     collections.forEach(collection => {
-        if (collection.handle !== "frontpage") {
-            const slug = collection.handle.split("-").pop()
+        const {shopifyId, handle} = collection
+
+        if (handle !== "frontpage") {
+            const slug = handle.split("-").pop()
 
             createPage({
                 path: slug,
                 component: path.resolve("./src/templates/collection.js"),
-                context: {collection},
+                context: {shopifyId},
             })
         }
     })

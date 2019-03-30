@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Markdown from "markdown-to-jsx"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import {graphql} from "gatsby"
 import CartContext from "../context/CartContext"
 import Colors from "../components/Product/Colors"
 import AddToCart from "../components/Product/AddToCart"
@@ -43,8 +44,9 @@ const ProductForm = styled(Form)`
     }
 `
 
-const ProductTemplate = ({pageContext}) => {
-    const {product} = pageContext
+const ProductTemplate = ({data}) => {
+    const product = data.shopifyProduct
+
     const {
         descriptionHtml,
         availableForSale,
@@ -260,8 +262,56 @@ const ProductTemplate = ({pageContext}) => {
 }
 
 ProductTemplate.propTypes = {
-    pageContext: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
 }
+
+export const query = graphql`
+    query($shopifyId: String!) {
+        shopifyProduct(shopifyId: {eq: $shopifyId}) {
+            shopifyId
+            handle
+            title
+            productType
+            tags
+            descriptionHtml
+            availableForSale
+            images {
+                localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 650) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
+            }
+            priceRange {
+                minVariantPrice {
+                    amount
+                }
+            }
+            options {
+                name
+                values
+            }
+            variants {
+                shopifyId
+                selectedOptions {
+                    name
+                    value
+                }
+                image {
+                    localFile {
+                        childImageSharp {
+                            fluid(maxWidth: 650) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`
 
 const isDefault = name => {
     return name === "Title"
