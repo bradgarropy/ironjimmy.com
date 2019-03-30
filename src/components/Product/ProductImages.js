@@ -11,6 +11,22 @@ const ImageSlider = styled.div`
     column-gap: 2rem;
     row-gap: 2rem;
     margin: 2rem 0 3rem 0;
+
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (max-width: 850px) {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    @media (max-width: 650px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (max-width: 500px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
 `
 
 const StyledImage = styled(Img)`

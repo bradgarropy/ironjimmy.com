@@ -16,7 +16,12 @@ import FormField from "../styles/FormField"
 const Product = styled.div`
     display: grid;
     grid-template-columns: 65fr 35fr;
+    justify-items: center;
     column-gap: 5rem;
+
+    @media (max-width: 850px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const ProductHeader = styled.div`
