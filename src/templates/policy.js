@@ -1,5 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Markdown from "markdown-to-jsx"
+import {capitalize} from "../utils/helpers"
 import Container from "../styles/Container"
 
 const PolicyTemplate = ({pageContext}) => {
@@ -8,8 +10,8 @@ const PolicyTemplate = ({pageContext}) => {
     return (
         <>
             <Container>
-                <h1>{policy.title}</h1>
-                <p>{policy.body}</p>
+                <h1>{capitalize(policy.title)}</h1>
+                <Markdown>{policy.body}</Markdown>
             </Container>
         </>
     )
