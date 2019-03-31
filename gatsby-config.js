@@ -19,9 +19,15 @@ if (process.env.CONTEXT === "production") {
 }
 
 module.exports = {
+    siteMetadata: {
+        siteUrl: "https://ironjimmy.com/",
+    },
     plugins: [
         {
             resolve: "gatsby-plugin-react-helmet",
+        },
+        {
+            resolve: "gatsby-plugin-robots-txt",
         },
         {
             resolve: "gatsby-plugin-google-analytics",
