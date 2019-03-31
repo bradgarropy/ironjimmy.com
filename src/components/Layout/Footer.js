@@ -12,7 +12,7 @@ const StyledFooter = styled.footer`
     width: 100%;
     justify-content: center;
     border-top: 2px solid ${({theme}) => theme.colors.black};
-    background: ${({theme}) => theme.colors.grey};
+    background: ${({theme}) => theme.colors.lightgrey};
 `
 
 const FooterLayout = styled(Container)`

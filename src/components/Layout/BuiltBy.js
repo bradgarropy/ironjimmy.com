@@ -22,7 +22,7 @@ const BuiltBy = () => (
     <StyledBuildBy>
         <span>built by</span>
 
-        <a href="https://bradgarropy.com">
+        <a href="https://bradgarropy.com" aria-label="bradgarropy">
             <svg
                 viewBox="0 0 512 510"
                 fill="none"
