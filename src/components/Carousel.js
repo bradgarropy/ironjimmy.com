@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useRef, useEffect} from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
@@ -13,54 +13,57 @@ const StyledCarousel = styled.div`
     transition-timing-function: linear;
 `
 
-class Carousel extends React.Component {
-    static propTypes = {
-        images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }
+const Carousel = ({images}) => {
+    const [index, setIndex] = useState(0)
+    const [image, setImage] = useState(images[index])
+    const carousel = useRef()
 
-    state = {index: 0}
-
-    carousel = React.createRef()
-
-    componentDidMount = () => {
-        this.id = setInterval(this.changeImage, 5000)
-        this.preloadImages()
-    }
-
-    componentWillUnmount = () => {
-        clearInterval(this.id)
-    }
-
-    preloadImages = () => {
-        this.props.images.forEach(image => {
+    // preload images
+    useEffect(() => {
+        images.forEach(image => {
             let img = document.createElement("img")
             img.src = image
         })
-    }
+        return
+    }, [images])
 
-    changeImage = () => {
-        const carousel = this.carousel.current
-        const index =
-            this.state.index === this.props.images.length - 1
-                ? 0
-                : this.state.index + 1
-        const image = this.props.images[index]
+    // update image
+    useEffect(() => {
+        setImage(images[index])
+        return
+    }, [images, index])
 
-        carousel.style.backgroundImage = `url(${image})`
-        this.setState({index})
-    }
+    // display image
+    useEffect(() => {
+        carousel.current.style.backgroundImage = `url(${image})`
+        return
+    }, [image])
 
-    render = () => {
-        const index = this.state.index
-        const image = this.props.images[index]
+    // change image
+    useEffect(() => {
+        const changeImage = () => {
+            const newIndex = index === images.length - 1 ? 0 : index + 1
+            setIndex(newIndex)
+            return
+        }
 
-        return (
-            <StyledCarousel
-                ref={this.carousel}
-                style={{backgroundImage: `url(${image})`}}
-            />
-        )
-    }
+        const id = setInterval(changeImage, 5000)
+
+        return () => {
+            clearInterval(id)
+        }
+    }, [images, index])
+
+    return (
+        <StyledCarousel
+            ref={carousel}
+            style={{backgroundImage: `url(${image})`}}
+        />
+    )
+}
+
+Carousel.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default Carousel
