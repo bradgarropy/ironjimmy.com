@@ -35,7 +35,7 @@ const Carousel = ({images}) => {
 
     // display image
     useEffect(() => {
-        carousel.current.style.backgroundImage = `url(${image})`
+        carousel.current.style.backgroundImage = `url(https://res.cloudinary.com/bradgarropy/image/fetch/q_auto,f_auto/${image})`
         return
     }, [image])
 
@@ -57,7 +57,9 @@ const Carousel = ({images}) => {
     return (
         <StyledCarousel
             ref={carousel}
-            style={{backgroundImage: `url(${image})`}}
+            style={{
+                backgroundImage: `url(https://res.cloudinary.com/bradgarropy/image/fetch/q_auto,f_auto/${image})`,
+            }}
         />
     )
 }
