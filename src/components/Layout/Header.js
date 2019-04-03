@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Cart from "../Cart"
+import CartButton from "../Cart/CartButton"
 import Logo from "./Logo"
 import Navigation from "./Navigation"
 
@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
 
 const Header = () => (
     <StyledHeader>
-        <Cart/>
+        <CartButton/>
         <Logo/>
         <Navigation/>
     </StyledHeader>

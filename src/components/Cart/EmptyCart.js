@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "gatsby"
 import styled from "styled-components"
 
-const StyledEmpty = styled.div`
+const StyledEmptyCart = styled.div`
     text-align: center;
 
     p {
@@ -30,13 +30,13 @@ const StyledLink = styled(Link)`
     }
 `
 
-const Empty = () => {
+const EmptyCart = () => {
     return (
-        <StyledEmpty>
+        <StyledEmptyCart>
             <p>There is nothing in your cart.</p>
             <StyledLink to="/">Go Shopping!</StyledLink>
-        </StyledEmpty>
+        </StyledEmptyCart>
     )
 }
 
-export default Empty
+export default EmptyCart

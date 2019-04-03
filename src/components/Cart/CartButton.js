@@ -3,9 +3,9 @@ import {Link} from "gatsby"
 import styled from "styled-components"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons"
-import CartContext from "../context/CartContext"
+import CartContext from "../../context/CartContext"
 
-const StyledCart = styled(Link)`
+const StyledCartButton = styled(Link)`
     justify-self: right;
     margin: 2rem 2rem 0 0;
     text-transform: uppercase;
@@ -16,16 +16,16 @@ const StyledCart = styled(Link)`
     }
 `
 
-const Cart = () => {
+const CartButton = () => {
     const cartContext = useContext(CartContext)
     const items = cartContext.cart.lineItems.length
 
     return (
-        <StyledCart to="/cart">
+        <StyledCartButton to="/cart">
             <FontAwesomeIcon icon={faShoppingCart}/>
             <span>{" Cart" + (items ? ` ${items}` : "")}</span>
-        </StyledCart>
+        </StyledCartButton>
     )
 }
 
-export default Cart
+export default CartButton
