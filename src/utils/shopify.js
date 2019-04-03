@@ -127,6 +127,16 @@ const getColors = product => {
     return colors
 }
 
+const isDefaultOption = name => {
+    return name === "Title"
+}
+
+const isColorOption = name => {
+    const matches = ["color", "pattern"]
+    name = name.toLowerCase()
+    return matches.some(element => name.includes(element))
+}
+
 export {
     createCart,
     getCart,
@@ -137,4 +147,6 @@ export {
     getProductImages,
     getVariantImages,
     getColors,
+    isDefaultOption,
+    isColorOption,
 }
