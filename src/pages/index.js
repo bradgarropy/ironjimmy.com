@@ -11,9 +11,8 @@ import {displayPrice} from "../utils/price"
 
 const IndexPage = ({data}) => {
     const carousel = data.allContentfulCarousel.edges[0].node
-    const images = carousel.images.map(image => `https:${image.file.url}`)
-    const title = data.shopifyCollection.title
-    const products = data.shopifyCollection.products
+    const images = carousel.images.map(image => `https:${image.fluid.src}`)
+    const {title, products} = data.shopifyCollection
 
     return (
         <>
@@ -66,8 +65,8 @@ export const query = graphql`
             edges {
                 node {
                     images {
-                        file {
-                            url
+                        fluid(maxWidth: 4096) {
+                            ...GatsbyContentfulFluid
                         }
                     }
                 }
@@ -75,9 +74,6 @@ export const query = graphql`
         }
         shopifyCollection(handle: {eq: "frontpage"}) {
             title
-            image {
-                src
-            }
             products {
                 shopifyId
                 title
@@ -92,11 +88,7 @@ export const query = graphql`
                     localFile {
                         childImageSharp {
                             fluid(maxWidth: 300) {
-                                base64
-                                aspectRatio
-                                src
-                                srcSet
-                                sizes
+                                ...GatsbyImageSharpFluid
                             }
                         }
                     }

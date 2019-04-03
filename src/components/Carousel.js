@@ -22,7 +22,7 @@ const Carousel = ({images}) => {
     useEffect(() => {
         images.forEach(image => {
             let img = document.createElement("img")
-            img.src = image
+            img.src = `https://res.cloudinary.com/bradgarropy/image/fetch/q_auto,f_auto/${image}`
         })
         return
     }, [images])
