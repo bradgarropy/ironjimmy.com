@@ -9,7 +9,7 @@ import ProductGrid from "../styles/ProductGrid"
 import ProductPreview from "../styles/ProductPreview"
 import {displayPrice} from "../utils/price"
 
-const Index = ({data}) => {
+const IndexPage = ({data}) => {
     const carousel = data.allContentfulCarousel.edges[0].node
     const images = carousel.images.map(image => `https:${image.file.url}`)
     const title = data.shopifyCollection.title
@@ -56,7 +56,7 @@ const Index = ({data}) => {
     )
 }
 
-Index.propTypes = {
+IndexPage.propTypes = {
     data: PropTypes.object.isRequired,
 }
 
@@ -106,4 +106,4 @@ export const query = graphql`
     }
 `
 
-export default Index
+export default IndexPage

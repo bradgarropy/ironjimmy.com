@@ -7,7 +7,7 @@ import Button from "../styles/Button"
 import Form from "../styles/Form"
 import FormField from "../styles/FormField"
 
-const Contact = ({data}) => {
+const ContactPage = ({data}) => {
     const history = data.allContentfulContact.edges[0].node
     const {description} = history.description
 
@@ -47,7 +47,7 @@ const Contact = ({data}) => {
     )
 }
 
-Contact.propTypes = {
+ContactPage.propTypes = {
     data: PropTypes.object.isRequired,
 }
 
@@ -65,4 +65,4 @@ export const query = graphql`
     }
 `
 
-export default Contact
+export default ContactPage

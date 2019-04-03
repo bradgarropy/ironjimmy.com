@@ -83,7 +83,7 @@ const Checkout = styled.a`
     }
 `
 
-const Cart = () => {
+const CartPage = () => {
     const cartContext = useContext(CartContext)
     const {cart} = cartContext
 
@@ -147,4 +147,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default CartPage
