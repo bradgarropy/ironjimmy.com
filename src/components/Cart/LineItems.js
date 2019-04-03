@@ -1,9 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, {useContext} from "react"
 import styled from "styled-components"
-import {displayPrice} from "../../utils/price"
+import CartContext from "../../context/CartContext"
 import Quantity from "./Quantity"
 import Remove from "./Remove"
+import {displayPrice} from "../../utils/price"
 
 const StyledLineItems = styled.div`
     display: grid;
@@ -43,7 +43,10 @@ const LineItemPrice = styled.p`
     font-size: 2rem;
 `
 
-const LineItems = ({cart}) => {
+const LineItems = () => {
+    const cartContext = useContext(CartContext)
+    const {cart} = cartContext
+
     return (
         <StyledLineItems>
             {cart.lineItems.map(item => {
@@ -76,10 +79,6 @@ const LineItems = ({cart}) => {
             })}
         </StyledLineItems>
     )
-}
-
-LineItems.propTypes = {
-    cart: PropTypes.object.isRequired,
 }
 
 export default LineItems

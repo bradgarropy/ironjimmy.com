@@ -1,6 +1,6 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, {useContext} from "react"
 import styled from "styled-components"
+import CartContext from "../../context/CartContext"
 import LineItems from "./LineItems"
 import {displayPrice} from "../../utils/price"
 
@@ -31,18 +31,17 @@ const Checkout = styled.a`
     }
 `
 
-const Cart = ({cart}) => {
+const Cart = () => {
+    const cartContext = useContext(CartContext)
+    const {cart} = cartContext
+
     return (
         <>
-            <LineItems cart={cart}/>
+            <LineItems/>
             <Total>{displayPrice(cart.totalPrice)}</Total>
             <Checkout href={cart.webUrl}>Checkout</Checkout>
         </>
     )
-}
-
-Cart.propTypes = {
-    cart: PropTypes.object.isRequired,
 }
 
 export default Cart

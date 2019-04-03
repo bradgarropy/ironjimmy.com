@@ -23,7 +23,7 @@ const CartPage = () => {
     return (
         <StyledCartPage>
             <h1>Cart</h1>
-            {!cart.lineItems.length ? <EmptyCart/> : <Cart cart={cart}/>}
+            {!cart.lineItems.length ? <EmptyCart/> : <Cart/>}
         </StyledCartPage>
     )
 }
