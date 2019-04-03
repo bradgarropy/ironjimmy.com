@@ -1,6 +1,6 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, {useContext} from "react"
 import styled from "styled-components"
+import ProductContext from "../../context/ProductContext"
 import {displayPrice} from "../../utils/price"
 
 const StyledProductMeta = styled.div`
@@ -14,7 +14,10 @@ const StyledProductMeta = styled.div`
     }
 `
 
-const ProductMeta = ({product}) => {
+const ProductMeta = () => {
+    const productContext = useContext(ProductContext)
+    const {product} = productContext
+
     const {title} = product
     const price = product.priceRange.minVariantPrice.amount
 
@@ -24,10 +27,6 @@ const ProductMeta = ({product}) => {
             <p>{displayPrice(price)}</p>
         </StyledProductMeta>
     )
-}
-
-ProductMeta.propTypes = {
-    product: PropTypes.object.isRequired,
 }
 
 export default ProductMeta

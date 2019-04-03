@@ -1,10 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, {useContext} from "react"
 import styled from "styled-components"
 import AddToCart from "./AddToCart"
 import {isDefaultOption, isColorOption} from "../../utils/shopify"
 import Form from "../../styles/Form"
 import FormField from "../../styles/FormField"
+import ProductContext from "../../context/ProductContext"
 
 const StyledProductForm = styled(Form)`
     justify-items: stretch;
@@ -14,12 +14,16 @@ const StyledProductForm = styled(Form)`
     }
 `
 
-const ProductForm = ({
-    product,
-    onOptionsChange,
-    onAttributesChange,
-    onSubmit,
-}) => {
+const ProductForm = () => {
+    const productContext = useContext(ProductContext)
+
+    const {
+        product,
+        onSubmit,
+        onOptionsChange,
+        onAttributesChange,
+    } = productContext
+
     const {options, productType, tags, availableForSale} = product
 
     return (
@@ -114,13 +118,6 @@ const ProductForm = ({
             />
         </StyledProductForm>
     )
-}
-
-ProductForm.propTypes = {
-    product: PropTypes.object.isRequired,
-    onOptionsChange: PropTypes.func.isRequired,
-    onAttributesChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
 }
 
 export default ProductForm

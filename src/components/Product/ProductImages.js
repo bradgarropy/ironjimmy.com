@@ -1,10 +1,10 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
+import React, {useState, useContext} from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import ProductContext from "../../context/ProductContext"
 import {getProductImages} from "../../utils/shopify"
 
-const ImageSlider = styled.div`
+const StyledProductImages = styled.div`
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
@@ -29,7 +29,7 @@ const ImageSlider = styled.div`
     }
 `
 
-const StyledImage = styled(Img)`
+const ProductImage = styled(Img)`
     box-sizing: border-box;
     padding: 0.5rem;
     border: ${({selected, theme}) =>
@@ -38,35 +38,31 @@ const StyledImage = styled(Img)`
             : `5px solid ${theme.colors.white}`};
 `
 
-const ProductImages = props => {
-    const {product} = props
+const ProductImages = () => {
+    const productContext = useContext(ProductContext)
+    const {product, onProductImageChange} = productContext
     const images = getProductImages(product)
 
     const [selectedImage, setSelectedImage] = useState(images[0])
 
     const onClick = image => {
         setSelectedImage(image)
-        props.onClick(image)
+        onProductImageChange(image)
         return
     }
 
     return (
-        <ImageSlider>
+        <StyledProductImages>
             {images.map((image, index) => (
                 <div onClick={() => onClick(image)} key={index}>
-                    <StyledImage
+                    <ProductImage
                         fluid={image}
                         selected={selectedImage === image}
                     />
                 </div>
             ))}
-        </ImageSlider>
+        </StyledProductImages>
     )
-}
-
-ProductImages.propTypes = {
-    product: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
 }
 
 export default ProductImages

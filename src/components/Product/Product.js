@@ -1,14 +1,13 @@
-import React, {useState, useEffect, useContext} from "react"
+import React from "react"
 import PropTypes from "prop-types"
-import Img from "gatsby-image"
 import styled from "styled-components"
 import Markdown from "markdown-to-jsx"
-import CartContext from "../../context/CartContext"
+import ProductFeaturedImage from "./ProductFeaturedImage"
 import ProductImages from "./ProductImages"
 import ProductMeta from "./ProductMeta"
 import ProductColors from "./ProductColors"
 import ProductForm from "./ProductForm"
-import {getVariant, getProductImages} from "../../utils/shopify"
+import ProductProvider from "../../context/ProductProvider"
 
 const StyledProduct = styled.div`
     display: grid;
@@ -22,84 +21,23 @@ const StyledProduct = styled.div`
 `
 
 const Product = ({product}) => {
-    const {descriptionHtml, options} = product
-    const image = getProductImages(product)[0]
-
-    const initialOptions = options.reduce((acc, curr) => {
-        const name = curr.name
-        const value = curr.values[0]
-        acc[name] = value
-        return acc
-    }, {})
-
-    const [featuredImage, setFeaturedImage] = useState(image)
-    const [selectedOptions, setSelectedOptions] = useState(initialOptions)
-    const [customAttributes, setCustomAttributes] = useState({})
-    const [variant, setVariant] = useState()
-
-    const cartContext = useContext(CartContext)
-
-    useEffect(() => {
-        const variant = getVariant(product, selectedOptions)
-        setVariant(variant.shopifyId)
-    }, [product, selectedOptions])
-
-    const onOptionsChange = event => {
-        const {name, value} = event.target
-        setSelectedOptions({...selectedOptions, [name]: value})
-        return
-    }
-
-    const onAttributesChange = event => {
-        const {name, value} = event.target
-        setCustomAttributes({...customAttributes, [name]: value})
-        return
-    }
-
-    const onSubmit = event => {
-        event.preventDefault()
-
-        const attributes = Object.entries(customAttributes).map(entry => {
-            return {key: entry[0], value: entry[1]}
-        })
-
-        cartContext.add(variant, attributes)
-        return
-    }
-
-    const onColorChange = color => {
-        const {name, value, image} = color
-        setSelectedOptions({...selectedOptions, [name]: value})
-        setFeaturedImage(image)
-        return
-    }
-
-    const onProductImageChange = image => {
-        setFeaturedImage(image)
-        return
-    }
+    const {descriptionHtml} = product
 
     return (
         <StyledProduct>
-            <div>
-                <Img fluid={featuredImage} alt={product.title}/>
-                <ProductImages
-                    product={product}
-                    onClick={onProductImageChange}
-                />
-                <Markdown>{descriptionHtml}</Markdown>
-            </div>
+            <ProductProvider product={product}>
+                <div>
+                    <ProductFeaturedImage/>
+                    <ProductImages/>
+                    <Markdown>{descriptionHtml}</Markdown>
+                </div>
 
-            <div>
-                <ProductMeta product={product}/>
-                <ProductColors product={product} onClick={onColorChange}/>
-                <ProductForm
-                    product={product}
-                    onOptionsChange={onOptionsChange}
-                    onAttributesChange={onAttributesChange}
-                    onSubmit={onSubmit}
-                />
-            </div>
+                <div>
+                    <ProductMeta/>
+                    <ProductColors/>
+                    <ProductForm/>
+                </div>
+            </ProductProvider>
         </StyledProduct>
     )
 }

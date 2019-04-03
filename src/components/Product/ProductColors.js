@@ -1,7 +1,7 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
+import React, {useState, useContext} from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import ProductContext from "../../context/ProductContext"
 import {getColors} from "../../utils/shopify"
 
 const StyledColors = styled.div`
@@ -31,15 +31,16 @@ const Color = styled(Img)`
             : `5px solid ${theme.colors.white}`};
 `
 
-const Colors = props => {
-    const {product} = props
+const Colors = () => {
+    const productContext = useContext(ProductContext)
+    const {product, onColorChange} = productContext
     const colors = getColors(product)
 
     const [selectedColor, setSelectedColor] = useState(colors[0])
 
     const onClick = color => {
         setSelectedColor(color)
-        props.onClick(color)
+        onColorChange(color)
         return
     }
 
@@ -67,11 +68,6 @@ const Colors = props => {
             </ColorGrid>
         </StyledColors>
     )
-}
-
-Colors.propTypes = {
-    product: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
 }
 
 export default Colors
