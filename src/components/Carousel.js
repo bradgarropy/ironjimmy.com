@@ -22,7 +22,7 @@ const Carousel = ({images}) => {
     useEffect(() => {
         images.forEach(image => {
             let img = document.createElement("img")
-            img.src = `https://res.cloudinary.com/bradgarropy/image/fetch/q_auto,f_auto/${image}`
+            img.src = image
         })
         return
     }, [images])
@@ -35,7 +35,7 @@ const Carousel = ({images}) => {
 
     // display image
     useEffect(() => {
-        carousel.current.style.backgroundImage = `url(https://res.cloudinary.com/bradgarropy/image/fetch/q_auto,f_auto/${image})`
+        carousel.current.style.backgroundImage = `url(${image})`
         return
     }, [image])
 
@@ -58,7 +58,7 @@ const Carousel = ({images}) => {
         <StyledCarousel
             ref={carousel}
             style={{
-                backgroundImage: `url(https://res.cloudinary.com/bradgarropy/image/fetch/q_auto,f_auto/${image})`,
+                backgroundImage: `url(${image})`,
             }}
         />
     )

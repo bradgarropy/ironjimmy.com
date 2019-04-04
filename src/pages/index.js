@@ -6,9 +6,11 @@ import Collection from "../components/Collection"
 import Container from "../styles/Container"
 
 const IndexPage = ({data}) => {
-    const carousel = data.allContentfulCarousel.edges[0].node
-    const images = carousel.images.map(image => `https:${image.fluid.src}`)
     const collection = data.shopifyCollection
+    const carousel = data.allContentfulCarousel.edges[0].node
+    const images = carousel.images.map(
+        image => `https:${image.fluid.src.split("?")[0]}`,
+    )
 
     return (
         <>
