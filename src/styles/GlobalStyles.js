@@ -1,6 +1,10 @@
 import {createGlobalStyle} from "styled-components"
 
 const GlobalStyles = createGlobalStyle`
+    * {
+        font-family: sans-serif;
+    }
+
     html {
         font-size: 10px;
     }
@@ -40,7 +44,6 @@ const GlobalStyles = createGlobalStyle`
         border-radius: 3px;
         border: none;
         background: ${({theme}) => theme.colors.lightergrey};
-        font-family: "Roboto", sans-serif;
         font-size: 1.5rem;
         padding: 1rem 2rem;
         resize: vertical;

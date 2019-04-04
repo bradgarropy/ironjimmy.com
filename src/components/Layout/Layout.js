@@ -14,7 +14,6 @@ const StyledLayout = styled.div`
     min-height: 100vh;
     align-items: start;
     grid-template-rows: auto 1fr auto;
-    font-family: "Roboto", sans-serif;
 `
 
 const Layout = ({children}) => {
