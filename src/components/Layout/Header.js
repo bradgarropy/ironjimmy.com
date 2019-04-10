@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import CartButton from "../Cart/CartButton"
 import Logo from "./Logo"
-import Navigation from "./Navigation"
+import Navigation from "../Navigation/Navigation"
 
 const StyledHeader = styled.header`
     display: grid;
