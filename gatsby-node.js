@@ -52,10 +52,9 @@ const createPages = async({graphql, actions}) => {
 
     collections.forEach(collection => {
         const {shopifyId, handle} = collection
-        const slug = handle.split("-").pop()
 
         createPage({
-            path: slug,
+            path: handle,
             component: path.resolve("./src/templates/collection.js"),
             context: {shopifyId},
         })
