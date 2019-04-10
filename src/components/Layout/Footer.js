@@ -34,6 +34,7 @@ const FooterLayout = styled(Container)`
 
     @media (max-width: 650px) {
         grid-template-columns: repeat(1, 1fr);
+        justify-items: start;
     }
 `
 
