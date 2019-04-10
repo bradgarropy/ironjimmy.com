@@ -5,7 +5,7 @@ import {Link} from "gatsby"
 const NavigationLink = ({url, text, separator = true}) => {
     return (
         <>
-            <Link to={url}>{text}</Link>
+            <Link to={`/${url}`}>{text}</Link>
             {separator && <span>|</span>}
         </>
     )
