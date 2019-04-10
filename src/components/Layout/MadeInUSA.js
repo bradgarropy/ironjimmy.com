@@ -9,8 +9,6 @@ const StyledMadeInUSA = styled.div`
     align-content: start;
     align-items: center;
     column-gap: 0.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
 
     img {
         width: 3rem;
@@ -19,8 +17,8 @@ const StyledMadeInUSA = styled.div`
 
 const MadeInUSA = () => (
     <StyledMadeInUSA>
+        <span>Made in USA</span>
         <img src={usa} alt="American Flag"/>
-        <span>Made In USA</span>
     </StyledMadeInUSA>
 )
 
