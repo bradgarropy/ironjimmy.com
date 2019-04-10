@@ -48,7 +48,7 @@ const Collection = ({collection}) => {
         collection.image && collection.image.localFile.childImageSharp.fluid
 
     return (
-        <>
+        <div>
             <CollectionHeader>
                 <h1>{title}</h1>
                 {image && <Img fluid={image}/>}
@@ -81,7 +81,7 @@ const Collection = ({collection}) => {
                     )
                 })}
             </ProductGrid>
-        </>
+        </div>
     )
 }
 

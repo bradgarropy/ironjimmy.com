@@ -52,16 +52,13 @@ const createPages = async({graphql, actions}) => {
 
     collections.forEach(collection => {
         const {shopifyId, handle} = collection
+        const slug = handle.split("-").pop()
 
-        if (handle !== "frontpage") {
-            const slug = handle.split("-").pop()
-
-            createPage({
-                path: slug,
-                component: path.resolve("./src/templates/collection.js"),
-                context: {shopifyId},
-            })
-        }
+        createPage({
+            path: slug,
+            component: path.resolve("./src/templates/collection.js"),
+            context: {shopifyId},
+        })
     })
 
     response = await graphql(`
