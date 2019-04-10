@@ -20,7 +20,7 @@ const StyledBuildBy = styled.div`
 
 const BuiltBy = () => (
     <StyledBuildBy>
-        <span>built by</span>
+        <span>Built by</span>
 
         <a href="https://bradgarropy.com" aria-label="bradgarropy">
             <svg
