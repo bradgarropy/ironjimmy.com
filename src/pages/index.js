@@ -5,10 +5,16 @@ import styled from "styled-components"
 import Carousel from "../components/Carousel"
 import Collection from "../components/Collection"
 import Container from "../styles/Container"
+import FlashyLink from "../styles/FlashyLink"
 
-const CollectionGrid = styled(Container)`
+const IndexLayout = styled.div`
     display: grid;
-    row-gap: 5rem;
+    row-gap: 7rem;
+`
+
+const LearnMore = styled.p`
+    font-size: 1.5rem;
+    font-style: italic;
 `
 
 const IndexPage = ({data}) => {
@@ -22,11 +28,18 @@ const IndexPage = ({data}) => {
         <>
             <Carousel images={images}/>
 
-            <CollectionGrid>
-                {collections.map((collection, index) => (
-                    <Collection key={index} collection={collection}/>
-                ))}
-            </CollectionGrid>
+            <Container>
+                <IndexLayout>
+                    {collections.map((collection, index) => (
+                        <Collection key={index} collection={collection}/>
+                    ))}
+
+                    <FlashyLink to="/custom-straps">
+                        <p>We&#39;ve got customizable lifting straps!</p>
+                        <LearnMore>learn more</LearnMore>
+                    </FlashyLink>
+                </IndexLayout>
+            </Container>
         </>
     )
 }
