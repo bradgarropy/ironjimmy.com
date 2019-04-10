@@ -1,12 +1,14 @@
 {
     "name": "iron-jimmy",
-    "version": "0.0.1",
+    "version": "1.0.0-feedback.0",
     "description": "⚫ iron jimmy sleeves",
     "keywords": [
         "gatsby",
         "react",
-        "scss",
-        "eslint"
+        "styled-components",
+        "eslint",
+        "shopify",
+        "ecommerce"
     ],
     "homepage": "https://ironjimmy.com",
     "bugs": {
@@ -23,11 +25,8 @@
         "url": "https://github.com/bradgarropy/iron-jimmy"
     },
     "scripts": {
-        "start": "npm run start:gatsby",
-        "start:all": "concurrently \"npm:start:*\"",
-        "start:gatsby": "gatsby develop",
-        "build": "npm run build:gatsby",
-        "build:gatsby": "gatsby build",
+        "start": "gatsby develop",
+        "build": "gatsby build",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix"
     },
