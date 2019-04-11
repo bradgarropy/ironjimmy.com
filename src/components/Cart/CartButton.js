@@ -6,8 +6,6 @@ import {faShoppingCart} from "@fortawesome/free-solid-svg-icons"
 import CartContext from "../../context/CartContext"
 
 const StyledCartButton = styled(Link)`
-    justify-self: right;
-    margin: 2rem 2rem 0 0;
     text-transform: uppercase;
     font-weight: 600;
 

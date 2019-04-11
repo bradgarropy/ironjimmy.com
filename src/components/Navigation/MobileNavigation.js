@@ -1,11 +1,11 @@
 import React from "react"
-import {useStaticQuery, graphql} from "gatsby"
 import styled from "styled-components"
+import {useStaticQuery, graphql} from "gatsby"
 import NavigationLink from "./NavigationLink"
 
 const StyledNavigation = styled.nav`
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     column-gap: 2rem;
     row-gap: 1rem;
     justify-content: center;
@@ -19,12 +19,12 @@ const StyledNavigation = styled.nav`
         color: white;
     }
 
-    @media (max-width: 950px) {
+    @media (min-width: 950px) {
         display: none;
     }
 `
 
-const Navigation = () => {
+const MobileNavigation = () => {
     const data = useStaticQuery(graphql`
         {
             allShopifyCollection(
@@ -49,14 +49,19 @@ const Navigation = () => {
                 const {shopifyId, handle, title} = collection
 
                 return (
-                    <NavigationLink key={shopifyId} url={handle} text={title}/>
+                    <NavigationLink
+                        key={shopifyId}
+                        url={handle}
+                        text={title}
+                        separator={false}
+                    />
                 )
             })}
 
-            <NavigationLink url="about" text="About"/>
+            <NavigationLink url="about" text="About" separator={false}/>
             <NavigationLink url="contact" text="Contact" separator={false}/>
         </StyledNavigation>
     )
 }
 
-export default Navigation
+export default MobileNavigation
