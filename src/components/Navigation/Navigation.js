@@ -20,7 +20,7 @@ const StyledNavigation = styled.nav`
         color: white;
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 950px) {
         grid-auto-flow: row;
 
         span {
