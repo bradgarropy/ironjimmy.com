@@ -65,12 +65,6 @@ const ProductForm = () => {
                 </>
             )}
 
-            {tags.includes("custom-image") && (
-                <p>
-                    Email your logo to <i>uploads@ironjimmy.com</i>
-                </p>
-            )}
-
             {productType.toLowerCase() === "sleeves" && (
                 <>
                     <FormField onChange={onAttributesChange}>

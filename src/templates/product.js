@@ -2,14 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import {graphql} from "gatsby"
 import Container from "../styles/Container"
-import StyledProduct from "../components/Product/Product"
+import Product from "../components/Product/Product"
 
 const ProductTemplate = ({data}) => {
     const product = data.shopifyProduct
 
     return (
         <Container>
-            <StyledProduct product={product}/>
+            <Product product={product}/>
         </Container>
     )
 }
