@@ -29,7 +29,7 @@ export const query = graphql`
                         description
                     }
                     photos {
-                        fluid(maxWidth: 4096) {
+                        fluid(maxWidth: 850) {
                             ...GatsbyContentfulFluid
                         }
                     }

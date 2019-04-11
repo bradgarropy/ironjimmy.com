@@ -7,6 +7,12 @@ const capitalize = input => {
     return output
 }
 
+const stripParams = input => {
+    const output = input.split("?")[0]
+    return output
+}
+
 module.exports = {
     capitalize,
+    stripParams,
 }

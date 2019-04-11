@@ -6,6 +6,7 @@ import Carousel from "../components/Carousel"
 import Collection from "../components/Collection"
 import Container from "../styles/Container"
 import FlashyLink from "../styles/FlashyLink"
+import {stripParams} from "../utils/helpers"
 
 const IndexLayout = styled.div`
     display: grid;
@@ -20,9 +21,7 @@ const LearnMore = styled.p`
 const IndexPage = ({data}) => {
     const collections = data.allShopifyCollection.edges.map(edge => edge.node)
     const carousel = data.allContentfulCarousel.edges[0].node
-    const images = carousel.images.map(
-        image => `https:${image.fluid.src.split("?")[0]}`,
-    )
+    const images = carousel.images.map(image => stripParams(image.fluid.src))
 
     return (
         <>

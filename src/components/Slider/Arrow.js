@@ -9,6 +9,10 @@ const ArrowWrapper = styled.div`
     color: ${({theme}) => theme.colors.black};
     padding: 3rem;
     justify-self: ${({direction}) => direction};
+
+    @media (max-width: 600px) {
+        padding: 1rem;
+    }
 `
 
 const Arrow = ({direction, ...props}) => {
