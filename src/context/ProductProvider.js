@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from "react"
 import PropTypes from "prop-types"
+import {navigate} from "gatsby"
 import CartContext from "./CartContext"
 import ProductContext from "./ProductContext"
 import {getVariant, getProductImages} from "../utils/shopify"
@@ -51,14 +52,15 @@ const ProductProvider = ({product, children}) => {
         return
     }
 
-    const onSubmit = event => {
+    const onSubmit = async event => {
         event.preventDefault()
 
         const attributes = Object.entries(customAttributes).map(entry => {
             return {key: entry[0], value: entry[1]}
         })
 
-        cartContext.add(variant, attributes)
+        await cartContext.add(variant, attributes)
+        navigate("/cart")
         return
     }
 
