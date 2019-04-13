@@ -34,7 +34,7 @@ const IndexPage = ({data}) => {
                     ))}
 
                     <FlashyLink to="/custom-straps">
-                        <p>We&#39;ve got customizable lifting straps!</p>
+                        <p>We&#39;ve got custom lifting straps!</p>
                         <LearnMore>learn more</LearnMore>
                     </FlashyLink>
                 </IndexLayout>
