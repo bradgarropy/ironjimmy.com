@@ -1,6 +1,6 @@
 {
-    "name": "iron-jimmy",
-    "version": "1.0.0-feedback.1",
+    "name": "ironjimmy.com",
+    "version": "1.0.0-feedback.2",
     "description": "⚫ iron jimmy sleeves",
     "keywords": [
         "gatsby",
@@ -12,7 +12,7 @@
     ],
     "homepage": "https://ironjimmy.com",
     "bugs": {
-        "url": "https://github.com/bradgarropy/iron-jimmy/issues"
+        "url": "https://github.com/bradgarropy/ironjimmy.com/issues"
     },
     "license": "MIT",
     "author": {
@@ -22,7 +22,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/bradgarropy/iron-jimmy"
+        "url": "https://github.com/bradgarropy/ironjimmy.com"
     },
     "scripts": {
         "start": "gatsby develop",
@@ -37,25 +37,25 @@
         "@fortawesome/react-fontawesome": "^0.1.4",
         "babel-plugin-styled-components": "^1.10.0",
         "dotenv": "^7.0.0",
-        "gatsby": "^2.3.11",
-        "gatsby-image": "^2.0.37",
+        "gatsby": "^2.3.24",
+        "gatsby-image": "^2.0.39",
         "gatsby-plugin-google-analytics": "^2.0.18",
         "gatsby-plugin-layout": "^1.0.14",
-        "gatsby-plugin-react-helmet": "^3.0.11",
+        "gatsby-plugin-react-helmet": "^3.0.12",
         "gatsby-plugin-robots-txt": "^1.4.0",
-        "gatsby-plugin-sharp": "^2.0.32",
+        "gatsby-plugin-sharp": "^2.0.35",
         "gatsby-plugin-styled-components": "^3.0.7",
         "gatsby-source-apiserver": "^2.1.1",
-        "gatsby-source-contentful": "^2.0.45",
-        "gatsby-source-shopify": "^2.0.23",
-        "gatsby-transformer-sharp": "^2.1.17",
+        "gatsby-source-contentful": "^2.0.50",
+        "gatsby-source-shopify": "^2.0.24",
+        "gatsby-transformer-sharp": "^2.1.18",
         "lodash.isequal": "^4.5.0",
         "markdown-to-jsx": "^6.9.3",
         "npm": "^6.9.0",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-helmet": "^5.2.0",
-        "shopify-buy": "^2.2.0",
+        "shopify-buy": "^2.2.1",
         "styled-components": "^4.2.0"
     },
     "devDependencies": {

@@ -52,7 +52,7 @@ const Meta = () => {
                 },
                 {
                     property: "og:url",
-                    content: "https://iron-jimmy.netlify.com/",
+                    content: "https://ironjimmy.netlify.com/",
                 },
                 {
                     property: "og:type",
