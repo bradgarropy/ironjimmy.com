@@ -74,7 +74,7 @@ const ProductForm = () => {
 
                     <FormField onChange={onAttributesChange}>
                         <label htmlFor="collar-measurement">
-                            *Collar Measurement
+                            Collar Measurement
                         </label>
                         <input
                             type="text"
@@ -84,7 +84,7 @@ const ProductForm = () => {
                     </FormField>
 
                     <FormField onChange={onAttributesChange}>
-                        <label htmlFor="brand">*Brand</label>
+                        <label htmlFor="brand">Brand</label>
                         <input type="text" id="brand" name="Brand"/>
                     </FormField>
 
