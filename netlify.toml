@@ -4,8 +4,20 @@
 
 [[redirects]]
     from = "/contentful"
-    to = "https://app.contentful.com/spaces/d3ttfid6hh7h/entries"
+    to = "https://app.contentful.com"
 
 [[redirects]]
     from = "/shopify"
     to = "https://iron-jimmy-sleeves.myshopify.com/admin"
+
+[[redirects]]
+    from = "/netlify"
+    to = "https://app.netlify.com"
+
+[[redirects]]
+    from = "/analytics"
+    to = "https://analytics.google.com"
+
+[[redirects]]
+    from = "/domain"
+    to = "https://domains.google.com"
