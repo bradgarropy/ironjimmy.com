@@ -6,6 +6,8 @@ import Collection from "../components/Collection"
 
 const CollectionTemplate = ({data}) => {
     const collection = data.shopifyCollection
+    console.log(collection)
+    console.log(collection.image)
 
     return (
         <Container>
