@@ -9,6 +9,7 @@ const shopify = Client.buildClient({
 const createCart = async() => {
     console.log("🛒🔧")
     const cart = await shopify.checkout.create()
+    localStorage.setItem("shopifyCartId", cart.id)
     return cart
 }
 
@@ -21,10 +22,23 @@ const getCart = async() => {
     if (!id) {
         console.log("🛒⛔")
         cart = await createCart()
-        localStorage.setItem("shopifyCartId", cart.id)
-    } else {
+        return cart
+    }
+
+    try {
         console.log("🛒✨")
         cart = await shopify.checkout.fetch(id)
+    }
+    catch (error) {
+        console.log("🛒❔")
+        cart = await createCart()
+        return cart
+    }
+
+    if (!cart) {
+        console.log("🛒❔")
+        cart = await createCart()
+        return cart
     }
 
     return cart
