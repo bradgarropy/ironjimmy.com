@@ -2,12 +2,14 @@
 .vscode
 
 # dependencies
-/.cache
-/node_modules
+.cache
+node_modules
 
 # build
-/public
-/functions
+public
+
+# host
+.netlify
 
 # secrets
 .env*
